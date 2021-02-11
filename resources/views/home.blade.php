@@ -6,6 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
+                <h1>ciao</h1>
 
                 <div class="card-body">
                     @if (session('status'))
