@@ -20,7 +20,8 @@ class CreateDishesTable extends Migration
             $table->text('description');
             $table->text('ingredients');
             $table->float('price', 6, 2);
-            $table->boolean('visibility');
+            $table->boolean('visibility')->default(1);
+            $table->string('path_image')->nullable();
             $table->timestamps();
             
             $table->foreign('user_id')

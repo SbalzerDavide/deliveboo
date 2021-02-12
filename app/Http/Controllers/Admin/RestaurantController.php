@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Dish;
 use App\User;
 
@@ -30,7 +31,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.restaurants.create');
     }
 
     /**
@@ -41,7 +42,27 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        
+        $request->validate($this->validazione());
+
+        $data['user_id'] = Auth::id();
+
+        
+
+        if(!empty($data['path_image'])){
+            $data['path_image'] = Storage::disk('public')->put('images' , $data['path_image']);
+        }
+
+        $newDish = new Dish();
+        $newDish->fill($data);
+        $saved = $newDish->save();
+
+        if($saved){
+            return redirect()->route('admin.restaurants.index');
+        }
+        
+
     }
 
     /**
@@ -87,5 +108,16 @@ class RestaurantController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validazione(){
+        return [
+        'name'=> 'required',
+        'description'=> 'required',
+        'ingredients'=> 'required',
+        'price'=> 'required',
+        'visibility'=> '',
+        'path_img'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
     }
 }
