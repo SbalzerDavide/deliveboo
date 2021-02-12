@@ -10,8 +10,6 @@ class Order extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function dishes(){
-        return $this->belongsToMany('App\Dish');
-    }
+  
 
 }
