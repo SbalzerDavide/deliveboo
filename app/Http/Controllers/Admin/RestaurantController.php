@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Dish;
+use App\User;
 
 class RestaurantController extends Controller
 {
@@ -14,7 +17,10 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        return view('admin.restaurants.index');
+
+        $dishes = Dish::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+
+        return view('admin.restaurants.index', compact('dishes'));
     }
 
     /**
