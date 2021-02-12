@@ -29,6 +29,8 @@ class CreateGenreUserTable extends Migration
         });
     }
 
+    //ciao
+
     /**
      * Reverse the migrations.
      *
