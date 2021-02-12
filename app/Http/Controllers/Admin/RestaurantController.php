@@ -47,12 +47,17 @@ class RestaurantController extends Controller
         $request->validate($this->validazione());
 
         $data['user_id'] = Auth::id();
-
+        // dd($data);
         
-
         if(!empty($data['path_image'])){
-            $data['path_image'] = Storage::disk('public')->put('images' , $data['path_image']);
+            $data['path_image'] = Storage::disk('public')->put('image', $data['path_image'] );
         }
+        // dd($data);
+
+        // if(!empty($data['path_image'])){
+        //     $data['path_image'] = Storage::disk('public')->put('images' , $data['path_image']);
+        // };
+        // dd($data['path_image']);
 
         $newDish = new Dish();
         $newDish->fill($data);
@@ -117,7 +122,7 @@ class RestaurantController extends Controller
         'ingredients'=> 'required',
         'price'=> 'required',
         'visibility'=> '',
-        'path_img'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'path_image'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

@@ -4,7 +4,7 @@
    <main class="container">
        <h1>Create a New Dish</h1>
 
-       <form action="{{ route('admin.restaurants.store') }}" method="POST"  enctype="multipart/formdata">
+       <form action="{{ route('admin.restaurants.store') }}" method="POST"  enctype="multipart/form-data">
 
             @csrf
             @method('POST')
@@ -43,7 +43,6 @@
             <div class="form-group">
                 <label for="path_image">Dish image:</label>
                 <input  class="form-control" type="file" name="path_image" id="path_image"  accept="image/*">
-
             </div>
 
 
