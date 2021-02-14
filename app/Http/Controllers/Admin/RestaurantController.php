@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use App\Dish;
 use App\User;
 
@@ -46,6 +47,7 @@ class RestaurantController extends Controller
         
         $request->validate($this->validazione());
 
+        $data['slug'] = Str::slug($data['name'], '-');
         $data['user_id'] = Auth::id();
         // dd($data);
         
@@ -60,6 +62,7 @@ class RestaurantController extends Controller
         // dd($data['path_image']);
 
         $newDish = new Dish();
+        // dd($newDish);
         $newDish->fill($data);
         $saved = $newDish->save();
 

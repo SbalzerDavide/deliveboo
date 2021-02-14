@@ -31,7 +31,7 @@
             <div class="form-group">
             <label for="visibility">Dish visibility:</label>
               <select name="visibility" id="visibility">
-                 <option value="0" >
+                 <option value="0">
                    No
                  </option>
                  <option selected value="1">

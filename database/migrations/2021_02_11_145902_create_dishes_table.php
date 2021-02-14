@@ -17,6 +17,7 @@ class CreateDishesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
+            $table->string('slug');
             $table->text('description');
             $table->text('ingredients');
             $table->float('price', 6, 2);
