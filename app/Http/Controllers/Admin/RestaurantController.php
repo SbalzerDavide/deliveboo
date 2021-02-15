@@ -79,9 +79,16 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        // return $slug;
+        $dish = Dish::where('slug', $slug)->first();
+        // dd($dish);
+        // check if the slug is wrong
+        if(empty($dish)){
+        abort(404);
+        }
+        return view('admin.restaurants.show', compact('dish'));
     }
 
     /**
