@@ -21,6 +21,11 @@
 </head>
 <body>
     <div id="app">
+
+        {{-- VUE+FONTAWESOME
+        @{{ciao}}
+        <i class="fas fa-icons"></i> --}}
+
         @include('partials.header')
 
         <main class="py-4">
@@ -30,7 +35,6 @@
         @include('partials.footer')
     </div>
 
-    {{-- javascript --}}
-    <script src="{{asset('js/app.js')}}"></script>
+    
 </body>
 </html>
