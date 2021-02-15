@@ -33,6 +33,7 @@
     {{-- vue js --}}
     <div id="app">
         @{{ciao}}
+        <i class="fas fa-icons"></i>
     </div>
 
     </main>
