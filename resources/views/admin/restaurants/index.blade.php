@@ -8,7 +8,7 @@
             <div>
               <h2>{{ $dish->name }}</h2>
               <a class="btn btn-success" href="{{route('admin.restaurants.show', $dish->slug)}}">Vedi piatto</a>
-              <a class="btn btn-primary" href="#">Edit</a>
+              <a class="btn btn-primary" href="{{route('admin.restaurants.edit', $dish->slug)}}">Edit</a>
               <a class="btn btn-danger" href="#">Delete</a>
             </div>
         @endforeach

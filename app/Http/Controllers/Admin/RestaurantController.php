@@ -54,12 +54,6 @@ class RestaurantController extends Controller
         if(!empty($data['path_image'])){
             $data['path_image'] = Storage::disk('public')->put('image', $data['path_image'] );
         }
-        // dd($data);
-
-        // if(!empty($data['path_image'])){
-        //     $data['path_image'] = Storage::disk('public')->put('images' , $data['path_image']);
-        // };
-        // dd($data['path_image']);
 
         $newDish = new Dish();
         // dd($newDish);
@@ -67,7 +61,7 @@ class RestaurantController extends Controller
         $saved = $newDish->save();
 
         if($saved){
-            return redirect()->route('admin.restaurants.index');
+            return redirect()->route('admin.restaurants.show', $newDish->slug);
         }
         
 
@@ -97,9 +91,11 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $dish = Dish::where('slug', $slug)->first();
+
+        return view('admin.restaurants.edit', compact('dish'));
     }
 
     /**
@@ -111,7 +107,35 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // GET DATA FROM FORM
+        $data = $request->all();
+        $data['user_id'] = Auth::id();
+        // VALIDATE
+        $request->validate($this->validazione());
+        // GET POST TO UPDATE
+        $dish = Dish::find($id);
+        // UPDATE SLUG WHEN I CHANGE NAME
+        $data['slug'] = Str::slug($data['name'], '-');
+        // IF IMG CHANGE
+        // check if I have an img posted
+        if(!empty($data['path_image'])) {
+        // delete previous one before posting the new one
+        if(!empty($dish->path_image));{
+        Storage::disk('public')->delete($dish->path_image);
+        }
+        // upload new img
+        $data['path_image'] = Storage::disk('public')->put('image', $data['path_image']);
+        }
+        // UPDATE DB
+        $updated = $dish->update($data); // <--- fillable nel Model
+        // CHECK IF WORKED
+        if($updated){
+        return redirect()->route('admin.restaurants.show', $dish->slug);
+        } else {
+        return redirect()->route('homepage');
+        }
+        
+
     }
 
     /**

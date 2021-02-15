@@ -2,38 +2,37 @@
   
 @section('content')
    <main class="container">
-       <h1>Create a New Dish</h1>
+       <h1>Edit a New Dish</h1>
 
        @if ($errors->any())
-        <div class="alert alert-danger">
-          <ul>
-       @foreach ($errors->all() as $error)
-            <li>
-              {{$error}}
-            </li>
-       @endforeach
-          </ul>
-       </div>
-       @endif
-      
+       <div class="alert alert-danger">
+         <ul>
+      @foreach ($errors->all() as $error)
+           <li>
+             {{$error}}
+           </li>
+      @endforeach
+         </ul>
+      </div>
+      @endif
 
-       <form action="{{ route('admin.restaurants.store') }}" method="POST"  enctype="multipart/form-data">
+       <form action="{{ route('admin.restaurants.update', $dish->id) }}" method="POST"  enctype="multipart/form-data">
 
             @csrf
-            @method('POST')
+            @method('PATCH')
 
             <div class="form-group">
                 <label for="name">Dish Name:</label>
-                <input  class="form-control" type="text" name="name" id="name" value="{{ old('name') }}">
+                <input  class="form-control" type="text" name="name" id="name" value="{{ old('name', $dish->name) }}">
             </div>
             <div class="form-group">
                 <label for="description">Dish Content:</label>
-                <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
+                <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ old('description', $dish->description) }}</textarea>
             </div>
 
             <div class="form-group">
                 <label for="ingredients">Dish ingredients:</label>
-                <input  class="form-control" type="text" name="ingredients" id="ingredients" value="{{ old('ingredients') }}">
+                <input  class="form-control" type="text" name="ingredients" id="ingredients" value="{{ old('ingredients', $dish->ingredients) }}">
             </div>
 
             <div class="form-group">
@@ -53,6 +52,16 @@
                  </option>
               </select>
             </div>
+
+
+            @isset($dish->path_image)
+                <div class="wrap-image">
+                    <img width="350px" src="{{asset('storage/' . $dish->path_image )}}" alt="{{$dish->name}}">
+                </div>
+                <h6>
+                    Change:
+                </h6>
+            @endisset
 
             <div class="form-group">
                 <label for="path_image">Dish image:</label>
