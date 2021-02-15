@@ -16,7 +16,7 @@
               <h2>{{ $dish->name }}</h2>
               <a class="btn btn-success" href="{{route('admin.restaurants.show', $dish->slug)}}">Vedi piatto</a>
               <a class="btn btn-primary" href="{{route('admin.restaurants.edit', $dish->slug)}}">Edit</a>
-              
+
               <form action="{{route('admin.restaurants.destroy', $dish->id)}}" method="POST">
                     @csrf
                     @method('DELETE')
@@ -29,6 +29,12 @@
         <div class="container">
         
     </div>
+
+    {{-- vue js --}}
+    <div id="app">
+        @{{ciao}}
+    </div>
+
     </main>
 
    
