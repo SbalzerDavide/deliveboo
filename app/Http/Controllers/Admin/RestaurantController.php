@@ -63,8 +63,6 @@ class RestaurantController extends Controller
         if($saved){
             return redirect()->route('admin.restaurants.show', $newDish->slug);
         }
-        
-
     }
 
     /**
@@ -110,32 +108,38 @@ class RestaurantController extends Controller
         // GET DATA FROM FORM
         $data = $request->all();
         $data['user_id'] = Auth::id();
+        
         // VALIDATE
         $request->validate($this->validazione());
+        
         // GET POST TO UPDATE
         $dish = Dish::find($id);
+        
         // UPDATE SLUG WHEN I CHANGE NAME
         $data['slug'] = Str::slug($data['name'], '-');
+        
         // IF IMG CHANGE
         // check if I have an img posted
         if(!empty($data['path_image'])) {
-        // delete previous one before posting the new one
-        if(!empty($dish->path_image));{
-        Storage::disk('public')->delete($dish->path_image);
-        }
-        // upload new img
-        $data['path_image'] = Storage::disk('public')->put('image', $data['path_image']);
-        }
-        // UPDATE DB
-        $updated = $dish->update($data); // <--- fillable nel Model
-        // CHECK IF WORKED
-        if($updated){
-        return redirect()->route('admin.restaurants.show', $dish->slug);
-        } else {
-        return redirect()->route('homepage');
+            
+            // delete previous one before posting the new one
+            if(!empty($dish->path_image));{
+            Storage::disk('public')->delete($dish->path_image);
+            }
+        
+            // upload new img
+            $data['path_image'] = Storage::disk('public')->put('image', $data['path_image']);
         }
         
-
+        // UPDATE DB
+        $updated = $dish->update($data); // <--- fillable nel Model
+        
+        // CHECK IF WORKED
+        if($updated){
+            return redirect()->route('admin.restaurants.show', $dish->slug);
+        } else {
+            return redirect()->route('homepage');
+        }        
     }
 
     /**
@@ -146,7 +150,6 @@ class RestaurantController extends Controller
      */
     public function destroy($id)
     {
-
         $dish = Dish::find($id);
 
         // save title reference to pass to show which file has been deleted
@@ -154,11 +157,12 @@ class RestaurantController extends Controller
 
         // dd($dish);
         $deleted = $dish->delete();
+        
         if($deleted){ 
             if(!empty($dish->path_image)){
             Storage::disk('public')->delete($dish->path_image);
-        }
-        return redirect()->route('admin.restaurants.index')->with('dish-deleted', $name);
+            }
+            return redirect()->route('admin.restaurants.index')->with('dish-deleted', $name);
         } else{
             return 'cancellazione non andata a buon fine';
         }

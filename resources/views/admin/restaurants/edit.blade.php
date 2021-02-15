@@ -1,23 +1,22 @@
 @extends('layouts.app')
   
 @section('content')
-   <main class="container">
-       <h1>Edit a New Dish</h1>
+    <main class="container">
+        <h1>Edit a New Dish</h1>
 
-       @if ($errors->any())
-       <div class="alert alert-danger">
-         <ul>
-      @foreach ($errors->all() as $error)
-           <li>
-             {{$error}}
-           </li>
-      @endforeach
-         </ul>
-      </div>
-      @endif
+        @if ($errors->any())
+          <div class="alert alert-danger">
+          <ul>
+        @foreach ($errors->all() as $error)
+          <li>
+              {{$error}}
+          </li>
+        @endforeach
+          </ul>
+          </div>
+        @endif
 
        <form action="{{ route('admin.restaurants.update', $dish->id) }}" method="POST"  enctype="multipart/form-data">
-
             @csrf
             @method('PATCH')
 
@@ -42,15 +41,15 @@
             </div>
 
             <div class="form-group">
-            <label for="visibility">Dish visibility:</label>
-              <select name="visibility" id="visibility">
-                 <option value="0">
-                   No
-                 </option>
-                 <option selected value="1">
-                   Yes
-                 </option>
-              </select>
+                <label for="visibility">Dish visibility:</label>
+                  <select name="visibility" id="visibility">
+                    <option value="0">
+                      No
+                    </option>
+                    <option selected value="1">
+                      Yes
+                    </option>
+                  </select>
             </div>
 
 
