@@ -2,5 +2,7 @@
 
 @section('content')
 
-
+  <a href="{{route('Restaurant')}}">
+    Ristoranti
+  </a>
 @endsection
