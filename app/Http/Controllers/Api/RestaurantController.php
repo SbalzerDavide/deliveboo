@@ -13,7 +13,13 @@ class RestaurantController extends Controller
     {
        $users = User::all();
 
+       if (!empty($_GET['name'])){
 
+        $searchName = $_GET['name'];
+    
+        $users = User::where('name', $searchName)->get();
+    };
+    
        
 
        

@@ -15,7 +15,6 @@ const app = new Vue({
     },
 
     created(){
-       /*  console.log(this.datiUrl) */
         axios.get('api/Restaurant')
                 
               .then(response => {
@@ -30,26 +29,32 @@ const app = new Vue({
               .catch(error => {
                console.log(error);
               });
+        
     },
 
     methods:{
 
         makeSearch(){
-            axios.get("http://127.0.0.1:8000/api/Restaurant")
+            /*  console.log(this.datiUrl) */
+        axios.get('api/Restaurant',{
+            params:{
+                name: this.searchText,
+            }
+        }   
+        )
                 
-            .then(response => {
-              // deafaukt situation
-              console.log(response.data)
-              this.listRestaurant = response.data;
-              console.log(this.listRestaurant)
-
-             
+              .then(response => {
+                // deafaukt situation
+                console.log(response.data)
+                this.listRestaurant = response.data;
+                console.log(this.listRestaurant)
                
-             })
- 
-            .catch(error => {
-             console.log(error);
-            });
+                 
+               })
+   
+              .catch(error => {
+               console.log(error);
+              });
         }
 
     }

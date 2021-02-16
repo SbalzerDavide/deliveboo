@@ -49613,7 +49613,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   created: function created() {
     var _this = this;
 
-    /*  console.log(this.datiUrl) */
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('api/Restaurant').then(function (response) {
       // deafaukt situation
       console.log(response.data);
@@ -49627,7 +49626,12 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     makeSearch: function makeSearch() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("http://127.0.0.1:8000/api/Restaurant").then(function (response) {
+      /*  console.log(this.datiUrl) */
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('api/Restaurant', {
+        params: {
+          name: this.searchText
+        }
+      }).then(function (response) {
         // deafaukt situation
         console.log(response.data);
         _this2.listRestaurant = response.data;
