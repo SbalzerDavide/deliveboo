@@ -34,8 +34,14 @@ const app = new Vue({
     },
 
     methods:{
-        takeGenre($genre){
-            console.log('ciao');
+        takeGenre(){
+            // console.log('ciao');
+            var url = window.location.href;
+            console.log(window.location.href);
+            var urlArray = url.split("/");
+            console.log(urlArray);
+            var genre = urlArray[urlArray.length - 1];
+            console.log(genre);
             // console.log($genre);
         },
         makeSearch(){

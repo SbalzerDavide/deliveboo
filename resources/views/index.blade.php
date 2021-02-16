@@ -7,10 +7,9 @@
     <button @click="makeSearch">
       Search
     </button>
-    {{-- <div class="genre" v-model="genreSearch"></div> --}}
-    @php $name = response()->json($name); 
-    @endphp
-    <div class="click" >take</div>
+    <div class="genre">{{ $name }}</div>
+    
+    <div class="click" @click="takeGenre">take</div>
     <ul>
       <li v-for="element in listRestaurant">
           @{{element.name}}
