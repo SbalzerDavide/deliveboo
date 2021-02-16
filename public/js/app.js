@@ -49607,10 +49607,13 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   data: {
     searchText: '',
     listRestaurant: []
+    /*  datiUrl:window.location.hostname + ':8000/api/', */
+
   },
   created: function created() {
     var _this = this;
 
+    /*  console.log(this.datiUrl) */
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant').then(function (response) {
       // deafaukt situation
       console.log(response.data);
