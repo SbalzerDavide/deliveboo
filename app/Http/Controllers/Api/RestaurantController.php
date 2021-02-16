@@ -17,7 +17,7 @@ class RestaurantController extends Controller
 
         $searchName = $_GET['name'];
     
-        $users = User::where('name', $searchName)->get();
+        $users = User::where('name','like', "%$searchName%")->get();
     };
     
        
