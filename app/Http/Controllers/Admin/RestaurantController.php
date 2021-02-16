@@ -73,7 +73,7 @@ class RestaurantController extends Controller
      */
     public function show($slug)
     {
-        // return $slug;
+        //return $slug;
         $dish = Dish::where('slug', $slug)->first();
         // dd($dish);
         // check if the slug is wrong

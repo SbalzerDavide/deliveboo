@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
-   public function index()
+   public function show($name)
    {
-      return view('index');
+      return $name;
+      // if ($name != ''){
+      //    return $name;
+      // }
+
+      //return view('index', compact('name'));
    }
 }
