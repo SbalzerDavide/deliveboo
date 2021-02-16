@@ -8,6 +8,7 @@ const app = new Vue({
 
         searchText: '',
         listRestaurant: [],
+        genreSearch: '',
        /*  datiUrl:window.location.hostname + ':8000/api/', */
 
 
@@ -33,7 +34,10 @@ const app = new Vue({
     },
 
     methods:{
-
+        takeGenre($genre){
+            console.log('ciao');
+            // console.log($genre);
+        },
         makeSearch(){
             /*  console.log(this.datiUrl) */
         axios.get('api/Restaurant',{
