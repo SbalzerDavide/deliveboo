@@ -30,7 +30,7 @@ Route::prefix('admin')
         Route::resource('restaurants', 'RestaurantController');
     });
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/restaurant', 'RestaurantController@index')->name('Restaurant');
 /* Route::prefix('guest')
     ->namespace('Guest')

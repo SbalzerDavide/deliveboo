@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('admin.home') }}">
+        <a class="navbar-brand" href="{{ route('homepage') }}">
             DeliveBoo
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

@@ -49614,7 +49614,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     var _this = this;
 
     /*  console.log(this.datiUrl) */
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant').then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('api/Restaurant').then(function (response) {
       // deafaukt situation
       console.log(response.data);
       _this.listRestaurant = response.data;
@@ -49704,8 +49704,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\pgmin\Desktop\Corso\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\pgmin\Desktop\Corso\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
