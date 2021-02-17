@@ -49611,46 +49611,45 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     /*  datiUrl:window.location.hostname + ':8000/api/', */
 
   },
-  created: function created() {
-    var _this = this;
-
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant').then(function (response) {
-      // deafaukt situation
-      console.log(response.data);
-      _this.listRestaurant = response.data;
-      console.log(_this.listRestaurant);
-    })["catch"](function (error) {
-      console.log(error);
-    });
+  created: function created() {// axios.get('http://127.0.0.1:8000/api/Restaurant')
+    //       .then(response => {
+    //         // deafaukt situation
+    //         console.log(response.data)
+    //         this.listRestaurant = response.data;
+    //         console.log(this.listRestaurant)
+    //        })
+    //       .catch(error => {
+    //        console.log(error);
+    //       });
   },
   methods: {
-    takeGenre: function takeGenre() {
-      var _this2 = this;
-
-      // console.log('ciao');
-      var url = window.location.href;
-      console.log(window.location.href);
-      var urlArray = url.split("/");
-      console.log(urlArray);
-      var genre = urlArray[urlArray.length - 1];
-      console.log(genre); // console.log($genre);
-      // axios
-
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant', {
-        params: {
-          genre: genre
-        }
-      }).then(function (response) {
-        // deafaukt situation
-        console.log(response.data);
-        _this2.listRestaurant = response.data;
-        console.log(_this2.listRestaurant);
-      })["catch"](function (error) {
-        console.log(error);
-      });
+    takeGenre: function takeGenre() {// console.log('ciao');
+      // var url = window.location.href;
+      // console.log(window.location.href);
+      // var urlArray = url.split("/");
+      // console.log(urlArray);
+      // var genre = urlArray[urlArray.length - 1];
+      // console.log(genre);
+      // // console.log($genre);
+      // // axios
+      // axios.get('http://127.0.0.1:8000/api/Restaurant',{
+      //     params:{
+      //         genre: genre,
+      //     }
+      // }   
+      // )
+      //       .then(response => {
+      //         // deafaukt situation
+      //         console.log(response.data)
+      //         this.listRestaurant = response.data;
+      //         console.log(this.listRestaurant)
+      //        })
+      //       .catch(error => {
+      //        console.log(error);
+      //       });
     },
     makeSearch: function makeSearch() {
-      var _this3 = this;
+      var _this = this;
 
       /*  console.log(this.datiUrl) */
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant', {
@@ -49660,8 +49659,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       }).then(function (response) {
         // deafaukt situation
         console.log(response.data);
-        _this3.listRestaurant = response.data;
-        console.log(_this3.listRestaurant);
+        _this.listRestaurant = response.data;
+        console.log(_this.listRestaurant);
       })["catch"](function (error) {
         console.log(error);
       });
