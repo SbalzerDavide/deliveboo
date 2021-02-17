@@ -49614,7 +49614,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   created: function created() {
     var _this = this;
 
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('api/Restaurant').then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant').then(function (response) {
       // deafaukt situation
       console.log(response.data);
       _this.listRestaurant = response.data;

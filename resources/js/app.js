@@ -16,7 +16,7 @@ const app = new Vue({
     },
 
     created(){
-        axios.get('api/Restaurant')
+        axios.get('http://127.0.0.1:8000/api/Restaurant')
                 
               .then(response => {
                 // deafaukt situation
