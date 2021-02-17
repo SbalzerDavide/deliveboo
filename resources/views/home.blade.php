@@ -15,6 +15,11 @@
         </li>
       @endforeach
     </ul>
+    @forelse ($user->genres as $genre)
+            <span class="badge badge-dark">{{ $genre->name }}</span>
+            @empty
+                <h5>No actual tag for this post.</h5>
+    @endforelse
 
   </div>
 @endsection

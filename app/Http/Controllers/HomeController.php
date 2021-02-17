@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Genre;
+use App\User;
+
 
 class HomeController extends Controller
 {
@@ -24,8 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-
+        $user = User::find('11');
         $genres = Genre::all();
-        return view('home', compact('genres'));
+        return view('home', compact('genres', 'user'));
     }
 }
