@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Genre;
 
 class RestaurantController extends Controller
 {
@@ -12,13 +13,31 @@ class RestaurantController extends Controller
     
     {
        $users = User::all();
+       $genres = Genre::all();
 
-       if (!empty($_GET['name'])){
+       dd($users->genres());
 
-        $searchName = $_GET['name'];
-    
-        $users = User::where('name','like', "%$searchName%")->get();
-    };
+        if (!empty($_GET['name'])){
+
+            $searchName = $_GET['name'];
+        
+            $users = User::where('name','like', "%$searchName%")->get();
+
+        
+        }else if (!empty($_GET['genre'])){
+
+            $searchGenre = $_GET['genre'];
+
+            
+        
+            // $users = DB::table('users')
+            //     ->join('genre_user', 'users.id', '=', 'genre_user.user_id')
+            //     ->where('genre', $searchGenre)
+            //     ->get();
+
+        
+        };
+
     
        
 

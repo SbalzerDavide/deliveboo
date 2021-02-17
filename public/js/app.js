@@ -49625,6 +49625,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   },
   methods: {
     takeGenre: function takeGenre() {
+      var _this2 = this;
+
       // console.log('ciao');
       var url = window.location.href;
       console.log(window.location.href);
@@ -49632,20 +49634,34 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       console.log(urlArray);
       var genre = urlArray[urlArray.length - 1];
       console.log(genre); // console.log($genre);
-    },
-    makeSearch: function makeSearch() {
-      var _this2 = this;
+      // axios
 
-      /*  console.log(this.datiUrl) */
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('api/Restaurant', {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant', {
         params: {
-          name: this.searchText
+          genre: genre
         }
       }).then(function (response) {
         // deafaukt situation
         console.log(response.data);
         _this2.listRestaurant = response.data;
         console.log(_this2.listRestaurant);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    makeSearch: function makeSearch() {
+      var _this3 = this;
+
+      /*  console.log(this.datiUrl) */
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant', {
+        params: {
+          name: this.searchText
+        }
+      }).then(function (response) {
+        // deafaukt situation
+        console.log(response.data);
+        _this3.listRestaurant = response.data;
+        console.log(_this3.listRestaurant);
       })["catch"](function (error) {
         console.log(error);
       });

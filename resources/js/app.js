@@ -43,10 +43,32 @@ const app = new Vue({
             var genre = urlArray[urlArray.length - 1];
             console.log(genre);
             // console.log($genre);
+
+            // axios
+            axios.get('http://127.0.0.1:8000/api/Restaurant',{
+                params:{
+                    genre: genre,
+                }
+            }   
+            )
+                  .then(response => {
+                    // deafaukt situation
+                    console.log(response.data)
+                    this.listRestaurant = response.data;
+                    console.log(this.listRestaurant)
+                   
+                     
+                   })
+       
+                  .catch(error => {
+                   console.log(error);
+                  });
+            
+    
         },
         makeSearch(){
             /*  console.log(this.datiUrl) */
-        axios.get('api/Restaurant',{
+        axios.get('http://127.0.0.1:8000/api/Restaurant',{
             params:{
                 name: this.searchText,
             }
