@@ -39,6 +39,15 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            @foreach ($genres as $genre)
+                             <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="genres[]" id="genre-{{ $genre->id }}" value="{{ $genre->id }}">
+                                <label class="form-check-label" for="genre-{{ $genre->id }}">{{ $genre->name }}</label>
+                            </div>
+                           @endforeach
+                         </div>
+
                         <div class="form-group row">
                             <label for="PIva" class="col-md-4 col-form-label text-md-right">{{ __('PIva') }}</label>
 
