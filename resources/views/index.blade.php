@@ -19,6 +19,9 @@
   </div>
 
 </div>
-<script src="{{ asset('') }}"></script>
+<script src="{{ asset('js/search.js') }} " type="application/javascript"></script>
+
+
+
 
 @endsection
