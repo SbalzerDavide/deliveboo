@@ -26,8 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = User::find('11');
         $genres = Genre::all();
-        return view('home', compact('genres', 'user'));
+        return view('home', compact('genres'));
     }
 }

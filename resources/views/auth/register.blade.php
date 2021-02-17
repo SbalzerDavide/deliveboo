@@ -43,7 +43,7 @@
                             @foreach ($genres as $genre)
                              <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="genres[]" id="genre-{{ $genre->id }}" value="{{ $genre->id }}">
-                                <label class="form-check-label" for="genre-{{ $genre->id }}">{{ $genre->name }}</label>
+                                <label class="form-check-label" for="genre-{{ $genre->id }}">{{ $genre->genre_name }}</label>
                             </div>
                            @endforeach
                          </div>

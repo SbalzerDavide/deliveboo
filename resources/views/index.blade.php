@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.search')
 
 @section('content')
 <div id="search">
@@ -19,7 +19,6 @@
   </div>
 
 </div>
-<script src="{{ asset('js/search.js') }} " type="application/javascript"></script>
 
 
 

@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\User;
+use App\Genre;
 use Illuminate\Support\Str;
 
 class UsersTableSeeder extends Seeder
@@ -14,8 +15,13 @@ class UsersTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        // $genres = Genre::all();
+
         for($i = 0; $i < 10; $i++ )
         {
+
+           $addGenre = ['2', '3'];
+            
            $newUser = new User();
 
            $newUser->name = $faker->words(2, true);
@@ -24,6 +30,9 @@ class UsersTableSeeder extends Seeder
            $newUser->email  = $faker->unique()->email;
            $newUser->slug = Str::slug($newUser->name, '-');
            $newUser->password = Hash::make('password');
+
+        //    $newUser->genres()->attach($addGenre); 
+
            $newUser->save();
 
         }

@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/search.js') }} " type="application/javascript" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,10 +22,6 @@
 <body>
     <div id="app">
 
-        {{-- VUE+FONTAWESOME
-        @{{ciao}}
-        <i class="fas fa-icons"></i> --}}
-
         @include('partials.header')
 
         <main class="py-4">
@@ -33,8 +29,7 @@
         </main>
 
         @include('partials.footer')
-    </div>
 
-    
+    </div>
 </body>
 </html>

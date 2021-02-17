@@ -27,7 +27,7 @@ class GenresTableSeeder extends Seeder
         foreach($genres as $genre){
             $newGenre = new Genre();
 
-            $newGenre->name = $genre;
+            $newGenre->genre_name = $genre;
             $newGenre->save();
         }
     }
