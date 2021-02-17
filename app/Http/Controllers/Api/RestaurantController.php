@@ -28,7 +28,20 @@ class RestaurantController extends Controller
 
             $searchGenre = $_GET['genre'];
 
-            
+            $usersPivot = User::table('users')
+            ->join('genre_user', 'users.id', '=', 'genre_user.user_id')
+            ->join('genres', 'genre_user.genr_id', '=', 'genres.id')
+            ->get();
+
+
+            // $usersPivot = DB::table('users')->join('genre_user', 'users.id', '=', 'genre_user.user_id')->get();
+            $users = DB::table('genre_user')
+                ->join('users', 'users.id', '=', 'genre_user.user_id')
+                ->join('genres', 'genres.id', '=', 'genre_user.genre_id')
+                ->get();
+
+          
+           
         
             // $users = DB::table('users')
             //     ->join('genre_user', 'users.id', '=', 'genre_user.user_id')
