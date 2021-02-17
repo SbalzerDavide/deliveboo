@@ -1,10 +1,10 @@
-@extends('layouts.search')
+@extends('layouts.filter')
 
 @section('content')
 <div id="search">
     <div class="container">
         <h1>ADVANCED RESEARCH</h1>
-        <h3>You are looking for inside all category</h3>
+        <h3>You are looking for inside {{ $name }} category</h3>
         <span class="genre"></span>
         <h3>search restaurant by name</h3>
         <input v-model="searchText" @keyup="makeSearch">

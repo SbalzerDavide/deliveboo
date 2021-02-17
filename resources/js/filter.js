@@ -12,10 +12,14 @@ const search = new Vue({
         var url = window.location.href;
         var urlArray = url.split("/");
         this.genre = urlArray[urlArray.length - 1];
-        console.log('js search');
+        console.log('work');
 
         // axios
-        axios.get('http://127.0.0.1:8000/api/Restaurant')
+        axios.get('http://127.0.0.1:8000/api/Restaurant',{
+            params:{
+                genre: this.genre,
+            }
+        })
             .then(response => {
             // deafaukt situation
             console.log(response.data)
@@ -36,6 +40,7 @@ const search = new Vue({
             axios.get('http://127.0.0.1:8000/api/Restaurant',{
                 params:{
                     name: this.searchText,
+                    genre: this.genre,
                 }
             }   
             )
@@ -47,6 +52,10 @@ const search = new Vue({
                     console.log(this.listRestaurant)
                 
                     
+                })
+    
+                .catch(error => {
+                console.log(error);
                 });
             }
 

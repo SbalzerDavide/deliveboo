@@ -29,7 +29,8 @@ Route::prefix('admin')
     });
 
 // Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/restaurant/{name}', 'RestaurantController@show')->name('RestaurantByGenre');
+Route::get('/restaurant/{name}', 'RestaurantController@filter')->name('RestaurantByGenre');
+Route::get('/restaurant', 'RestaurantController@index')->name('Restaurant');
 /* Route::prefix('guest')
     ->namespace('Guest')
     ->name('guest.')

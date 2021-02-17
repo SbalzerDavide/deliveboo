@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -14431,9 +14431,9 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./resources/js/search.js":
+/***/ "./resources/js/filter.js":
 /*!********************************!*\
-  !*** ./resources/js/search.js ***!
+  !*** ./resources/js/filter.js ***!
   \********************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -14459,9 +14459,13 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     var url = window.location.href;
     var urlArray = url.split("/");
     this.genre = urlArray[urlArray.length - 1];
-    console.log('js search'); // axios
+    console.log('work'); // axios
 
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant').then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant', {
+      params: {
+        genre: this.genre
+      }
+    }).then(function (response) {
       // deafaukt situation
       console.log(response.data);
       _this.listRestaurant = response.data;
@@ -14478,13 +14482,16 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       /*  console.log(this.datiUrl) */
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant', {
         params: {
-          name: this.searchText
+          name: this.searchText,
+          genre: this.genre
         }
       }).then(function (response) {
         // deafaukt situation
         console.log(response.data);
         _this2.listRestaurant = response.data;
         console.log(_this2.listRestaurant);
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
   }
@@ -14492,14 +14499,14 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!**************************************!*\
-  !*** multi ./resources/js/search.js ***!
+  !*** multi ./resources/js/filter.js ***!
   \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/search.js */"./resources/js/search.js");
+module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/filter.js */"./resources/js/filter.js");
 
 
 /***/ })

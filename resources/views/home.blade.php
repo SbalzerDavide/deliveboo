@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container">
-        <a href="{{route('RestaurantByGenre', '')}}">
+        <a href="{{route('Restaurant')}}">
             Ristoranti
         </a>
         <ul>
