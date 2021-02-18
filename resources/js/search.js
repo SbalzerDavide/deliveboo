@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import axios from 'axios';
+import { runInContext } from 'lodash';
 
 const search = new Vue({
     el: '#search',
@@ -7,6 +8,7 @@ const search = new Vue({
         searchText: '',
         listRestaurant: [],
         genre : '',
+        url: "guest/restaurantShow/debitis-quibusdam"
     },
     created(){
         var url = window.location.href;
@@ -21,7 +23,9 @@ const search = new Vue({
             console.log(response.data)
             this.listRestaurant = response.data;
             console.log('restaurants:');
-            console.log(this.listRestaurant)
+            console.log(this.listRestaurant);
+
+            
             
                 
             })
