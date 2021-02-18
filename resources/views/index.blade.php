@@ -15,7 +15,7 @@
         {{-- <div class="click" @click="takeGenre">take</div> --}}
         <ul v-if="listRestaurant.length>0">
             <li v-for="element in listRestaurant">
-                <a href="{{route('guest.RestaurantShow', @{{ element.slug }})}}">@{{element.name}} </a>
+                <a :href="url">@{{element.name}} </a>
             </li>
         </ul>
         <h5 v-else>there are no results</h5>
