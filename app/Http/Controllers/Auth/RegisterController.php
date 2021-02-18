@@ -91,5 +91,4 @@ class RegisterController extends Controller
         $genres = Genre::all();
         return view('auth.register', compact('genres'));
     }
-
 }

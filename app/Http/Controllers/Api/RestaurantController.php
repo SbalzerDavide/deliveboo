@@ -16,8 +16,7 @@ class RestaurantController extends Controller
        $users = User::all();
        $genres = Genre::all();
 
-    //    dd($users->genres());
-        if (!empty($_GET['name']) && ($_GET['genre'])){
+        if (!empty($_GET['name']) && !empty($_GET['genre'])){
 
             $searchName = $_GET['name'];
 
@@ -29,7 +28,7 @@ class RestaurantController extends Controller
                 ->where('genres.genre_name', $searchGenre)
                 ->where('users.name','like', "%$searchName%")
                 ->get();
-        }elseif (!empty($_GET['name']) || ($_GET['genre'])){
+        }elseif (!empty($_GET['name']) || !empty($_GET['genre'])){
 
             if (!empty($_GET['name'])){
     

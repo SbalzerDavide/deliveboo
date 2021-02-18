@@ -39,7 +39,6 @@ const search = new Vue({
                 }
             }   
             )
-                    
                 .then(response => {
                     // deafaukt situation
                     console.log(response.data)

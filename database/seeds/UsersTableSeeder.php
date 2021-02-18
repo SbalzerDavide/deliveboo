@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
         for($i = 0; $i < 10; $i++ )
         {
 
-        //    $addGenre = ['2', '3'];
+           $addGenre = ['2', '3'];
             
             $newUser = new User();
 
@@ -30,6 +30,8 @@ class UsersTableSeeder extends Seeder
             $newUser->email  = $faker->unique()->email;
             $newUser->slug = Str::slug($newUser->name, '-');
             $newUser->password = Hash::make('password');
+
+            // $newUser->genres()->attach($addGenre);
 
         //    $newUser->genres()->attach(
         //        $genres->random(rand(1, 3))->pluck('id')->toArray()
