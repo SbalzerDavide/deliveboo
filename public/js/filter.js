@@ -14465,7 +14465,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant', {
       params: {
         // genre: this.genre,
-        genre: asd //make research with more than one value of genre
+        genre: [this.genre] //make research with more than one value of genre
         // use genre in a array of genres
         // categoryId: [1, 2, 3]
 
