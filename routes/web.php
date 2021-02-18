@@ -37,3 +37,12 @@ Route::get('/restaurant', 'RestaurantController@index')->name('Restaurant');
     ->group(function(){
         Route::get('/', 'RestaurantController@index')->name('restaurant');
     }); */
+    
+/* Route::get('/restaurantShow/{name}', 'ShowRestaurantController@show')->name('RestaurantShow'); */
+
+Route::prefix('guest')
+    ->namespace('Guest')
+    ->name('guest.')
+    ->group(function(){
+        Route::get('/restaurantShow/{name}', 'ShowRestaurantController@show')->name('RestaurantShow');
+    }); 
