@@ -10,9 +10,9 @@ class RestaurantController extends Controller
    public function filter($name)
    {
       // return $name;
-      if ($name == ''){
-         return 'ciao';
-      }
+      // if ($name == ''){
+      //    return 'ciao';
+      // }
 
       return view('filter', compact('name'));
    }

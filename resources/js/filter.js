@@ -18,7 +18,7 @@ const search = new Vue({
         axios.get('http://127.0.0.1:8000/api/Restaurant',{
             params:{
                 // genre: this.genre,
-                genre: asd,
+                genre: [this.genre],
                 //make research with more than one value of genre
                 // use genre in a array of genres
                 // categoryId: [1, 2, 3]
