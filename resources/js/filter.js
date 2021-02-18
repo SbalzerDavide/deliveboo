@@ -13,11 +13,15 @@ const search = new Vue({
         var urlArray = url.split("/");
         this.genre = urlArray[urlArray.length - 1];
         console.log('work');
-
+        var asd = ['burger', 'dessert'];
         // axios
         axios.get('http://127.0.0.1:8000/api/Restaurant',{
             params:{
-                genre: this.genre,
+                // genre: this.genre,
+                genre: asd,
+                //make research with more than one value of genre
+                // use genre in a array of genres
+                // categoryId: [1, 2, 3]
             }
         })
             .then(response => {
@@ -26,13 +30,11 @@ const search = new Vue({
             this.listRestaurant = response.data;
             console.log('restaurants:');
             console.log(this.listRestaurant)
-            
-                
             })
-
             .catch(error => {
             console.log(error);
-            });
+            }
+        );
     },
     methods:{
         makeSearch(){

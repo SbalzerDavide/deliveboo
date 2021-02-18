@@ -31652,6 +31652,8 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   data: {
     searchText: '',
     listRestaurant: [],
+    listGenre: [],
+    filterGenre: [],
     genre: '',
     url: "guest/restaurantShow/debitis-quibusdam"
   },
@@ -31661,7 +31663,17 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     var url = window.location.href;
     var urlArray = url.split("/");
     this.genre = urlArray[urlArray.length - 1];
-    console.log('js search'); // axios
+    console.log('js search'); // axios genres
+
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Genre').then(function (response) {
+      // deafaukt situation
+      console.log(response.data);
+      _this.listGenre = response.data;
+      console.log('genres:');
+      console.log(_this.listGenre);
+    })["catch"](function (error) {
+      console.log(error);
+    }); // axios
 
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant').then(function (response) {
       // deafaukt situation
@@ -31687,6 +31699,38 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         console.log(response.data);
         _this2.listRestaurant = response.data;
         console.log(_this2.listRestaurant);
+      });
+    },
+    takeGenre: function takeGenre(index) {
+      var actualGenre = this.listGenre[index].genre_name;
+      console.log(actualGenre);
+
+      if (!this.filterGenre.includes(actualGenre)) {
+        this.filterGenre.push(actualGenre);
+      } else if (this.filterGenre.includes(actualGenre)) {
+        var a = this.filterGenre.indexOf(actualGenre);
+        this.filterGenre.splice(a, 1);
+      }
+
+      console.log(this.filterGenre);
+    },
+    applyFilter: function applyFilter() {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant', {
+        params: {
+          genre: this.filterGenre
+        }
+      }).then(function (response) {
+        // deafaukt situation
+        console.log(response.data);
+        _this3.listRestaurant = response.data;
+        console.log('restaurants:');
+        console.log(_this3.listRestaurant);
+        console.log(_this3.listRestaurant[0].name);
+        console.log(_this3.listRestaurant[0].genre_name);
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
   }
