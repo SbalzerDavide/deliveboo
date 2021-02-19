@@ -40,7 +40,7 @@
 </body>
 </html>
 <h1> Restaurant Name {{$user->name}}</h1>
-
+<h2>lalakjsjsosososo</h2>
 <div class="container">
         <ul>
         @foreach($user->dishes as $dish)
