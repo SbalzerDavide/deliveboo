@@ -31661,7 +31661,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     listGenre: [],
     filterGenre: [],
     genre: '',
-    url: "guest/restaurantShow/debitis-quibusdam"
+    url: "guest/restaurantShow/"
   },
   created: function created() {
     var _this = this;

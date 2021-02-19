@@ -10,7 +10,7 @@ const search = new Vue({
         listGenre: [],
         filterGenre: [],
         genre : '',
-        url: "guest/restaurantShow/debitis-quibusdam"
+        url: "guest/restaurantShow/"
     },
     created(){
         var url = window.location.href;
