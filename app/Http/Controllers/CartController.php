@@ -21,13 +21,13 @@ class CartController extends Controller
                 ]
             ];
             session()->put('cart', $cart);
-            return redirect()->route('cart.index')->with('success', "added to cart");
+            return redirect()->back()->with('success', "added to cart");
         }
 
         if(isset($cart[$dish->id])){
             $cart[$dish->id]['quantity']++;
             session()->put('cart', $cart);
-            return redirect()->route('cart.index')->with('success', "added to cart");
+            return redirect()->back()->with('success', "added to cart");
         }
 
         $cart[$dish->id] = [
@@ -36,7 +36,7 @@ class CartController extends Controller
             'price' => $dish->price,
         ];
         session()->put('cart', $cart);
-        return redirect()->route('cart.index')->with('success', "added to cart");
+        return redirect()->back()->with('success', "added to cart");
     }
 
 
@@ -54,6 +54,16 @@ class CartController extends Controller
         // ));
 
         // return redirect()->route('cart.index');
+
+        public function remove($id){
+            $cart = session()->get('cart');
+
+            if(isset($cart[$id])){
+                unset($cart[$id]);
+                session()->put('cart', $cart);
+            }
+            return redirect()->back()->with('success', "added to cart");
+        }
         
         
         public function index(){

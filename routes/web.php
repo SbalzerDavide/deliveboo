@@ -15,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('homepage');
 
+Route::get('/cart', 'CartController@index')->name('cart.index');
+
 Route::get('/add-to-cart/{dish}', 'CartController@add')->name('cart.add');
 
-Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::get('/remove{id}', 'CartController@remove')->name('remove');
 
 Auth::routes();
 

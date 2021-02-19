@@ -28,10 +28,17 @@
                 <li>
                     {{ $sub_total}}
                 </li>
+                <li>
+                    <a href="{{ route('remove', [$id]) }}">
+                        <div class="btn btn-primary">
+                            remove
+                        </div>
+                    </a>
+                </li>
             @endforeach
         </ul>            
         @endif
-        <a href="{{ route('guest.RestaurantShow', $user->slug) }}">
+        <a href="">
             <button class="btn btn-primay">
                 continue to shopping
             </button>
