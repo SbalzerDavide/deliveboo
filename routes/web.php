@@ -44,5 +44,5 @@ Route::prefix('guest')
     ->namespace('Guest')
     ->name('guest.')
     ->group(function(){
-        Route::get('/restaurantShow/{name}', 'ShowRestaurantController@show')->name('RestaurantShow');
+        Route::get('/restaurantShow/{slug}', 'ShowRestaurantController@show')->name('RestaurantShow');
     }); 

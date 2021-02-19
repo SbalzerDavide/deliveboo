@@ -10,7 +10,7 @@ const search = new Vue({
         listGenre: [],
         filterGenre: [],
         genre : '',
-        url: "guest/restaurantShow/debitis-quibusdam"
+        url: "guest/restaurantShow/"
     },
     created(){
         var url = window.location.href;
@@ -42,7 +42,14 @@ const search = new Vue({
             console.log('restaurants:');
             console.log(this.listRestaurant);
 
-            
+            this.listRestaurant = this.listRestaurant.map(element =>{
+                return {
+                    ...element,
+                    route: this.url + element.slug
+                }
+            })
+
+            console.log(this.listRestaurant);
             
                 
             })

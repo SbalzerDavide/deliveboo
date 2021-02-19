@@ -14512,6 +14512,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /***/ (function(module, exports, __webpack_require__) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 module.exports = __webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\resources\js\filter.js */"./resources/js/filter.js");
 =======
@@ -14519,6 +14520,9 @@ module.exports = __webpack_require__(/*! C:\Users\pgmin\Desktop\Corso\DeliveBoo\
 >>>>>>> Stashed changes
 =======
 module.exports = __webpack_require__(/*! C:\Users\Aless\Desktop\DeliveBoo\resources\js\filter.js */"./resources/js/filter.js");
+>>>>>>> master
+=======
+module.exports = __webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\resources\js\filter.js */"./resources/js/filter.js");
 >>>>>>> master
 
 
