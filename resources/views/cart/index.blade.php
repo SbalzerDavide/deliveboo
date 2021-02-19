@@ -12,6 +12,10 @@
         @if(session('cart'))
         <ul>
             @foreach (session('cart') as $id => $dish)
+                @php
+                    $sub_total = $dish['price'] * $dish['quantity'];
+                    $total += $sub_total;
+                @endphp
                 <li>
                     {{ $dish['name'] }}
                 </li>
@@ -21,9 +25,18 @@
                 <li>
                     {{ $dish['quantity'] }}
                 </li>
+                <li>
+                    {{ $sub_total}}
+                </li>
             @endforeach
         </ul>            
         @endif
+        <a href="{{ route('guest.RestaurantShow', $user->slug) }}">
+            <button class="btn btn-primay">
+                continue to shopping
+            </button>
+        </a>
+        <p>total: {{ $total }}</p>
     </div>
 
 @endsection
