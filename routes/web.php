@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('homepage');
 
+Route::get('/add-to-cart/{dish}', 'CartController@add')->name('cart.add');
+
+Route::get('/cart', 'CartController@index')->name('cart.index');
+
 Auth::routes();
 
 Route::prefix('admin')

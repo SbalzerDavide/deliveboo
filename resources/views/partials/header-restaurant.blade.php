@@ -3,7 +3,7 @@
         @include('partials.navbar')
 
         <div class="hero">
-
+            
         </div>
     </div>
 </header>
