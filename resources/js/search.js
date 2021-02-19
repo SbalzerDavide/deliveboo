@@ -42,7 +42,14 @@ const search = new Vue({
             console.log('restaurants:');
             console.log(this.listRestaurant);
 
-            
+            this.listRestaurant = this.listRestaurant.map(element =>{
+                return {
+                    ...element,
+                    route: this.url + element.slug
+                }
+            })
+
+            console.log(this.listRestaurant);
             
                 
             })
