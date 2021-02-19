@@ -15,12 +15,20 @@
         {{-- <div class="click" @click="takeGenre">take</div> --}}
         <ul v-if="listRestaurant.length>0">
             <li v-for="element in listRestaurant">
-                <a href="{{route('guest.RestaurantShow', @{{ element.slug }})}}">@{{element.name}} </a>
+                <a :href="url">@{{element.name}} </a>
             </li>
         </ul>
         <h5 v-else>there are no results</h5>
     </div>
+    <hr>
 
+    <div class="form-check container">
+        <div class="check" v-for="(genre , index) in listGenre" >
+            <input  class="form-check-input" type="checkbox" :value="genre.genre_name" @click="takeGenre(index)">
+            <label class="form-check-label">@{{ genre.genre_name }}</label>
+        </div>
+        <div class="btn btn-primary" @click="applyFilter">filter by genres</div>
+    </div>
 </div>
 
 

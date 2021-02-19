@@ -14459,11 +14459,16 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     var url = window.location.href;
     var urlArray = url.split("/");
     this.genre = urlArray[urlArray.length - 1];
-    console.log('work'); // axios
+    console.log('work');
+    var asd = ['burger', 'dessert']; // axios
 
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant', {
       params: {
-        genre: this.genre
+        // genre: this.genre,
+        genre: [this.genre] //make research with more than one value of genre
+        // use genre in a array of genres
+        // categoryId: [1, 2, 3]
+
       }
     }).then(function (response) {
       // deafaukt situation
@@ -14506,11 +14511,15 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 module.exports = __webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\resources\js\filter.js */"./resources/js/filter.js");
 =======
 module.exports = __webpack_require__(/*! C:\Users\pgmin\Desktop\Corso\DeliveBoo\resources\js\filter.js */"./resources/js/filter.js");
 >>>>>>> Stashed changes
+=======
+module.exports = __webpack_require__(/*! C:\Users\Aless\Desktop\DeliveBoo\resources\js\filter.js */"./resources/js/filter.js");
+>>>>>>> master
 
 
 /***/ })
