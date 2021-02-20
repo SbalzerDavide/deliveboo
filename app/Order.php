@@ -10,6 +10,14 @@ class Order extends Model
         return $this->belongsTo('App\User');
     }
 
+    protected $fillable = [
+        '_token',
+        'order_number',
+        'order_status',
+        'price',
+        'quantity'
+    ];
+
   
 
 }

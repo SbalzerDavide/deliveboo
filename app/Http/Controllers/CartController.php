@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Dish;
+use App\Order;
 
 
 class CartController extends Controller
@@ -68,6 +69,19 @@ class CartController extends Controller
         
         public function index(){
             return view('cart.index');
+        }
+
+        public function store(Request $request){
+            $data = $request->all();
+
+            $newOrder = new Order();
+
+            $newOrder->fill($data);
+            $saved = $newOrder->save();
+
+            if($saved){
+                return redirect()->route('index');
+            }
         }
 }
 

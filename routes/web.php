@@ -20,6 +20,7 @@ Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::get('/add-to-cart/{dish}', 'CartController@add')->name('cart.add');
 
 Route::get('/remove{id}', 'CartController@remove')->name('remove');
+Route::post('/store', 'CartController@store')->name('store');
 
 Auth::routes();
 

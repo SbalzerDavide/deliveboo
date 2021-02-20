@@ -43,7 +43,16 @@
                 continue to shopping
             </button>
         </a>
+       
         <p>total: {{ $total }}</p>
+
+        <form action="{{ route('store') }}" method="POST">
+
+           @csrf
+           @method('POST')
+
+            <input type="submit" class="btn btn-primary" value="Create Order">
+       </form>
     </div>
 
 @endsection

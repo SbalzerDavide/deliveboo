@@ -23,7 +23,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-           <a href="{{ route('cart.index') }}">
+            <a class="btn btn-primary" href="{{ route('cart.index') }}">
                 <i class="fas fa-cart-arrow-down"></i>
             </a>
 
@@ -45,7 +45,7 @@
         <ul>
         @foreach($user->dishes as $dish)
            <li>
-               <a href="{{ route('cart.add', $dish->id) }}">
+               <a class="btn btn-primary" href="{{ route('cart.add', $dish->id) }}">
                    {{$dish->name}}
                </a>
            </li>
