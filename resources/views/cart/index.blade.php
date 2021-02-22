@@ -26,6 +26,9 @@
                     {{ $dish['quantity'] }}
                 </li>
                 <li>
+                    {{ $dish['ingredients'] }}
+                </li>
+                <li>
                     {{ $sub_total}}
                 </li>
                 <li>
@@ -50,6 +53,7 @@
 
            @csrf
            @method('POST')
+            <input type="text" name="price" class="hidden" value="{{ $total }}">
             <input type="text" name="price" class="hidden" value="{{ $total }}">
             <input type="submit" class="btn btn-primary" value="Create Order">
        </form>
