@@ -13,17 +13,22 @@ class CartController extends Controller
 
         $cart = session()->get('cart');
 
+        
+
         if(!$cart){
             $cart = [
                 $dish->id => [
                     'name' => $dish->name,
                     'quantity' => 1,
-                    'price' => $dish->price,                  
+                    'price' => $dish->price, 
+                    'ingredients' => $dish->ingredients               
                 ]
             ];
             session()->put('cart', $cart);
             return redirect()->back()->with('success', "added to cart");
         }
+
+        
 
         if(isset($cart[$dish->id])){
             $cart[$dish->id]['quantity']++;
@@ -35,6 +40,7 @@ class CartController extends Controller
             'name' => $dish->name,
             'quantity' => 1,
             'price' => $dish->price,
+            'ingredients' => $dish->ingredients
         ];
         session()->put('cart', $cart);
         return redirect()->back()->with('success', "added to cart");
@@ -78,16 +84,20 @@ class CartController extends Controller
 
             $newOrder->fill($data);
 
-            dd($data);
+            /* dd($data); */
             
-            /* $saved = $newOrder->save();
+             $saved = $newOrder->save();
             
-            $data['order_id'] = $NewOrder->id;
-            $newDish = new Dish();
-            $newDish->fill($data);
-            $dishSaved = $NewDish->save();
-            $NewOrder->dish()->attach($data['order_id']); */
-            
+            $data['dish_id'] = $newOrder->id;
+           
+            $newDish = Dish::find([2,4]);
+
+            $newOrder->dishes()->attach($newDish);
+           /*  $newDish->fill($data);
+            $dishSaved = $newDish->save();
+            $newOrder->dish()->attach([2,4]); 
+            dd($newOrder); */
+             
             if($saved){
                 return redirect()->route('admin.home');
             }

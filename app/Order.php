@@ -6,16 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    public function user() {
-        return $this->belongsTo('App\User');
+    public function dishes() {
+        return $this->belongsToMany('App\Dish', 'order_dish', 'order_id', 'dish_id');
     }
 
     protected $fillable = [
         '_token',
-        'order_number',
-        'order_status',
         'price',
-        'quantity'
     ];
 
   
