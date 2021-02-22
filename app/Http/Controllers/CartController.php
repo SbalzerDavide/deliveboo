@@ -74,13 +74,22 @@ class CartController extends Controller
         public function store(Request $request){
             $data = $request->all();
 
-            $newOrder = new Order();
+            $newOrder =  new Order();
 
             $newOrder->fill($data);
-            $saved = $newOrder->save();
 
+            dd($data);
+            
+            /* $saved = $newOrder->save();
+            
+            $data['order_id'] = $NewOrder->id;
+            $newDish = new Dish();
+            $newDish->fill($data);
+            $dishSaved = $NewDish->save();
+            $NewOrder->dish()->attach($data['order_id']); */
+            
             if($saved){
-                return redirect()->route('index');
+                return redirect()->route('admin.home');
             }
         }
 }

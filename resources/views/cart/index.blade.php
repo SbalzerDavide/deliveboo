@@ -50,7 +50,7 @@
 
            @csrf
            @method('POST')
-
+            <input type="text" name="price" class="hidden" value="{{ $total }}">
             <input type="submit" class="btn btn-primary" value="Create Order">
        </form>
     </div>
