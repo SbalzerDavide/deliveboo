@@ -45,7 +45,9 @@ class User extends Authenticatable
     ];
 
     public function genres(){
-        return $this->belongsToMany('App\Genre');
+        return $this->belongsToMany('App\Genre', 'genre_user', 'user_id', 'genre_id');
+
+        // return $this->belongsToMany('App\Genre');
     }
 
     public function dishes(){

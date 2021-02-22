@@ -20,7 +20,8 @@ class UsersTableSeeder extends Seeder
         for($i = 0; $i < 10; $i++ )
         {
 
-           $addGenre = ['2', '3'];
+            // $addGenre = ['2', '3'];
+            // $newGenre = Genre::find(1);
             
             $newUser = new User();
 
@@ -31,14 +32,19 @@ class UsersTableSeeder extends Seeder
             $newUser->slug = Str::slug($newUser->name, '-');
             $newUser->password = Hash::make('password');
 
-            // $newUser->genres()->attach($addGenre);
-
-        //    $newUser->genres()->attach(
-        //        $genres->random(rand(1, 3))->pluck('id')->toArray()
-        //    ); 
-
+            
+            //    $newUser->genres()->attach(
+                //        $genres->random(rand(1, 3))->pluck('id')->toArray()
+                //    ); 
+                
             $newUser->save();
+            // $newUser->genres()->attach($newGenre);
 
         }
+        $newGenre = Genre::find(1);
+        $user = User::find(1);
+        
+        $user->genres()->attach($newGenre);
+
     }
 }

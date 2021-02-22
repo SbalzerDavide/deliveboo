@@ -18,11 +18,10 @@
         <tbody>
 
         <?php $total = 0 ?>
-        <?php $carteSession = 'session' . $user->id ?>
-        @dump($carteSession)
+        <?php $cartSession = 'session' . $user->id ?>
     <!-- by this code session get all product that user chose -->
-        @if(session($carteSession))
-            @foreach(session($carteSession) as $id => $dish)
+        @if(session($cartSession))
+            @foreach(session($cartSession) as $id => $dish)
 
                 <?php $total += $dish['price'] * $dish['quantity'] ?>
 

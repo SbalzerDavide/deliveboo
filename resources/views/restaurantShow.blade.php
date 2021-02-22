@@ -37,6 +37,7 @@
       </header>
 </body>
 </html>
+<?php $cartSession = 'session' . $user->id ?>
 <h1> Restaurant Name {{$user->name}}</h1>
 <h2>lalakj</h2>
 <div class="container">
@@ -49,11 +50,10 @@
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 Cart
                 <!-- this code count product of choose tha user choose -->
-                
-                {{-- <span class="badge badge-pill badge-danger">{{ count(session('cart')) }}</span> --}}
-            </a>
-            @if(session('cart'))
+            @if(session($cartSession))
+                <span class="badge badge-pill badge-danger">{{ count(session($cartSession)) }}</span>
             @endif
+            </a>
         </div>
     </div>
         <ul>
