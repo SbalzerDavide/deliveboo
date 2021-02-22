@@ -31711,6 +31711,11 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         console.log(response.data);
         _this2.listRestaurant = response.data;
         console.log(_this2.listRestaurant);
+        _this2.listRestaurant = _this2.listRestaurant.map(function (element) {
+          return _objectSpread(_objectSpread({}, element), {}, {
+            route: _this2.url + element.slug
+          });
+        });
       });
     },
     takeGenre: function takeGenre(index) {
@@ -31741,6 +31746,11 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         console.log(_this3.listRestaurant);
         console.log(_this3.listRestaurant[0].name);
         console.log(_this3.listRestaurant[0].genre_name);
+        _this3.listRestaurant = _this3.listRestaurant.map(function (element) {
+          return _objectSpread(_objectSpread({}, element), {}, {
+            route: _this3.url + element.slug
+          });
+        });
       })["catch"](function (error) {
         console.log(error);
       });
@@ -31757,7 +31767,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Aless\Desktop\DeliveBoo\resources\js\search.js */"./resources/js/search.js");
+module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/search.js */"./resources/js/search.js");
 
 
 /***/ })

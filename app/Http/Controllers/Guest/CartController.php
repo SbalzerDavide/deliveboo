@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Guest;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Dish;
 use App\Order;
@@ -10,7 +11,6 @@ use App\Order;
 class CartController extends Controller
 {
     public function add(Dish $dish){
-
         $cart = session()->get('cart');
 
         
@@ -73,7 +73,7 @@ class CartController extends Controller
         }
         
         
-        public function index(){
+        public function index($slug){
             return view('cart.index');
         }
 
@@ -86,7 +86,7 @@ class CartController extends Controller
 
             /* dd($data); */
             
-             $saved = $newOrder->save();
+            $saved = $newOrder->save();
             
             $data['dish_id'] = $newOrder->id;
            

@@ -44,22 +44,22 @@
     <div class="row">
         <div class="col-sm-2">
             
+            <a href="{{ route('guest.cart.index', $user->slug) }}" class="btn btn-primary  mt-3 mb-3 btn-block">
+                
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                Cart
+                <!-- this code count product of choose tha user choose -->
+                
+                {{-- <span class="badge badge-pill badge-danger">{{ count(session('cart')) }}</span> --}}
+            </a>
             @if(session('cart'))
-                <a href="{{ route('cart.index') }}" class="btn btn-primary  mt-3 mb-3 btn-block">
-
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                     Cart
-                    <!-- this code count product of choose tha user choose -->
-
-                    <span class="badge badge-pill badge-danger">{{ count(session('cart')) }}</span>
-                </a>
             @endif
         </div>
     </div>
         <ul>
         @foreach($user->dishes as $dish)
            <li>
-               <a class="btn btn-primary" href="{{ route('cart.add', $dish->id) }}">
+               <a class="btn btn-primary" href="{{ route('guest.cart.add', $dish->id) }}">
                    {{$dish->name}}
                </a>
            </li>

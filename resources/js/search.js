@@ -72,7 +72,13 @@ const search = new Vue({
                     console.log(response.data)
                     this.listRestaurant = response.data;
                     console.log(this.listRestaurant)
-                
+                    this.listRestaurant = this.listRestaurant.map(element =>{
+                        return {
+                            ...element,
+                            route: this.url + element.slug
+                        }
+                    })
+        
                     
                 });
         },
@@ -101,7 +107,13 @@ const search = new Vue({
                 console.log(this.listRestaurant)
                 console.log(this.listRestaurant[0].name)
                 console.log(this.listRestaurant[0].genre_name)
-                
+                this.listRestaurant = this.listRestaurant.map(element =>{
+                    return {
+                        ...element,
+                        route: this.url + element.slug
+                    }
+                })
+    
 
 
                 })

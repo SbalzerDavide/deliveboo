@@ -60,7 +60,7 @@
         </tr>
         </tfoot>
     </table>
-
+@endsection
 
     {{-- @section('content') --}}
 

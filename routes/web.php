@@ -15,12 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('homepage');
 
-Route::get('/cart', 'CartController@index')->name('cart.index');
-
-Route::get('/add-to-cart/{dish}', 'CartController@add')->name('cart.add');
-
-Route::get('/remove{id}', 'CartController@remove')->name('remove');
-Route::post('/store', 'CartController@store')->name('store');
 
 Auth::routes();
 
@@ -52,4 +46,10 @@ Route::prefix('guest')
     ->name('guest.')
     ->group(function(){
         Route::get('/restaurantShow/{slug}', 'ShowRestaurantController@show')->name('RestaurantShow');
+
+        Route::get('/cart/{slug}', 'CartController@index')->name('cart.index');
+        Route::get('/add-to-cart/{dish}', 'CartController@add')->name('cart.add');
+        Route::get('/remove{id}', 'CartController@remove')->name('remove');
+        Route::post('/store', 'CartController@store')->name('store');
+
     }); 
