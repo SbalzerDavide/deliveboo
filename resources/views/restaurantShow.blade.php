@@ -23,9 +23,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <a class="btn btn-primary" href="{{ route('cart.index') }}">
-                <i class="fas fa-cart-arrow-down"></i>
-            </a>
+            
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -42,6 +40,22 @@
 <h1> Restaurant Name {{$user->name}}</h1>
 <h2>lalakj</h2>
 <div class="container">
+
+    <div class="row">
+        <div class="col-sm-2">
+            
+            @if(session('cart'))
+                <a href="{{ route('cart.index') }}" class="btn btn-primary  mt-3 mb-3 btn-block">
+
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                     Cart
+                    <!-- this code count product of choose tha user choose -->
+
+                    <span class="badge badge-pill badge-danger">{{ count(session('cart')) }}</span>
+                </a>
+            @endif
+        </div>
+    </div>
         <ul>
         @foreach($user->dishes as $dish)
            <li>
