@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Dish;
+use App\User;
 use App\Order;
 
 
 class CartController extends Controller
 {
     public function add(Dish $dish){
-        $cart = session()->get('cart');
+        $sessionName = 'session'.$dish->user_id;
+        // dd($sessionName);
+        $cart = session()->get($sessionName);
 
         
 
@@ -24,7 +27,7 @@ class CartController extends Controller
                     'ingredients' => $dish->ingredients               
                 ]
             ];
-            session()->put('cart', $cart);
+            session()->put($sessionName, $cart);
             return redirect()->back()->with('success', "added to cart");
         }
 
@@ -32,7 +35,7 @@ class CartController extends Controller
 
         if(isset($cart[$dish->id])){
             $cart[$dish->id]['quantity']++;
-            session()->put('cart', $cart);
+            session()->put($sessionName, $cart);
             return redirect()->back()->with('success', "added to cart");
         }
 
@@ -42,7 +45,8 @@ class CartController extends Controller
             'price' => $dish->price,
             'ingredients' => $dish->ingredients
         ];
-        session()->put('cart', $cart);
+        session()->put($sessionName, $cart);
+        // dd($sessionName);
         return redirect()->back()->with('success', "added to cart");
     }
 
@@ -74,7 +78,9 @@ class CartController extends Controller
         
         
         public function index($slug){
-            return view('cart.index');
+            $user = User::where('slug', $slug)->first();
+            
+            return view('cart.index', compact('user'));
         }
 
         public function store(Request $request){

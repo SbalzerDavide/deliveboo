@@ -57,13 +57,13 @@
         </div>
     </div>
         <ul>
-        @foreach($user->dishes as $dish)
-           <li>
-               <a class="btn btn-primary" href="{{ route('guest.cart.add', $dish->id) }}">
-                   {{$dish->name}}
-               </a>
-           </li>
+            @foreach($user->dishes as $dish)
+                <li class="mb-2">
+                    <a class="btn btn-primary" href="{{ route('guest.cart.add', $dish->id) }}">
+                        {{$dish->name}}
+                    </a>
+                </li>
+            @endforeach
         </ul>
-        @endforeach
 </div>
 

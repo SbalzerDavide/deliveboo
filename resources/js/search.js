@@ -24,8 +24,6 @@ const search = new Vue({
                 // deafaukt situation
                 console.log(response.data)
                 this.listGenre = response.data;
-                console.log('genres:');
-                console.log(this.listGenre);
             })
 
             .catch(error => {
@@ -39,21 +37,14 @@ const search = new Vue({
             // deafaukt situation
             console.log(response.data)
             this.listRestaurant = response.data;
-            console.log('restaurants:');
-            console.log(this.listRestaurant);
 
             this.listRestaurant = this.listRestaurant.map(element =>{
                 return {
                     ...element,
                     route: this.url + element.slug
-                }
+                    }
+                })
             })
-
-            console.log(this.listRestaurant);
-            
-                
-            })
-
             .catch(error => {
             console.log(error);
             });
@@ -65,22 +56,22 @@ const search = new Vue({
                 params:{
                     name: this.searchText,
                 }
-            }   
-            )
+            })
                 .then(response => {
                     // deafaukt situation
                     console.log(response.data)
                     this.listRestaurant = response.data;
-                    console.log(this.listRestaurant)
                     this.listRestaurant = this.listRestaurant.map(element =>{
                         return {
                             ...element,
                             route: this.url + element.slug
                         }
                     })
-        
-                    
+                })
+                .catch(error => {
+                    console.log(error);
                 });
+        ;
         },
         takeGenre(index){
             var actualGenre = this.listGenre[index].genre_name;
@@ -103,19 +94,12 @@ const search = new Vue({
                 // deafaukt situation
                 console.log(response.data)
                 this.listRestaurant = response.data;
-                console.log('restaurants:');
-                console.log(this.listRestaurant)
-                console.log(this.listRestaurant[0].name)
-                console.log(this.listRestaurant[0].genre_name)
                 this.listRestaurant = this.listRestaurant.map(element =>{
                     return {
                         ...element,
                         route: this.url + element.slug
-                    }
-                })
-    
-
-
+                        }
+                    })
                 })
                 .catch(error => {
                 console.log(error);

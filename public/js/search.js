@@ -31675,8 +31675,6 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       // deafaukt situation
       console.log(response.data);
       _this.listGenre = response.data;
-      console.log('genres:');
-      console.log(_this.listGenre);
     })["catch"](function (error) {
       console.log(error);
     }); // axios
@@ -31685,14 +31683,11 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       // deafaukt situation
       console.log(response.data);
       _this.listRestaurant = response.data;
-      console.log('restaurants:');
-      console.log(_this.listRestaurant);
       _this.listRestaurant = _this.listRestaurant.map(function (element) {
         return _objectSpread(_objectSpread({}, element), {}, {
           route: _this.url + element.slug
         });
       });
-      console.log(_this.listRestaurant);
     })["catch"](function (error) {
       console.log(error);
     });
@@ -31710,13 +31705,15 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         // deafaukt situation
         console.log(response.data);
         _this2.listRestaurant = response.data;
-        console.log(_this2.listRestaurant);
         _this2.listRestaurant = _this2.listRestaurant.map(function (element) {
           return _objectSpread(_objectSpread({}, element), {}, {
             route: _this2.url + element.slug
           });
         });
+      })["catch"](function (error) {
+        console.log(error);
       });
+      ;
     },
     takeGenre: function takeGenre(index) {
       var actualGenre = this.listGenre[index].genre_name;
@@ -31742,10 +31739,6 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         // deafaukt situation
         console.log(response.data);
         _this3.listRestaurant = response.data;
-        console.log('restaurants:');
-        console.log(_this3.listRestaurant);
-        console.log(_this3.listRestaurant[0].name);
-        console.log(_this3.listRestaurant[0].genre_name);
         _this3.listRestaurant = _this3.listRestaurant.map(function (element) {
           return _objectSpread(_objectSpread({}, element), {}, {
             route: _this3.url + element.slug
