@@ -11,7 +11,7 @@
       
  
              <img width="500px" src="{{ asset('storage/' . $user->path_image) }}" alt="{{ $user->name }}"> 
-
+             <p>ggggggg</p>
             {{$user->name}}
 
     </div>
