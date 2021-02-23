@@ -11,7 +11,9 @@
         	    @foreach ($genres as $genre)
                     <a href="{{ route('RestaurantByGenre', $genre->genre_name) }}">
                     <li>
-                        {{ $genre->genre_name }}                    
+                        {{ $genre->genre_name }}     
+                        
+                        <img width="180" src="{{asset('image/' . $genre->url ) }}" alt="">
       		        </li>
 		            </a>
                 @endforeach
