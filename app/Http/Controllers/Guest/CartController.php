@@ -103,47 +103,92 @@ class CartController extends Controller
             //pagamento
             $gateway = new Gateway([
                 'environment' => 'sandbox',
-                'merchantId' => 'fs4whkzypxsqc7xn',
-                'publicKey' => '97tp4wjp72rh7zh9',
-                'privateKey' => '7977e7b9a05118f5981ff44adf7b0cf1'
+                'merchantId' => 'hdycz8hvtgqw4vwp',
+                'publicKey' => 's396d7m52twccwdp',
+                'privateKey' => '5e330dca41a0f99c6fdb09d1e432a101'
             ]);
         
             $clientToken = $gateway->clientToken()->generate();
         
             return view('cart.payment', compact('order', 'clientToken'));
         }
-        public function payment(){
-            return 'pay';
+        public function payment(Request $request, $id){
+
+            $data = $request->all();
+            // dd($data);
+            $order = Order::find($id);
+    
+            $gateway = new Gateway([
+                'environment' => 'sandbox',
+                'merchantId' => 'hdycz8hvtgqw4vwp',
+                'publicKey' => 's396d7m52twccwdp',
+                'privateKey' => '5e330dca41a0f99c6fdb09d1e432a101'
+            ]);
+        
+    
+            // $nonceFromTheClient = $_POST["payment_method_nonce"];
+    
+            $result = $gateway->transaction()->sale([
+                'amount' => $order->price,
+                // 'paymentMethodNonce' => $data['payment_method_nonce'],
+                'paymentMethodNonce' => 'fake-valid-nonce',
+                'options' => [
+                'submitForSettlement' => True
+                ]
+            ]);
+                  
+            if ($result->success) {
+                $transaction = $result->transaction;
+                $order->order_status = 1;
+                $order->save();
+                $message = 'La transazione è stata eseguita con sucesso';
+                //   dd($result);
+
+                // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
+            } else {            
+                foreach($result->errors->deepAll() as $error) {
+                    $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+                }
+                $message = 'La transazione non è andata a buon fine';
+            
+                // $_SESSION["errors"] = $errorString;
+                // header("Location: " . $baseUrl . "index.php");
+            }
+    
+    
+    
+            return redirect()->route('guest.pay', $order->id)->with('message', $message);
+    
         }
         public function update(Request $request, $id){
 
-            // GET DATA FROM FORM
-            $data = $request->all();
-            // dd($data);
-            
-            // VALIDATE
-            // $request->validate($this->validazione());
-            
-            // GET ORDER TO UPDATE
-            $order = Order::find($id);
-            // dd($order);
-            
-            
-            
-            // UPDATE DB
-            $updated = $order->update($data); // <--- fillable nel Model
-            
-            // CHECK IF WORKED
-            if($updated){
-                return redirect()->route('guest.pay', $order->id);
-            } else {
-                return redirect()->route('homepage');
-            }        
+        // GET DATA FROM FORM
+        $data = $request->all();
+        // dd($data);
+        
+        // VALIDATE
+        // $request->validate($this->validazione());
+        
+        // GET ORDER TO UPDATE
+        $order = Order::find($id);
+        // dd($order);
+        
+        
+        
+        // UPDATE DB
+        $updated = $order->update($data); // <--- fillable nel Model
+        
+        // CHECK IF WORKED
+        if($updated){
+            return redirect()->route('guest.pay', $order->id);
+        } else {
+            return redirect()->route('homepage');
+        }        
 
 
-            // return 'update';
-            // return view('cart.payment');
+        // return 'update';
+        // return view('cart.payment');
 
-        }
+    }
 }
 

@@ -17,6 +17,10 @@
         @endif --}}
         <h2>ordine numero:{{ $order->id }}</h2>
 
+        @if (session('message'))
+            <div class="alert alert-success">{{ session('message') }}</div>
+        @endif
+
         <form action="{{ route('guest.update', $order->id) }}" method="POST"  enctype="multipart/form-data">
             @csrf
             @method('PATCH')
@@ -48,7 +52,7 @@
             
         </form>
         
-        <form id="payment-form" action="{{ route('guest.payment') }}" method="post">
+        <form id="payment-form" action="{{ route('guest.payment', $order->id) }}" method="post">
             @csrf
             <label for="amount">
                 <span class="input-label">Amount</span>
