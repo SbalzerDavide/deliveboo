@@ -83,9 +83,9 @@
             authorization: "@php echo($clientToken) @endphp",
             // container: document.getElementById('dropin-container'),
             selector: '#bt-dropin',
-            paypal: {
-                flow: 'vault'
-            }
+            // paypal: {
+            //     flow: 'vault'
+            // }
 
             // ...plus remaining configuration
         }, (error, dropinInstance) => {
