@@ -51,5 +51,9 @@ Route::prefix('guest')
         Route::get('/add-to-cart/{dish}', 'CartController@add')->name('cart.add');
         Route::get('/remove{id}', 'CartController@remove')->name('remove');
         Route::post('/store', 'CartController@store')->name('store');
+        Route::get('/pay/{id}', 'CartController@pay')->name('pay');
+        Route::post('/payment', 'CartController@payment')->name('payment');
+
+        Route::patch('/update/{id}', 'CartController@update')->name('update');
 
     }); 

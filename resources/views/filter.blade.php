@@ -16,7 +16,6 @@
         <ul v-if="listRestaurant.length>0">
             <li v-for="element in listRestaurant">
                 <a :href="element.route">@{{element.name}} </a>
-                @{{element.name}}
             </li>
         </ul>
         <h5 v-else>there are no results</h5>

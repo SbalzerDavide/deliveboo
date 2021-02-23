@@ -13,6 +13,10 @@ class Order extends Model
     protected $fillable = [
         '_token',
         'price',
+        'name',
+        'email',
+        'address',
+        'text'
     ];
 
   
