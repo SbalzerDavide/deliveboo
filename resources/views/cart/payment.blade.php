@@ -54,6 +54,7 @@
         
         <form id="payment-form" action="{{ route('guest.payment', $order->id) }}" method="post">
             @csrf
+            @method('POST')
             <label for="amount">
                 <span class="input-label">Amount</span>
                 <div class="input-wrapper amount-wrapper">
@@ -75,7 +76,7 @@
     
     </div>
 
-    <script type="text/javascript">
+    <script type="application/javascript">
         const form = document.getElementById('payment-form');
         // console.log({{ $clientToken }});
 
