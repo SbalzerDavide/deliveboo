@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 
 class RegisterController extends Controller
@@ -56,6 +57,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'path_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     }
 
@@ -74,7 +76,10 @@ class RegisterController extends Controller
             'slug' => Str::slug($data['name'], '-'),
             'PIva' => $data['PIva'],
             'password' => Hash::make($data['password']),
+            'path_image' =>  Storage::disk('public')->put('image', $data['path_image']),
         ]);
+
+     
 
         $user->genres()->attach($data['genres']);
         return $user;

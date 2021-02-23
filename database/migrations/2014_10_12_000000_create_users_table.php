@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('address');
             $table->string('PIva');
+            $table->string('path_image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
