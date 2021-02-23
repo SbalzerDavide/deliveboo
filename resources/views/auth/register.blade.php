@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -59,6 +59,11 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="path_image">Dish image:</label>
+                                <input  class="form-control" type="file" name="path_image" id="path_image"  accept="image/*">
                             </div>
                         </div>
                         
