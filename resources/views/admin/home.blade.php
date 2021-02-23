@@ -8,15 +8,9 @@
         <a href="{{ route('admin.orders') }}">visalizza tutti gli ordini</a>
 
         {{-- post if I have images --}}
-        @if (!empty($user->path_image))
+      
  
             <img width="500px" src="{{ asset('storage/' . $user->path_image) }}" alt="{{ $user->name }}">
-        @else
-
-        {{-- <img src="{{asset('no-img/no-image.png' )}}"> --}}
-        <p>no image</p>
-
-        @endif
 
     </div>
 
