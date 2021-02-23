@@ -12,11 +12,9 @@ class HomeController extends Controller
 {
     public function index(){
 
-        $user = User::where('id', Auth::id())->get();
-        // dd($user);
-           if (!empty($data['path_image'])) {
-            $data['path_image'] = Storage::disk('public')->put('image', $data['path_image']);
-        } 
+        $user = User::where('id', Auth::id())->first();
+         //dd($user);
+        
         return view('admin.home', compact('user'));
     }
 }

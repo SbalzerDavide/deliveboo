@@ -10,7 +10,9 @@
         {{-- post if I have images --}}
       
  
-            <img width="500px" src="{{ asset('storage/' . $user->path_image) }}" alt="{{ $user->name }}">
+             <img width="500px" src="{{ asset('storage/' . $user->path_image) }}" alt="{{ $user->name }}"> 
+
+            {{$user->name}}
 
     </div>
 
