@@ -6,13 +6,15 @@
         <a href="{{route('Restaurant')}}">
             Ristoranti
         </a>
-        <ul>
-            @foreach ($genres as $genre)
-                <li>
-                    <a href="{{ route('RestaurantByGenre', $genre->genre_name) }}">{{ $genre->genre_name }}</a>
-                </li>
-            @endforeach
-        </ul>
-        <h1>ciao</h1>
-    </div>
+        <div >
+	        <ul class="grid-container">
+        	    @foreach ($genres as $genre)
+                    <a href="{{ route('RestaurantByGenre', $genre->genre_name) }}">
+                    <li>
+                        {{ $genre->genre_name }}                    
+      		        </li>
+		            </a>
+                @endforeach
+            </ul>
+        </div>
 @endsection
