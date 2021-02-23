@@ -14527,7 +14527,11 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/filter.js */"./resources/js/filter.js");
+=======
+module.exports = __webpack_require__(/*! C:\Users\Aless\Desktop\DeliveBoo\resources\js\filter.js */"./resources/js/filter.js");
+>>>>>>> cbbc89c18dce1085da7f054a6422879b1c0e21bb
 
 
 /***/ })

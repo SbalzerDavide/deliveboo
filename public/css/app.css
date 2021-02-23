@@ -12,6 +12,10 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
+ul li {
+  list-style-type: none;
+}
+
 .hidden {
   display: none;
 }
@@ -10035,6 +10039,30 @@ h3 {
 }
 .navbar a {
   color: white;
+}
+.navbar #hamburger {
+  color: white;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+.grid-container a {
+  display: grid;
+  width: 180px;
+  background: red;
+  height: 180px;
+  margin: auto;
+  text-align: center;
+  align-items: center;
+}
+
+footer {
+  background: pink;
+  height: 100px;
+  width: 100%;
 }
 
 /*!
