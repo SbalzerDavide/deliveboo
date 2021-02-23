@@ -7,12 +7,21 @@
     position: relative;
 }
 
+.hero-home{
+    padding: 50px;
+    p{  
+        color: #fff;
+        font-size: 40px;
+        text-transform: uppercase;
+        span{
+            font-weight: 700;
+        }
+    }
+}
+
 .navbar{
     background: transparent;
     a{
-        color: white;
-    }
-    #hamburger{
         color: white;
     }
 }
