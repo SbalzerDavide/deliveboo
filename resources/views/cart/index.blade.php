@@ -54,7 +54,7 @@
                     @for ($i = 0; $i < $dish['quantity'] ; $i++)
                         <input type="hidden" name="dish_id[]" value="{{ $dish['id'] }}">
                     @endfor
-                    <input type="hidden" name="quantity_id[]" value="{{ $dish['quantity'] }}">
+                    <input type="hidden" name="quantity_id[{{ $dish['id'] }}]" value="{{ $dish['quantity'] }}">
                     @endforeach
                     @endif
                     

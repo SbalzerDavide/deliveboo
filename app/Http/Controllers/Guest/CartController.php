@@ -73,25 +73,33 @@ class CartController extends Controller
         public function store(Request $request){
             $data = $request->all();
             // dd($data);
+
+            //total price
             $totalPrice = 0;
             foreach ($data['dish_id'] as $id){
                 $dish = Dish::find($id);
                 $totalPrice += $dish->price;
             }
-            $newOrder =  new Order();
 
+            //new order 
+            $newOrder =  new Order();
             $newOrder->_token = $data['_token'];
             $newOrder->price = $totalPrice;
-            
             $saved = $newOrder->save();
-            $arrayDish =  $data['dish_id'];
-            
-            //sistemare il fatto che non vengano aggiunti due recod quando hanno id identico
-            $newDish = Dish::whereIn('id', $arrayDish)->get();
 
-            $newOrder->dishes()->attach($newDish);
+            //dish attach
+            $arrayDish =  $data['dish_id'];
+
+            //create a record for every dish
+            foreach($arrayDish as $dish){
+                $newDish = Dish::find($dish);
+                $newOrder->dishes()->attach($newDish);
+            }
             
-             
+            //           
+            //fare validazione dati odine
+            //
+
             if($saved){
                 return redirect()->route('guest.pay', $newOrder->id);
             }
