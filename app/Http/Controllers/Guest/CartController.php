@@ -17,7 +17,7 @@ class CartController extends Controller
         // dd($sessionName);
         $cart = session()->get($sessionName);
 
-        
+        $message = $dish->name . ' was added to cart';
 
         if(!$cart){
             $cart = [
@@ -30,7 +30,7 @@ class CartController extends Controller
                 ]
             ];
             session()->put($sessionName, $cart);
-            return redirect()->back()->with('success', "added to cart");
+            return redirect()->back()->with('success', $dish->name);
         }
 
         
@@ -38,7 +38,7 @@ class CartController extends Controller
         if(isset($cart[$dish->id])){
             $cart[$dish->id]['quantity']++;
             session()->put($sessionName, $cart);
-            return redirect()->back()->with('success', "added to cart");
+            return redirect()->back()->with('success',  $dish->name);
         }
 
         $cart[$dish->id] = [
@@ -50,7 +50,7 @@ class CartController extends Controller
         ];
         session()->put($sessionName, $cart);
         // dd($sessionName);
-        return redirect()->back()->with('success', "added to cart");
+        return redirect()->back()->with('success',  $dish->name);
     }
 
         public function remove($id){
@@ -95,7 +95,7 @@ class CartController extends Controller
                 $newDish = Dish::find($dish);
                 $newOrder->dishes()->attach($newDish);
             }
-            
+
             //           
             //fare validazione dati odine
             //

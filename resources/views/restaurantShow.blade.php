@@ -2,10 +2,16 @@
 
 @section('content')
     <?php $cartSession = 'session' . $user->id ?>
-    <h1> Restaurant Name {{$user->name}}</h1>
-    <h2>lalakj</h2>
-
+    
+    
     <div class="container">
+        <h1> Restaurant Name: {{$user->name}}</h1>
+        @if (session('success'))
+            <div class="alert alert-success">
+                <b>{{ session('success') }}</b>
+                was added to cart
+            </div>
+        @endif
 
         <div class="row">
             <div class="col-sm-2">
