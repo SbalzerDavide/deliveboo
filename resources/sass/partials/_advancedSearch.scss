@@ -1,0 +1,72 @@
+#search{
+
+    .container{
+
+        h1{
+            text-align: center;
+            font-weight: 800;
+        }
+        h3{
+
+            span{
+                color:red;
+            }
+        }
+
+        .search-restaurant{
+            width: 250px;
+            height: 35px;
+            padding: 0 10px;
+            border-radius: 10px;
+        }
+
+        button{
+            width: 100px;
+            height: 35px;
+            border-radius: 10px;
+        }
+        
+
+        .container-restaurant-genres{
+
+            display: grid;
+            grid-template-columns: 1fr 7fr;
+            gap: 1rem;
+
+            .restaurant-container{
+    
+                ul{
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) );
+                    gap: 1rem;
+                    margin: 1rem 0;
+                    
+                    li{
+                        grid-template-rows: minmax(200px, auto) ;
+                        display: grid;
+                        border: 1px solid red;
+                       align-content: center;
+                       justify-content: center;
+                     
+                    }
+    
+                }
+            }
+
+            .form-check.container{
+                border: 1px solid red;
+                max-width: 150px;
+                margin-top: 1rem;
+
+                .btn-primary{
+                    position: relative;
+                    right: 20px;
+                }
+
+            }
+
+        }
+
+    }
+
+}

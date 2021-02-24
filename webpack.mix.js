@@ -16,6 +16,8 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/filter.js', 'public/js')
     .js('resources/js/search.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .options({processCssUrls: false});
+    .options({processCssUrls: false})
+        
+;
 
   

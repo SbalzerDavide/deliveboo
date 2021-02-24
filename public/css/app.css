@@ -10070,10 +10070,16 @@ h3 {
   color: white;
 }
 
+main {
+  background: #eb8d08;
+  background: linear-gradient(90deg, #eb8d08 0%, #fdc21d 44%, rgba(238, 208, 52, 0.5634454465) 85%, rgba(235, 232, 178, 0.9387955866) 100%);
+}
+
 .restaurant-button {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .grid-container {
@@ -10115,6 +10121,52 @@ h3 {
   transform: scale(1.05);
   transition: 0.4s;
   box-shadow: 0px 50px 90px -30px #aaa;
+}
+
+#search .container h1 {
+  text-align: center;
+  font-weight: 800;
+}
+#search .container h3 span {
+  color: red;
+}
+#search .container .search-restaurant {
+  width: 250px;
+  height: 35px;
+  padding: 0 10px;
+  border-radius: 10px;
+}
+#search .container button {
+  width: 100px;
+  height: 35px;
+  border-radius: 10px;
+}
+#search .container .container-restaurant-genres {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  gap: 1rem;
+}
+#search .container .container-restaurant-genres .restaurant-container ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+#search .container .container-restaurant-genres .restaurant-container ul li {
+  grid-template-rows: minmax(200px, auto);
+  display: grid;
+  border: 1px solid red;
+  align-content: center;
+  justify-content: center;
+}
+#search .container .container-restaurant-genres .form-check.container {
+  border: 1px solid red;
+  max-width: 150px;
+  margin-top: 1rem;
+}
+#search .container .container-restaurant-genres .form-check.container .btn-primary {
+  position: relative;
+  right: 20px;
 }
 
 footer {
