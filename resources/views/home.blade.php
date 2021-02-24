@@ -3,14 +3,11 @@
 @section('content')
 
     <div class="container">
-
-        {{-- @if (session('message'))
-            <div class="alert alert-success">{{ session('message') }}</div>
-        @else --}}
-
-        <a href="{{route('Restaurant')}}">
+        <div class="restaurant-button">
+          <a class="btn-list" href="{{route('Restaurant')}}">
             Ristoranti
-        </a>
+          </a>
+        </div>  
         <div >
 	        <ul class="grid-container">
         	    @foreach ($genres as $genre)

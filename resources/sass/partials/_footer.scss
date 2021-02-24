@@ -1,5 +1,24 @@
 footer{
-    background: pink;
-    height: 100px;
-    width: 100%;
+    background: $footer;
+    
+    .wraper{
+        display: grid;
+        padding: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+        margin: 0  auto;
+
+        div{
+           /*  width: 250px;
+            height: 250px; */
+            background-color: $footer-box;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+
+            img{
+                padding: 10px 0;
+            }
+        }
+    }
 }

@@ -1,8 +1,12 @@
+/* default layout */
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+/* layout */
 
 .layover{
     position: absolute;
@@ -13,4 +17,20 @@
 
 ul li{
     list-style-type: none;
+}
+
+/* btn */
+
+.btn-list{
+    background-color: orangered;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: block;
+    color: $white;
+    margin: 2rem;
+    &:hover{
+        color: white;
+        text-decoration: none;
+        background: #b83e11;
+    }
 }
