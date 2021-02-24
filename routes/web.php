@@ -49,7 +49,7 @@ Route::prefix('guest')
 
         Route::get('/cart/{slug}', 'CartController@index')->name('cart.index');
         Route::get('/add-to-cart/{dish}', 'CartController@add')->name('cart.add');
-        Route::get('/remove{id}', 'CartController@remove')->name('remove');
+        Route::get('/remove/{id}', 'CartController@remove')->name('remove');
         Route::post('/store', 'CartController@store')->name('store');
         Route::get('/pay/{id}', 'CartController@pay')->name('pay');
         Route::post('/payment/{id}', 'CartController@payment')->name('payment');
