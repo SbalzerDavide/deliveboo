@@ -16,6 +16,11 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/filter.js', 'public/js')
     .js('resources/js/search.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .options({processCssUrls: false});
+    .options({processCssUrls: false})
+    .browserSync({        
+        proxy: 'http://127.0.0.1:8000',        
+        watch: true,        
+        files: ['./**/*.css', './**/*.js', './**/*.+(html|php)'],    
+});
 
   
