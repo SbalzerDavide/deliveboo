@@ -17,7 +17,7 @@ class CartController extends Controller
         // dd($sessionName);
         $cart = session()->get($sessionName);
 
-        
+        $message = $dish->name . ' was added to cart';
 
         if(!$cart){
             $cart = [
@@ -30,7 +30,7 @@ class CartController extends Controller
                 ]
             ];
             session()->put($sessionName, $cart);
-            return redirect()->back()->with('success', "added to cart");
+            return redirect()->back()->with('success', $dish->name);
         }
 
         
@@ -38,7 +38,7 @@ class CartController extends Controller
         if(isset($cart[$dish->id])){
             $cart[$dish->id]['quantity']++;
             session()->put($sessionName, $cart);
-            return redirect()->back()->with('success', "added to cart");
+            return redirect()->back()->with('success',  $dish->name);
         }
 
         $cart[$dish->id] = [
@@ -50,7 +50,7 @@ class CartController extends Controller
         ];
         session()->put($sessionName, $cart);
         // dd($sessionName);
-        return redirect()->back()->with('success', "added to cart");
+        return redirect()->back()->with('success',  $dish->name);
     }
 
         public function remove($id){
@@ -73,25 +73,33 @@ class CartController extends Controller
         public function store(Request $request){
             $data = $request->all();
             // dd($data);
+
+            //total price
             $totalPrice = 0;
             foreach ($data['dish_id'] as $id){
                 $dish = Dish::find($id);
                 $totalPrice += $dish->price;
             }
-            $newOrder =  new Order();
 
+            //new order 
+            $newOrder =  new Order();
             $newOrder->_token = $data['_token'];
             $newOrder->price = $totalPrice;
-            
             $saved = $newOrder->save();
-            $arrayDish =  $data['dish_id'];
-            
-            //sistemare il fatto che non vengano aggiunti due recod quando hanno id identico
-            $newDish = Dish::whereIn('id', $arrayDish)->get();
 
-            $newOrder->dishes()->attach($newDish);
-            
-             
+            //dish attach
+            $arrayDish =  $data['dish_id'];
+
+            //create a record for every dish
+            foreach($arrayDish as $dish){
+                $newDish = Dish::find($dish);
+                $newOrder->dishes()->attach($newDish);
+            }
+
+            //           
+            //fare validazione dati odine
+            //
+
             if($saved){
                 return redirect()->route('guest.pay', $newOrder->id);
             }
@@ -130,8 +138,8 @@ class CartController extends Controller
     
             $result = $gateway->transaction()->sale([
                 'amount' => $order->price,
-                // 'paymentMethodNonce' => $data['payment_method_nonce'],
-                'paymentMethodNonce' => 'fake-valid-nonce',
+                'paymentMethodNonce' => $data['payment_method_nonce'],
+                // 'paymentMethodNonce' => 'fake-valid-nonce',
                 'options' => [
                 'submitForSettlement' => True
                 ]
@@ -157,7 +165,7 @@ class CartController extends Controller
     
     
     
-            return redirect()->route('guest.pay', $order->id)->with('message', $message);
+            return redirect()->route('homepage')->with('message', $message);
     
         }
         public function update(Request $request, $id){
