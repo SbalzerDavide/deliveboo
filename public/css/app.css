@@ -21,12 +21,16 @@ ul li {
 /* btn */
 .btn-list {
   background-color: orangered;
-  padding: 10px;
+  padding: 10px 15px;
   border-radius: 5px;
   display: block;
-  width: 80px;
   color: #fff;
   margin: 2rem;
+}
+.btn-list:hover {
+  color: white;
+  text-decoration: none;
+  background: #b83e11;
 }
 
 .hidden {
@@ -10039,11 +10043,11 @@ h3 {
   }
 }
 .header-home {
-  height: 400px;
-  background-image: url("../image/jumbo.jpg");
+  height: 600px;
+  background-image: url("../image/deliveboo.png");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 0 75%;
   position: relative;
 }
 
