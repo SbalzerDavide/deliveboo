@@ -3,6 +3,11 @@
 @section('content')
 
     <div class="container">
+
+        {{-- @if (session('message'))
+            <div class="alert alert-success">{{ session('message') }}</div>
+        @else --}}
+
         <a href="{{route('Restaurant')}}">
             Ristoranti
         </a>

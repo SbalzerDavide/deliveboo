@@ -138,8 +138,8 @@ class CartController extends Controller
     
             $result = $gateway->transaction()->sale([
                 'amount' => $order->price,
-                // 'paymentMethodNonce' => $data['payment_method_nonce'],
-                'paymentMethodNonce' => 'fake-valid-nonce',
+                'paymentMethodNonce' => $data['payment_method_nonce'],
+                // 'paymentMethodNonce' => 'fake-valid-nonce',
                 'options' => [
                 'submitForSettlement' => True
                 ]
@@ -165,7 +165,7 @@ class CartController extends Controller
     
     
     
-            return redirect()->route('guest.pay', $order->id)->with('message', $message);
+            return redirect()->route('homepage')->with('message', $message);
     
         }
         public function update(Request $request, $id){
