@@ -3,6 +3,23 @@
 @section('content')
     <div class="container">
         <h2>your cart</h2>
+        <?php 
+            session()->put('actualRestaurant', $user->id); 
+        ?>
+        @if (session('deleted'))
+            <div class="alert alert-danger">
+                <b>{{ session('deleted') }}</b> has been deleted from your cart
+                
+            </div>
+        @endif
+        <?php $total = 0 ?>
+        <?php $cartSession = 'session' . $user->id ?>
+
+        @if (empty(session($cartSession)))
+
+            <h3>your cart is empty</h3>
+            
+        @else
 
         <form action="{{ route('guest.store') }}" method="post">
             @csrf
@@ -11,17 +28,15 @@
             <table id="cart" class="table table-hover table-condensed">
                 <thead>
                     <tr>
-                        <th style="width:50%">Product</th>
+                        <th style="width:40%">Product</th>
                         <th style="width:10%">Price</th>
                         <th style="width:8%">Quantity</th>
                         <th style="width:22%" class="text-center">Subtotal</th>
-                        <th style="width:10%"></th>
+                        <th style="width:20%"></th>
                     </tr>
                 </thead>
                 <tbody>
                     
-                    <?php $total = 0 ?>
-                    <?php $cartSession = 'session' . $user->id ?>
                     <!-- by this code session get all product that user chose -->
                     @if(session($cartSession))
                     @foreach(session($cartSession) as $id => $dish)
@@ -43,13 +58,32 @@
                         <td data-th="Subtotal" class="text-center">${{ $dish['price'] * $dish['quantity'] }}</td>
                         <td class="actions" data-th="">
                             <!-- this button is to update card -->
-                            <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i>update</button>
+                            <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}">
+                                <i class="fas fa-sync-alt"></i>
+                                update
+                            </button>
                             {{-- <a href="{{ route('update-cart') }}">update</a> --}}
                             <!-- this button is for update card -->
-                            <button class="btn btn-danger btn-sm remove" data-id="{{ $id }}" ><i class="fa fa-trash-o"></i>remove</button>
+                            {{-- <button class="btn btn-danger btn-sm remove" data-id="{{ $id }}" >
+                                <i class="fa fa-trash"></i>
+                                remove
+                            </button> --}}
+                            {{-- @dump($data) --}}
+                            {{-- <div class="action">
+                                <form action="{{ route('guest.remove') }}" method="get">
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{$user->id}}">
+                                    <input type="hidden" name="dish_id" value="{{$id}}">
+                                    <input type="submit" value="delete">
+                                </form>
+                            </div> --}}
+                            <a href="{{ route('guest.remove', $id) }}" class="btn btn-danger">
+                                <i class="fa fa-trash"></i>
+                                remove
+                            </a>
                             {{-- <a href="{{ route('remove') }}">remove</a> --}}
                         </td>
-                        
+                        {{-- @dump($dish) --}}
                     </tr>
                     @for ($i = 0; $i < $dish['quantity'] ; $i++)
                         <input type="hidden" name="dish_id[]" value="{{ $dish['id'] }}">
@@ -57,7 +91,7 @@
                     <input type="hidden" name="quantity_id[{{ $dish['id'] }}]" value="{{ $dish['quantity'] }}">
                     @endforeach
                     @endif
-                    
+                    {{-- @dump(session($cartSession)) --}}
                 </tbody>
                 <tfoot>
                     
@@ -76,6 +110,9 @@
             <input type="submit" class="btn btn-primary" value="Go to payment">
 
         </form>
+            
+        @endif
+
             {{-- <a href="{{ route('guest.') }}">completa l'acquisto</a> --}}
 @endsection
             

@@ -54,13 +54,24 @@ class CartController extends Controller
     }
 
         public function remove($id){
-            $cart = session()->get('cart');
+            $dish = Dish::find($id);
+            $user_id = session()->get('actualRestaurant');
+            $sessionName = 'session'.$user_id;
+
+            $cart = session()->get($sessionName);
 
             if(isset($cart[$id])){
                 unset($cart[$id]);
-                session()->put('cart', $cart);
+                session()->put($sessionName, $cart);
             }
-            return redirect()->back()->with('success', "added to cart");
+            // dd($cart);
+
+
+
+
+            //chiedere se serviva a qualcosa
+
+            return redirect()->back()->with('deleted', $dish->name);
         }
         
         
