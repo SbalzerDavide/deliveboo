@@ -73,6 +73,52 @@ class CartController extends Controller
 
             return redirect()->back()->with('deleted', $dish->name);
         }
+        public function more($id){
+            $user_id = session()->get('actualRestaurant');
+            $sessionName = 'session'.$user_id;
+
+            $cart = session()->get($sessionName);
+            $dish = $cart[$id];
+            $cart[$id]['quantity'] ++;
+            session()->put($sessionName, $cart);
+
+            // dd($cart);
+
+            // if (!empty($_GET['firstName'])){
+            //     $firstName = $_GET['firstName'];
+            //     dd($firstName);
+            // } else{
+            //     dd('non ottenuto');
+            // }
+            // dd($data);
+            return redirect()->back();
+        }
+        public function less($id){
+            $user_id = session()->get('actualRestaurant');
+            $sessionName = 'session'.$user_id;
+
+            $cart = session()->get($sessionName);
+            $dish = $cart[$id];
+            $cart[$id]['quantity'] --;
+            if($cart[$id]['quantity'] == 0){
+                $dish = Dish::find($id);
+                unset($cart[$id]);
+                session()->put($sessionName, $cart);
+                return redirect()->back()->with('deleted', $dish->name);
+
+            }
+            session()->put($sessionName, $cart);
+            return redirect()->back();
+
+            // if (!empty($_GET['firstName'])){
+            //     $firstName = $_GET['firstName'];
+            //     dd($firstName);
+            // } else{
+            //     dd('non ottenuto');
+            // }
+            
+        }
+
         
         
         public function index($slug){
@@ -181,33 +227,40 @@ class CartController extends Controller
         }
         public function update(Request $request, $id){
 
-        // GET DATA FROM FORM
-        $data = $request->all();
-        // dd($data);
-        
-        // VALIDATE
-        // $request->validate($this->validazione());
-        
-        // GET ORDER TO UPDATE
-        $order = Order::find($id);
-        // dd($order);
-        
-        
-        
-        // UPDATE DB
-        $updated = $order->update($data); // <--- fillable nel Model
-        
-        // CHECK IF WORKED
-        if($updated){
-            return redirect()->route('guest.pay', $order->id);
-        } else {
-            return redirect()->route('homepage');
-        }        
+            // GET DATA FROM FORM
+            $data = $request->all();
+            // dd($data);
+            
+            // VALIDATE
+            $request->validate($this->validazioneOrder());
+            
+            // GET ORDER TO UPDATE
+            $order = Order::find($id);
+            // dd($order);
+            
+            
+            
+            // UPDATE DB
+            $updated = $order->update($data); // <--- fillable nel Model
+            
+            // CHECK IF WORKED
+            if($updated){
+                return redirect()->route('guest.pay', $order->id);
+            } else {
+                return redirect()->route('homepage');
+            }        
 
 
-        // return 'update';
-        // return view('cart.payment');
-
-    }
+            // return 'update';
+            // return view('cart.payment');
+        }
+        private function validazioneOrder(){
+            return [
+            'name'=> 'required',
+            'address'=> 'required',
+            'phone'=> 'required',
+            ];
+        }
+    
 }
 
