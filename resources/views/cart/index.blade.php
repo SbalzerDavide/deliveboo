@@ -51,11 +51,11 @@
                                 </div>
                             </div>
                         </td>
-                        <td data-th="Price">${{ $dish['price'] }}</td>
+                        <td data-th="Price">{{ $dish['price'] }} €</td>
                         <td data-th="Quantity">
                             <input type="number" value="{{ $dish['quantity'] }}" class="form-control quantity" />
                         </td>
-                        <td data-th="Subtotal" class="text-center">${{ $dish['price'] * $dish['quantity'] }}</td>
+                        <td data-th="Subtotal" class="text-center">{{ $dish['price'] * $dish['quantity'] }} €</td>
                         <td class="actions" data-th="">
                             <!-- this button is to update card -->
                             <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}">
