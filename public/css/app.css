@@ -10164,6 +10164,9 @@ main {
 }
 #search .container .container-restaurant-genres .restaurant-container ul li img {
   border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 150px;
 }
 #search .container .container-restaurant-genres .restaurant-container ul li .rest-text {
   padding: 15px 10px;
