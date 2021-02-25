@@ -31661,7 +31661,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     listGenre: [],
     filterGenre: [],
     genre: '',
-    url: '',
+    url: 'guest/restaurantShow/',
     baseUrl: ''
   },
   created: function created() {

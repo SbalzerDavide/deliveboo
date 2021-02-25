@@ -10,7 +10,7 @@ const search = new Vue({
         listGenre: [],
         filterGenre: [],
         genre : '',
-        url: '',
+        url: 'guest/restaurantShow/',
         baseUrl: '',
 
     },
