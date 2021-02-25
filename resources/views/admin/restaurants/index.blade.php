@@ -12,16 +12,30 @@
 
         <a class="btn btn-success" href="{{route('admin.restaurants.create')}}">Create a new Dish</a>
         @foreach ($dishes as $dish)       
-            <div>
-              <h2>{{ $dish->name }}</h2>
-              <a class="btn btn-success" href="{{route('admin.restaurants.show', $dish->slug)}}">Vedi piatto</a>
-              <a class="btn btn-primary" href="{{route('admin.restaurants.edit', $dish->slug)}}">Edit</a>
-
-              <form action="{{route('admin.restaurants.destroy', $dish->id)}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <input class="btn btn-danger" type="submit" value="Delete">
-               </form>
+            <div class="menu">
+                <table class="table table-hover table-condensed">
+                    <tbody>
+                        <tr>
+                            <td style="width:40%">
+                                <h5>{{ $dish->name }}</h5>
+                            </td>
+                            <td>
+                                <a class="btn btn-success" href="{{route('admin.restaurants.show', $dish->slug)}}">Vedi piatto</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" href="{{route('admin.restaurants.edit', $dish->slug)}}">Edit</a>
+                            </td>
+                            <td>
+                                <form action="{{route('admin.restaurants.destroy', $dish->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input class="btn btn-danger" type="submit" value="Delete">
+                                </form>
+                            </td>
+                        </tr>
+    
+                    </tbody>
+                </table>
             </div>
         @endforeach
 

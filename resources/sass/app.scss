@@ -17,7 +17,15 @@
 
 @import 'partials/advancedSearch';
 
+@import 'partials/restaurantShow';
+
 @import 'partials/footer';
+
+// ADMIN
+@import 'partials/admin/dashboard';
+
+@import 'partials/admin/index';
+
 
 // FONTAWESOME
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';

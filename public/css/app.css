@@ -10185,6 +10185,32 @@ main {
   cursor: pointer;
 }
 
+.rest-show {
+  max-width: 70%;
+  margin: auto;
+}
+.rest-show ul li {
+  max-width: 100%;
+  padding: 10px;
+  border: 1px solid red;
+}
+.rest-show .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+}
+.rest-show .row .btn-cart a {
+  background: transparent;
+  border: transparent;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.rest-show .row .btn-cart a .badge-pill {
+  border-radius: 50%;
+}
+
 footer {
   background: #2E3333;
 }
@@ -10205,6 +10231,30 @@ footer .wraper div {
 }
 footer .wraper div img {
   padding: 10px 0;
+}
+
+.rest-name {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+.rest-name p {
+  margin-right: 15px;
+}
+
+.menu-dashboard ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 5rem;
+}
+.menu-dashboard ul li {
+  margin-bottom: 15px;
+  padding: 10px 10px 10px 10px;
+  display: grid;
+  grid-template-rows: minmax(300px, auto);
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
 }
 
 /*!

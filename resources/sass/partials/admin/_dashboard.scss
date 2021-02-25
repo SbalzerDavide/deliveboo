@@ -1,0 +1,30 @@
+.rest-name{
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    p{
+        margin-right: 15px;
+    }
+}
+
+
+
+.menu-dashboard{
+    
+    ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        // justify-content: space-between;
+        gap: 5rem;
+        
+        li{
+        margin-bottom: 15px;
+        padding: 10px 10px 10px 10px;
+        display: grid;
+        grid-template-rows: minmax(300px, auto);
+        justify-content: center;
+        align-items: center;
+        border: 1px solid red;
+        }
+    }
+}

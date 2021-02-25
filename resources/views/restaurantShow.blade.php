@@ -5,42 +5,51 @@
     
     
     <div class="container">
-        <h1> Restaurant Name: {{$user->name}}</h1>
-        @if (session('success'))
-            <div class="alert alert-success">
-                <b>{{ session('success') }}</b>
-                was added to cart
-            </div>
-        @endif
+        <div class="rest-show">
 
-        <div class="row">
-            <div class="col-sm-2">
-                
-                <a href="{{ route('guest.cart.index', $user->slug) }}" class="btn btn-primary  mt-3 mb-3 btn-block">
-                    
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    Cart
-                    <!-- this code count product of choose tha user choose -->
-                @if(session($cartSession))
-                    <span class="badge badge-pill badge-danger">{{ count(session($cartSession)) }}</span>
+            <div class="row">
+                <h1> Restaurant Name: {{$user->name}}</h1>
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        <b>{{ session('success') }}</b>
+                        was added to cart
+                    </div>
                 @endif
-                </a>
+    
+                <div class="btn-cart">
+                    
+                    <a href="{{ route('guest.cart.index', $user->slug) }}" class="btn btn-primary  mt-3 mb-3 btn-block">
+                        
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        Cart
+                        <!-- this code count product of choose tha user choose -->
+                    @if(session($cartSession))
+                        <span class="badge badge-pill badge-danger">{{ count(session($cartSession)) }}</span>
+                    @endif
+                    </a>
+                </div>
             </div>
-        </div>
-            <ul>
-                @foreach($user->dishes as $dish)
-                    <li class="mb-2">
-                        <a class="btn btn-primary" href="{{ route('guest.cart.add', $dish->id) }}">
-                            {{$dish->name}}
+                <ul>
+                    @foreach($user->dishes as $dish)
+                        <a  id="no-decoration" class="" href="{{ route('guest.cart.add', $dish->id) }}">
+                            <li class="mb-3">
+                                <h5>{{$dish->name}}</h5>
+                                <p>{{$dish->ingredients}}</p>
+                                <p>{{$dish->price}} &euro;</p>
+                            </li>
                         </a>
-                    </li>
-                @endforeach
-            </ul>
+                    @endforeach
+                </ul>
+        </div>
     </div>
 
 @endsection
 
-
+{{-- <script>
+    document.getElementById("myAnchor").addEventListener("click", function(event){
+    event.preventDefault()
+});
+</script> --}}
 
 
 

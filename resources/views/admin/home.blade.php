@@ -2,17 +2,36 @@
 
 @section('content')
     <div class="container">
-        <h1>dashboard</h1>
+        <h5>Nome Ristorante: {{$user->name}}</h5>
+        <div class="rest-name">
+            <p>Immagine ristorante :</p>
+            <img width="100px" src="{{ asset('storage/' . $user->path_image) }}" alt="{{$user->name}}"> 
+        </div>
+        
+        
+        <div class="menu-dashboard">
+            <ul>
+                <a href="{{ route('admin.restaurants.index') }}">
+                    <li>
+                        visalizza tutti i piatti
+                    </li>
+                </a>
+                <a href="{{ route('admin.orders') }}">
+                    <li>
+                        visualizza i tuoi ordini
+                    </li>
+                </a>
+            </ul>
+        </div>
 
-        <a href="{{ route('admin.restaurants.index') }}">visalizza tutti i piatti</a>
-        <a href="{{ route('admin.orders') }}">visalizza tutti gli ordini</a>
+        
 
         {{-- post if I have images --}}
       
  
-             <img width="500px" src="{{ asset('storage/' . $user->path_image) }}" alt="{{ $user->name }}"> 
-             <p>ggggggg</p>
-            {{$user->name}}
+            
+            
+            
 
     </div>
 
