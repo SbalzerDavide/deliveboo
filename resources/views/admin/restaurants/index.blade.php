@@ -2,7 +2,7 @@
 
 @section('content')
     <main class="container">
-        <h1>i tuoi piatti</h1>
+        <h1>i tuoi piatti 2</h1>
 
         @if (session('dish-deleted'))
             <div class="alert alert-danger">
