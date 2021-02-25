@@ -9,7 +9,7 @@
         <h3>search restaurant by name</h3>
         <input class="search-restaurant" v-model="searchText" placeholder="inserisci categoria o ristorante" @keyup="makeSearch">
         <button @click="makeSearch">
-            Search
+            Search1
         </button>
         
         {{-- <div class="click" @click="takeGenre">take</div> --}}
