@@ -62,7 +62,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td data-th="Price">${{ $dish['price'] }}</td>
+                        <td data-th="Price">{{ $dish['price'] }} €</td>
                         <td data-th="Quantity">
                             {{-- <input type="number" style="width: 50px" value="{{ $dish['quantity'] }}" class="form-control quantity" /> --}}
                             <span class="mr-3">{{ $dish['quantity'] }}</span>
@@ -73,7 +73,7 @@
                                 <i class="fas fa-minus"></i>
                             </a>
                         </td>
-                        <td data-th="Subtotal" class="text-center">${{ $dish['price'] * $dish['quantity'] }}</td>
+                        <td data-th="Subtotal" class="text-center">{{ $dish['price'] * $dish['quantity'] }} €</td>
                         <td class="actions" data-th="">
                             <!-- this button is to update card -->
                             {{-- <div class="btn btn-primary" @click="changeQuantity({{ $dish['quantity'] }})">change</div> --}}

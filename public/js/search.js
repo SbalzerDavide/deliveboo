@@ -31661,28 +31661,31 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     listGenre: [],
     filterGenre: [],
     genre: '',
-    url: "guest/restaurantShow/"
+    url: 'guest/restaurantShow/',
+    baseUrl: ''
   },
   created: function created() {
     var _this = this;
 
     var url = window.location.href;
     var urlArray = url.split("/");
-    this.genre = urlArray[urlArray.length - 1];
-    console.log('js search'); // axios genres
+    this.genre = urlArray[urlArray.length - 1]; //take correct url for redirect page
 
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Genre').then(function (response) {
-      // deafaukt situation
+    urlArray.splice(urlArray.length - 1, 1);
+    var string = urlArray.toString();
+    this.baseUrl = string.replace(/,/g, "/"); // axios genres
+
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Genre').then(function (response) {
       console.log(response.data);
       _this.listGenre = response.data;
     })["catch"](function (error) {
       console.log(error);
-    }); // axios
+    }); // axios restaurant
 
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant').then(function (response) {
-      // deafaukt situation
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant').then(function (response) {
       console.log(response.data);
-      _this.listRestaurant = response.data;
+      _this.listRestaurant = response.data; //add baseUrl to avery element
+
       _this.listRestaurant = _this.listRestaurant.map(function (element) {
         return _objectSpread(_objectSpread({}, element), {}, {
           route: _this.url + element.slug
@@ -31696,24 +31699,25 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     makeSearch: function makeSearch() {
       var _this2 = this;
 
-      /*  console.log(this.datiUrl) */
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant', {
-        params: {
-          name: this.searchText
-        }
-      }).then(function (response) {
-        // deafaukt situation
-        console.log(response.data);
-        _this2.listRestaurant = response.data;
-        _this2.listRestaurant = _this2.listRestaurant.map(function (element) {
-          return _objectSpread(_objectSpread({}, element), {}, {
-            route: _this2.url + element.slug
+      if (this.searchText != '') {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
+          params: {
+            name: this.searchText
+          }
+        }).then(function (response) {
+          // deafaukt situation
+          console.log(response.data);
+          _this2.listRestaurant = response.data; //add baseUrl to avery element
+
+          _this2.listRestaurant = _this2.listRestaurant.map(function (element) {
+            return _objectSpread(_objectSpread({}, element), {}, {
+              route: _this2.url + element.slug
+            });
           });
+        })["catch"](function (error) {
+          console.log(error);
         });
-      })["catch"](function (error) {
-        console.log(error);
-      });
-      ;
+      }
     },
     takeGenre: function takeGenre(index) {
       var actualGenre = this.listGenre[index].genre_name;
@@ -31725,20 +31729,19 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         var a = this.filterGenre.indexOf(actualGenre);
         this.filterGenre.splice(a, 1);
       }
-
-      console.log(this.filterGenre);
     },
     applyFilter: function applyFilter() {
       var _this3 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant', {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
         params: {
           genre: this.filterGenre
         }
       }).then(function (response) {
         // deafaukt situation
         console.log(response.data);
-        _this3.listRestaurant = response.data;
+        _this3.listRestaurant = response.data; //add baseUrl to avery element
+
         _this3.listRestaurant = _this3.listRestaurant.map(function (element) {
           return _objectSpread(_objectSpread({}, element), {}, {
             route: _this3.url + element.slug
@@ -31760,7 +31763,11 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\Aless\Desktop\DeliveBoo\resources\js\search.js */"./resources/js/search.js");
+=======
+module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/search.js */"./resources/js/search.js");
+>>>>>>> paginate
 
 
 /***/ })

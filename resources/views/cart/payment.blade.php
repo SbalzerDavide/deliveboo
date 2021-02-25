@@ -49,7 +49,7 @@
         
     </form>
 
-    <h5 class="mt-5">TOTAL: {{ $order->price }}</h5>
+    <h5 class="mt-5">TOTAL: {{ $order->price }} €</h5>
     <form id="payment-form" action="{{ route('guest.payment', $order->id) }}" method="post">
         @csrf
         <div id="dropin-container"></div>

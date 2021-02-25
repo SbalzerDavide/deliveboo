@@ -14458,45 +14458,33 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     searchText: '',
     listRestaurant: [],
     genre: '',
-    url: ''
+    baseUrl: ''
   },
   created: function created() {
     var _this = this;
 
+    //take genre from url
     var url = window.location.href;
     var urlArray = url.split("/");
-    this.genre = urlArray[urlArray.length - 1];
-    console.log('work');
-    var asd = ['burger', 'dessert']; // axios
+    this.genre = urlArray[urlArray.length - 1]; //take correct url for redirect page
 
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant', {
+    urlArray.splice(urlArray.length - 2, 2);
+    var string = urlArray.toString();
+    this.baseUrl = string.replace(/,/g, "/"); // axios
+
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
       params: {
-        // genre: this.genre,
-        genre: [this.genre] //make research with more than one value of genre
-        // use genre in a array of genres
-        // categoryId: [1, 2, 3]
-
+        genre: [this.genre]
       }
     }).then(function (response) {
-      // deafaukt situation
-      _this.url = window.location.href;
-      var urlArray = url.split("/");
-      urlArray.splice(urlArray.length - 2, 2);
-      var string = urlArray.toString();
-      var correct = string.replace(/,/g, "/");
       console.log(response.data);
-      console.log(_this.url);
-      console.log(urlArray);
-      console.log(string);
-      console.log(correct);
-      _this.listRestaurant = response.data;
+      _this.listRestaurant = response.data; //add baseUrl to avery element
+
       _this.listRestaurant = _this.listRestaurant.map(function (element) {
         return _objectSpread(_objectSpread({}, element), {}, {
-          route: correct + '/guest/restaurantShow/' + element.slug
+          route: _this.baseUrl + '/guest/restaurantShow/' + element.slug
         });
       });
-      console.log('restaurants:');
-      console.log(_this.listRestaurant);
     })["catch"](function (error) {
       console.log(error);
     });
@@ -14505,25 +14493,25 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     makeSearch: function makeSearch() {
       var _this2 = this;
 
-      /*  console.log(this.datiUrl) */
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Restaurant', {
-        params: {
-          name: this.searchText,
-          genre: this.genre
-        }
-      }).then(function (response) {
-        // deafaukt situation
-        console.log(response.data);
-        _this2.listRestaurant = response.data;
-        console.log(_this2.listRestaurant);
-        _this2.listRestaurant = _this2.listRestaurant.map(function (element) {
-          return _objectSpread(_objectSpread({}, element), {}, {
-            route: _this2.url + element.slug
+      if (this.searchText != '') {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
+          params: {
+            name: this.searchText,
+            genre: this.genre
+          }
+        }).then(function (response) {
+          console.log(response.data);
+          _this2.listRestaurant = response.data; //add baseUrl to avery element
+
+          _this2.listRestaurant = _this2.listRestaurant.map(function (element) {
+            return _objectSpread(_objectSpread({}, element), {}, {
+              route: _this2.url + element.slug
+            });
           });
+        })["catch"](function (error) {
+          console.log(error);
         });
-      })["catch"](function (error) {
-        console.log(error);
-      });
+      }
     }
   }
 });
@@ -14537,7 +14525,11 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\Aless\Desktop\DeliveBoo\resources\js\filter.js */"./resources/js/filter.js");
+=======
+module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/filter.js */"./resources/js/filter.js");
+>>>>>>> paginate
 
 
 /***/ })

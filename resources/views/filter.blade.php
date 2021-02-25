@@ -7,7 +7,7 @@
         <h3>You are inside "{{ $name }}" category</h3>
         <span class="genre"></span>
         <h3>search restaurant by name</h3>
-        <input v-model="searchText" @keyup="makeSearch">
+        <input v-model="searchText" @keyup.enter="makeSearch">
         <button @click="makeSearch">
             Search
         </button>

@@ -7,48 +7,36 @@ const search = new Vue({
         searchText: '',
         listRestaurant: [],
         genre : '',
-        url: '',
-
+        baseUrl: '',
     },
     created(){
+        //take genre from url
         var url = window.location.href;
         var urlArray = url.split("/");
         this.genre = urlArray[urlArray.length - 1];
-        console.log('work');
-        var asd = ['burger', 'dessert'];
+
+        //take correct url for redirect page
+        urlArray.splice(urlArray.length -2,2);
+        var string = urlArray.toString();
+        this.baseUrl = string.replace(/,/g, "/");
+
         // axios
-        axios.get('http://127.0.0.1:8000/api/Restaurant',{
+        axios.get(this.baseUrl + '/api/Restaurant',{
             params:{
-                // genre: this.genre,
                 genre: [this.genre],
-                //make research with more than one value of genre
-                // use genre in a array of genres
-                // categoryId: [1, 2, 3]
             }
         })
             .then(response => {
-            // deafaukt situation
-            this.url = window.location.href;
-            var urlArray = url.split("/");
-            urlArray.splice(urlArray.length -2,2);
-            var string = urlArray.toString();
-            var correct = string.replace(/,/g, "/");
             console.log(response.data);
-            console.log(this.url);
-            console.log(urlArray);
-            console.log(string);
-            console.log(correct);
-            
             this.listRestaurant = response.data;
+
+            //add baseUrl to avery element
             this.listRestaurant = this.listRestaurant.map(element =>{
                 return {
                     ...element,
-                    route:correct + '/guest/restaurantShow/' + element.slug
+                    route:this.baseUrl + '/guest/restaurantShow/' + element.slug
                     }
                 })
-
-            console.log('restaurants:');
-            console.log(this.listRestaurant)
             })
             .catch(error => {
             console.log(error);
@@ -57,37 +45,28 @@ const search = new Vue({
     },
     methods:{
         makeSearch(){
-            /*  console.log(this.datiUrl) */
-            axios.get('http://127.0.0.1:8000/api/Restaurant',{
-                params:{
-                    name: this.searchText,
-                    genre: this.genre,
-                }
-            }   
-            )
-                    
-                .then(response => {
-                    // deafaukt situation
-                    console.log(response.data)
-                    this.listRestaurant = response.data;
-                    console.log(this.listRestaurant);
-                    this.listRestaurant = this.listRestaurant.map(element =>{
-                        return {
-                            ...element,
-                            route: this.url + element.slug
-                            }
-                        })
-        
-                
-                    
+            if (this.searchText != ''){
+                axios.get(this.baseUrl + '/api/Restaurant',{
+                    params:{
+                        name: this.searchText,
+                        genre: this.genre,
+                    }
                 })
-    
-                .catch(error => {
-                console.log(error);
-                });
+                    .then(response => {
+                        console.log(response.data)
+                        this.listRestaurant = response.data;
+                        //add baseUrl to avery element
+                        this.listRestaurant = this.listRestaurant.map(element =>{
+                            return {
+                                ...element,
+                                route: this.url + element.slug
+                                }
+                            })
+                    })
+                    .catch(error => {
+                    console.log(error);
+                    });
             }
-
-        
-
+        }
     }
 })
