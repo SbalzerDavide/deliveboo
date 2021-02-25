@@ -13,14 +13,14 @@
         </button>
         
         {{-- <div class="click" @click="takeGenre">take</div> --}}
-       <div class="container-restaurant-genres">
-           <div class="form-check container">
-               <div class="check" v-for="(genre , index) in listGenre" >
-                   <input  class="form-check-input" type="checkbox" :value="genre.genre_name" @click="takeGenre(index)">
-                   <label class="form-check-label">@{{ genre.genre_name }}</label>
-               </div>
-               <div class="btn-list" @click="applyFilter">search</div>
-           </div>
+        <div class="container-restaurant-genres">
+            <div class="form-check container">
+                <div class="check" v-for="(genre , index) in listGenre" >
+                    <input  class="form-check-input" type="checkbox" :value="genre.genre_name" @click="takeGenre(index)">
+                    <label class="form-check-label">@{{ genre.genre_name }}</label>
+                </div>
+                <div class="btn-list" @click="applyFilter">search</div>
+            </div>
             <div v-if="listRestaurant.length>0" class="restaurant-container">
                 <ul >
                     <a id="no-decoration" v-for="element in listRestaurant" :href="element.route">
@@ -33,6 +33,7 @@
                     </a>
                 </ul>
             </div>
+
             <h5 v-else>there are no results</h5>
         </div>
 
