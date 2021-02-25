@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2>Your cart</h2>
+        <h2>your cart</h2>
         <?php 
             session()->put('actualRestaurant', $user->id); 
         ?>
