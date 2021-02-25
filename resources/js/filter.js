@@ -7,6 +7,8 @@ const search = new Vue({
         searchText: '',
         listRestaurant: [],
         genre : '',
+        url: '',
+
     },
     created(){
         var url = window.location.href;
@@ -26,12 +28,22 @@ const search = new Vue({
         })
             .then(response => {
             // deafaukt situation
-            console.log(response.data)
+            this.url = window.location.href;
+            var urlArray = url.split("/");
+            urlArray.splice(urlArray.length -2,2);
+            var string = urlArray.toString();
+            var correct = string.replace(/,/g, "/");
+            console.log(response.data);
+            console.log(this.url);
+            console.log(urlArray);
+            console.log(string);
+            console.log(correct);
+            
             this.listRestaurant = response.data;
             this.listRestaurant = this.listRestaurant.map(element =>{
                 return {
                     ...element,
-                    route: this.url + element.slug
+                    route:correct + '/guest/restaurantShow/' + element.slug
                     }
                 })
 

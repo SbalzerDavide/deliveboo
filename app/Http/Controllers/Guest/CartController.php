@@ -227,33 +227,40 @@ class CartController extends Controller
         }
         public function update(Request $request, $id){
 
-        // GET DATA FROM FORM
-        $data = $request->all();
-        // dd($data);
-        
-        // VALIDATE
-        // $request->validate($this->validazione());
-        
-        // GET ORDER TO UPDATE
-        $order = Order::find($id);
-        // dd($order);
-        
-        
-        
-        // UPDATE DB
-        $updated = $order->update($data); // <--- fillable nel Model
-        
-        // CHECK IF WORKED
-        if($updated){
-            return redirect()->route('guest.pay', $order->id);
-        } else {
-            return redirect()->route('homepage');
-        }        
+            // GET DATA FROM FORM
+            $data = $request->all();
+            // dd($data);
+            
+            // VALIDATE
+            $request->validate($this->validazioneOrder());
+            
+            // GET ORDER TO UPDATE
+            $order = Order::find($id);
+            // dd($order);
+            
+            
+            
+            // UPDATE DB
+            $updated = $order->update($data); // <--- fillable nel Model
+            
+            // CHECK IF WORKED
+            if($updated){
+                return redirect()->route('guest.pay', $order->id);
+            } else {
+                return redirect()->route('homepage');
+            }        
 
 
-        // return 'update';
-        // return view('cart.payment');
-
-    }
+            // return 'update';
+            // return view('cart.payment');
+        }
+        private function validazioneOrder(){
+            return [
+            'name'=> 'required',
+            'address'=> 'required',
+            'phone'=> 'required',
+            ];
+        }
+    
 }
 

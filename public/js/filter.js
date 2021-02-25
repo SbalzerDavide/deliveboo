@@ -14457,7 +14457,8 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   data: {
     searchText: '',
     listRestaurant: [],
-    genre: ''
+    genre: '',
+    url: ''
   },
   created: function created() {
     var _this = this;
@@ -14478,11 +14479,20 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       }
     }).then(function (response) {
       // deafaukt situation
+      _this.url = window.location.href;
+      var urlArray = url.split("/");
+      urlArray.splice(urlArray.length - 2, 2);
+      var string = urlArray.toString();
+      var correct = string.replace(/,/g, "/");
       console.log(response.data);
+      console.log(_this.url);
+      console.log(urlArray);
+      console.log(string);
+      console.log(correct);
       _this.listRestaurant = response.data;
       _this.listRestaurant = _this.listRestaurant.map(function (element) {
         return _objectSpread(_objectSpread({}, element), {}, {
-          route: _this.url + element.slug
+          route: correct + '/guest/restaurantShow/' + element.slug
         });
       });
       console.log('restaurants:');

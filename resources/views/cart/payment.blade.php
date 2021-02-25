@@ -6,25 +6,36 @@
 
     <h2>ordine numero:{{ $order->id }}</h2>
 
+
+    {{-- validation errors --}}
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
         
     <form action="{{ route('guest.update', $order->id) }}" method="POST"  enctype="multipart/form-data">
         @csrf
         @method('PATCH')
 
         <div class="form-group">
-            <label for="name">Insert your name</label>
+            <label for="name">Insert your name *</label>
             <input  class="form-control" type="text" name="name" id="name" value="{{ old('name', $order->name) }}">
         </div>
         <div class="form-group">
-            <label for="address">Insert your address</label>
+            <label for="address">Insert your address *</label>
             <input  class="form-control" type="text" name="address" id="address" value="{{ old('address', $order->address) }}">
         </div>
         <div class="form-group">
             <label for="email">Insert your email</label>
-            <input  class="form-control" type="text" name="email" id="email" value="{{ old('email', $order->email) }}">
+            <input  class="form-control" type="email" name="email" id="email" value="{{ old('email', $order->email) }}">
         </div>
         <div class="form-group">
-            <label for="phone">Insert your phone number</label>
+            <label for="phone">Insert your phone number *</label>
             <input  class="form-control" type="text" name="phone" id="phone" value="{{ old('phone', $order->phone) }}">
         </div>
 
