@@ -49607,7 +49607,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   data: {
     searchText: '',
     listRestaurant: [],
-    genreSearch: ''
+    genreSearch: '',
+    quantity: 12
     /*  datiUrl:window.location.hostname + ':8000/api/', */
 
   },
@@ -49647,6 +49648,17 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       //       .catch(error => {
       //        console.log(error);
       //       });
+    },
+    changeQuantity: function changeQuantity(element) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://127.0.0.1:8000/guest/change/', {
+        firstName: 'Fred',
+        lastName: 'Flintstone'
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      console.log(element);
     },
     makeSearch: function makeSearch() {
       var _this = this;
@@ -49733,8 +49745,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Aless\Desktop\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Aless\Desktop\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

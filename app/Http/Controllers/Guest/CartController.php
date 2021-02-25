@@ -73,14 +73,52 @@ class CartController extends Controller
 
             return redirect()->back()->with('deleted', $dish->name);
         }
-        public function change(){
+        public function more($id){
             $user_id = session()->get('actualRestaurant');
             $sessionName = 'session'.$user_id;
 
             $cart = session()->get($sessionName);
-            dd($cart);
+            $dish = $cart[$id];
+            $cart[$id]['quantity'] ++;
+            session()->put($sessionName, $cart);
 
+            // dd($cart);
+
+            // if (!empty($_GET['firstName'])){
+            //     $firstName = $_GET['firstName'];
+            //     dd($firstName);
+            // } else{
+            //     dd('non ottenuto');
+            // }
+            // dd($data);
+            return redirect()->back();
         }
+        public function less($id){
+            $user_id = session()->get('actualRestaurant');
+            $sessionName = 'session'.$user_id;
+
+            $cart = session()->get($sessionName);
+            $dish = $cart[$id];
+            $cart[$id]['quantity'] --;
+            if($cart[$id]['quantity'] == 0){
+                $dish = Dish::find($id);
+                unset($cart[$id]);
+                session()->put($sessionName, $cart);
+                return redirect()->back()->with('deleted', $dish->name);
+
+            }
+            session()->put($sessionName, $cart);
+            return redirect()->back();
+
+            // if (!empty($_GET['firstName'])){
+            //     $firstName = $_GET['firstName'];
+            //     dd($firstName);
+            // } else{
+            //     dd('non ottenuto');
+            // }
+            
+        }
+
         
         
         public function index($slug){
