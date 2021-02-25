@@ -62,6 +62,11 @@
                                 <i class="fas fa-sync-alt"></i>
                                 update
                             </button>
+                            <a href="{{ route('guest.change') }}" class="btn btn-danger">
+                                <i class="fa fa-trash"></i>
+                                change
+                            </a>
+
                             {{-- <a href="{{ route('update-cart') }}">update</a> --}}
                             <!-- this button is for update card -->
                             {{-- <button class="btn btn-danger btn-sm remove" data-id="{{ $id }}" >

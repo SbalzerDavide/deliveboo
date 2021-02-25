@@ -73,6 +73,14 @@ class CartController extends Controller
 
             return redirect()->back()->with('deleted', $dish->name);
         }
+        public function change(){
+            $user_id = session()->get('actualRestaurant');
+            $sessionName = 'session'.$user_id;
+
+            $cart = session()->get($sessionName);
+            dd($cart);
+
+        }
         
         
         public function index($slug){
