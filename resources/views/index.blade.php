@@ -25,6 +25,7 @@
                 <ul v-if="listRestaurant.length>0">
                     <li v-for="element in listRestaurant">
                         <a :href="element.route">@{{element.name}} </a>
+                        <img :src="'http://127.0.0.1:8000/storage/' + element.path_image" width="100px" alt="">
                     </li>
                 </ul>
             </div>
