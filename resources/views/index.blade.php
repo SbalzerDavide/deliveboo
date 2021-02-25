@@ -7,7 +7,7 @@
         <h3>You are inside <span class="genre">all</span> category</h3>
         
         <h3>search restaurant by name</h3>
-        <input class="search-restaurant" v-model="searchText" placeholder="inserisci categoria o ristorante" @keyup="makeSearch">
+        <input class="search-restaurant" v-model="searchText" placeholder="inserisci categoria o ristorante" @keyup.enter="makeSearch">
         <button @click="makeSearch">
             Search1
         </button>
@@ -21,8 +21,8 @@
                </div>
                <div class="btn-list" @click="applyFilter">search</div>
            </div>
-            <div class="restaurant-container">
-                <ul v-if="listRestaurant.length>0">
+            <div v-if="listRestaurant.length>0" class="restaurant-container">
+                <ul >
                     <a id="no-decoration" v-for="element in listRestaurant" :href="element.route">
                         <li >
                             <img :src="'http://127.0.0.1:8000/storage/' + element.path_image" width="100%" alt="">

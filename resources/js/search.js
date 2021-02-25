@@ -10,40 +10,42 @@ const search = new Vue({
         listGenre: [],
         filterGenre: [],
         genre : '',
-        url: "guest/restaurantShow/"
+        url: '',
+        baseUrl: '',
+
     },
     created(){
         var url = window.location.href;
         var urlArray = url.split("/");
         this.genre = urlArray[urlArray.length - 1];
-        console.log('js search');
+
+        //take correct url for redirect page
+        urlArray.splice(urlArray.length -1,1);
+        var string = urlArray.toString();
+        this.baseUrl = string.replace(/,/g, "/");
 
         // axios genres
-        axios.get('http://127.0.0.1:8000/api/Genre')
+        axios.get(this.baseUrl + '/api/Genre')
             .then(response => {
-                // deafaukt situation
                 console.log(response.data)
                 this.listGenre = response.data;
             })
-
             .catch(error => {
                 console.log(error);
             });
 
-
-        // axios
-        axios.get('http://127.0.0.1:8000/api/Restaurant')
+        // axios restaurant
+        axios.get(this.baseUrl + '/api/Restaurant')
             .then(response => {
-            // deafaukt situation
-            console.log(response.data)
-            this.listRestaurant = response.data;
-
-            this.listRestaurant = this.listRestaurant.map(element =>{
-                return {
-                    ...element,
-                    route: this.url + element.slug
-                    }
-                })
+                console.log(response.data)
+                this.listRestaurant = response.data;
+                //add baseUrl to avery element
+                this.listRestaurant = this.listRestaurant.map(element =>{
+                    return {
+                        ...element,
+                        route: this.url + element.slug
+                        }
+                    })
             })
             .catch(error => {
             console.log(error);
@@ -51,27 +53,28 @@ const search = new Vue({
     },
     methods:{
         makeSearch(){
-            /*  console.log(this.datiUrl) */
-            axios.get('http://127.0.0.1:8000/api/Restaurant',{
-                params:{
-                    name: this.searchText,
-                }
-            })
-                .then(response => {
-                    // deafaukt situation
-                    console.log(response.data)
-                    this.listRestaurant = response.data;
-                    this.listRestaurant = this.listRestaurant.map(element =>{
-                        return {
-                            ...element,
-                            route: this.url + element.slug
-                        }
-                    })
+            if (this.searchText != ''){
+                axios.get(this.baseUrl + '/api/Restaurant',{
+                    params:{
+                        name: this.searchText,
+                    }
                 })
-                .catch(error => {
-                    console.log(error);
-                });
-        ;
+                    .then(response => {
+                        // deafaukt situation
+                        console.log(response.data)
+                        this.listRestaurant = response.data;
+                        //add baseUrl to avery element
+                        this.listRestaurant = this.listRestaurant.map(element =>{
+                            return {
+                                ...element,
+                                route: this.url + element.slug
+                            }
+                        })
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }
         },
         takeGenre(index){
             var actualGenre = this.listGenre[index].genre_name;
@@ -82,10 +85,9 @@ const search = new Vue({
                 var a = this.filterGenre.indexOf(actualGenre);
                 this.filterGenre.splice(a, 1);
             }
-            console.log(this.filterGenre);
         },
         applyFilter(){
-            axios.get('http://127.0.0.1:8000/api/Restaurant',{
+            axios.get(this.baseUrl + '/api/Restaurant',{
                 params:{
                     genre: this.filterGenre,
                 }
@@ -94,6 +96,7 @@ const search = new Vue({
                 // deafaukt situation
                 console.log(response.data)
                 this.listRestaurant = response.data;
+                //add baseUrl to avery element
                 this.listRestaurant = this.listRestaurant.map(element =>{
                     return {
                         ...element,
@@ -105,8 +108,6 @@ const search = new Vue({
                 console.log(error);
                 }
             );
-    
         }
-
     }
 })
