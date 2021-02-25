@@ -151,16 +151,17 @@ class RestaurantController extends Controller
     public function destroy($id)
     {
         $dish = Dish::find($id);
-
+        
         // save title reference to pass to show which file has been deleted
         $name = $dish->name;
-
+        
         // dd($dish);
         $deleted = $dish->delete();
+        // dd($id);
         
         if($deleted){ 
             if(!empty($dish->path_image)){
-            Storage::disk('public')->delete($dish->path_image);
+                Storage::disk('public')->delete($dish->path_image);
             }
             return redirect()->route('admin.restaurants.index')->with('dish-deleted', $name);
         } else{
