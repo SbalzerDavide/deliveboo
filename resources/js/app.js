@@ -9,6 +9,7 @@ const app = new Vue({
         searchText: '',
         listRestaurant: [],
         genreSearch: '',
+        quantity: 12,
        /*  datiUrl:window.location.hostname + ':8000/api/', */
 
 
@@ -65,6 +66,19 @@ const app = new Vue({
             //       });
             
     
+        },
+        changeQuantity(element){
+            axios.post('http://127.0.0.1:8000/guest/change/', {
+                firstName: 'Fred',
+                lastName: 'Flintstone'
+              })
+              .then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+            console.log(element);
         },
         makeSearch(){
             /*  console.log(this.datiUrl) */

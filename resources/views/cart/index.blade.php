@@ -11,6 +11,11 @@
                 <b>{{ session('deleted') }}</b> has been deleted from your cart
                 
             </div>
+            <a href="{{ route('guest.RestaurantShow', $user->slug) }}" class="btn btn-warning">
+                <i class="fa fa-angle-left"></i> 
+                Back to the cart
+            </a>
+
         @endif
         <?php $total = 0 ?>
         <?php $cartSession = 'session' . $user->id ?>
@@ -18,6 +23,12 @@
         @if (empty(session($cartSession)))
 
             <h3>your cart is empty</h3>
+
+            <a href="{{ route('guest.RestaurantShow', $user->slug) }}" class="btn btn-warning">
+                <i class="fa fa-angle-left"></i> 
+                Back to the cart
+            </a>
+
             
         @else
 
@@ -30,9 +41,9 @@
                     <tr>
                         <th style="width:40%">Product</th>
                         <th style="width:10%">Price</th>
-                        <th style="width:8%">Quantity</th>
+                        <th style="width:15%">Quantity</th>
                         <th style="width:22%" class="text-center">Subtotal</th>
-                        <th style="width:20%"></th>
+                        <th style="width:13%"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,15 +64,24 @@
                         </td>
                         <td data-th="Price">${{ $dish['price'] }}</td>
                         <td data-th="Quantity">
-                            <input type="number" value="{{ $dish['quantity'] }}" class="form-control quantity" />
+                            {{-- <input type="number" style="width: 50px" value="{{ $dish['quantity'] }}" class="form-control quantity" /> --}}
+                            <span class="mr-3">{{ $dish['quantity'] }}</span>
+                            <a href="{{ route('guest.more', $id) }}" class="btn btn-primary">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                            <a href="{{ route('guest.less', $id) }}" class="btn btn-primary">
+                                <i class="fas fa-minus"></i>
+                            </a>
                         </td>
                         <td data-th="Subtotal" class="text-center">${{ $dish['price'] * $dish['quantity'] }}</td>
                         <td class="actions" data-th="">
                             <!-- this button is to update card -->
-                            <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}">
+                            {{-- <div class="btn btn-primary" @click="changeQuantity({{ $dish['quantity'] }})">change</div> --}}
+                            {{-- <button class="btn btn-info btn-sm update-cart" >
                                 <i class="fas fa-sync-alt"></i>
                                 update
-                            </button>
+                            </button> --}}
+
                             {{-- <a href="{{ route('update-cart') }}">update</a> --}}
                             <!-- this button is for update card -->
                             {{-- <button class="btn btn-danger btn-sm remove" data-id="{{ $id }}" >
@@ -115,83 +135,3 @@
 
             {{-- <a href="{{ route('guest.') }}">completa l'acquisto</a> --}}
 @endsection
-            
-            {{-- @section('content') --}}
-
-
-    <script type="text/javascript">
-        // this function is for update card
-        $("update-cart").click(function (e) {
-           e.preventDefault();
-        //    var ele = $(this);
-        //     $.ajax({
-        //        url: '{{ url('update-cart') }}',
-        //        method: "get",
-        //        data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id"), quantity: ele.parents("tr").find(".quantity").val()},
-        //        success: function (response) {
-        //            window.location.reload();
-        //        }
-        //     });
-        });
-        $("remove").click(function (e) {
-            e.preventDefault();
-            // var ele = $(this);
-            // if(confirm("Are you sure")) {
-            //     $.ajax({
-            //         url: '{{ url('remove') }}',
-            //         method: "DELETE",
-            //         data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},
-            //         success: function (response) {
-            //             window.location.reload();
-                        
-            //         }
-            //     });
-            // }
-        });
-</script>
-        
-
-
-{{-- @endsection --}}
-    
-        {{-- {{-- {{-- @foreach ($dish as $item)
-            <p>{{ $item->name }}</p>
-            
-        @endforeach --}}
-        {{-- @php $total = 0 @endphp
-        @if(session('cart'))
-        <ul>
-            @foreach (session('cart') as $id => $dish)
-                @php
-                    $sub_total = $dish['price'] * $dish['quantity'];
-                    $total += $sub_total;
-                @endphp
-                <li>
-                    {{ $dish['name'] }}
-                </li>
-                <li>
-                    {{ $dish['price'] }}
-                </li>
-                <li>
-                    {{ $dish['quantity'] }}
-                </li>
-                <li>
-                    {{ $sub_total}}
-                </li>
-                <li>
-                    <a href="{{ route('remove', [$id]) }}">
-                        <div class="btn btn-primary">
-                            remove
-                        </div>
-                    </a>
-                </li>
-            @endforeach
-        </ul>            
-        @endif
-        <a href="">
-            <button class="btn btn-primay">
-                continue to shopping
-            </button>
-        </a>
-        <p>total: {{ $total }}</p>
-    </div> --}}
