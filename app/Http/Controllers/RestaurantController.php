@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Genre;
+use App\User;
 
 class RestaurantController extends Controller
 {
@@ -14,12 +15,15 @@ class RestaurantController extends Controller
       //    return 'ciao';
       // }
 
+   
+
       return view('filter', compact('name'));
    }
    public function index()
    {
       $genres = Genre::all();
-      return view('index', compact('genres'));
+      $users = User::all();
+      return view('index', compact('genres', 'users'));
    }
 
 }
