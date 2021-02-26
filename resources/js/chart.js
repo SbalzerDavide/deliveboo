@@ -6,6 +6,17 @@ import $ from 'jquery';
 
 
 $(document).ready(function(){
+    axios.get('http://127.0.0.1:8000/api/Order')
+  .then(function (response) {
+    console.log(response);
+    var results = response.data;
+    
+    console.log(results);
+  })
+  .catch(function (error) {
+    
+    console.log(error);
+  })
     var ctx = document.getElementById('myChart');
     var myChart = new Chart(ctx, {
     type: 'bar',

@@ -63123,6 +63123,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 jquery__WEBPACK_IMPORTED_MODULE_3___default()(document).ready(function () {
+  axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Order').then(function (response) {
+    console.log(response);
+    var results = response.data;
+    console.log(results);
+  })["catch"](function (error) {
+    console.log(error);
+  });
   var ctx = document.getElementById('myChart');
   var myChart = new chart_js__WEBPACK_IMPORTED_MODULE_2___default.a(ctx, {
     type: 'bar',
