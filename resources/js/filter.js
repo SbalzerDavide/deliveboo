@@ -8,6 +8,7 @@ const search = new Vue({
         listRestaurant: [],
         genre : '',
         baseUrl: '',
+        load: false,
     },
     created(){
         //take genre from url
@@ -19,6 +20,8 @@ const search = new Vue({
         urlArray.splice(urlArray.length -2,2);
         var string = urlArray.toString();
         this.baseUrl = string.replace(/,/g, "/");
+
+        console.log(this.load);
 
         // axios
         axios.get(this.baseUrl + '/api/Restaurant',{
@@ -42,6 +45,12 @@ const search = new Vue({
             console.log(error);
             }
         );
+    },
+    mounted() {
+        window.addEventListener('load', () => {
+            this.load = true;
+            console.log(this.load);
+        })
     },
     methods:{
         makeSearch(){

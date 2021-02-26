@@ -31662,7 +31662,8 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     filterGenre: [],
     genre: '',
     url: 'guest/restaurantShow/',
-    baseUrl: ''
+    baseUrl: '',
+    load: false
   },
   created: function created() {
     var _this = this;
@@ -31695,9 +31696,17 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       console.log(error);
     });
   },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    window.addEventListener('load', function () {
+      _this2.load = true;
+      console.log(_this2.load);
+    });
+  },
   methods: {
     makeSearch: function makeSearch() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.searchText != '') {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
@@ -31707,11 +31716,11 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         }).then(function (response) {
           // deafaukt situation
           console.log(response.data);
-          _this2.listRestaurant = response.data; //add baseUrl to avery element
+          _this3.listRestaurant = response.data; //add baseUrl to avery element
 
-          _this2.listRestaurant = _this2.listRestaurant.map(function (element) {
+          _this3.listRestaurant = _this3.listRestaurant.map(function (element) {
             return _objectSpread(_objectSpread({}, element), {}, {
-              route: _this2.url + element.slug
+              route: _this3.url + element.slug
             });
           });
         })["catch"](function (error) {
@@ -31731,7 +31740,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       }
     },
     applyFilter: function applyFilter() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
         params: {
@@ -31740,11 +31749,11 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       }).then(function (response) {
         // deafaukt situation
         console.log(response.data);
-        _this3.listRestaurant = response.data; //add baseUrl to avery element
+        _this4.listRestaurant = response.data; //add baseUrl to avery element
 
-        _this3.listRestaurant = _this3.listRestaurant.map(function (element) {
+        _this4.listRestaurant = _this4.listRestaurant.map(function (element) {
           return _objectSpread(_objectSpread({}, element), {}, {
-            route: _this3.url + element.slug
+            route: _this4.url + element.slug
           });
         });
       })["catch"](function (error) {
@@ -31763,7 +31772,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Aless\Desktop\DeliveBoo\resources\js\search.js */"./resources/js/search.js");
+module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/search.js */"./resources/js/search.js");
 
 
 /***/ })

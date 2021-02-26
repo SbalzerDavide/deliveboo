@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/filter.js') }} " type="application/javascript" defer></script>
+    {{-- <script src="{{ asset('js/filter.js') }} " type="application/javascript" defer></script> --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -20,15 +20,21 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="search">
 
         @include('partials.header')
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        @include('partials.loader')
+
+        <div class="page" v-else>
+            <main class="py-4">
+                @yield('content')
+            </main>
+        </div>
 
         @include('partials.footer')
+
+        <script src="{{ asset('js/filter.js') }} " type="application/javascript" defer></script>
 
     </div>
 </body>

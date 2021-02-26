@@ -14458,7 +14458,8 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     searchText: '',
     listRestaurant: [],
     genre: '',
-    baseUrl: ''
+    baseUrl: '',
+    load: false
   },
   created: function created() {
     var _this = this;
@@ -14470,7 +14471,8 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
     urlArray.splice(urlArray.length - 2, 2);
     var string = urlArray.toString();
-    this.baseUrl = string.replace(/,/g, "/"); // axios
+    this.baseUrl = string.replace(/,/g, "/");
+    console.log(this.load); // axios
 
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
       params: {
@@ -14489,9 +14491,17 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       console.log(error);
     });
   },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    window.addEventListener('load', function () {
+      _this2.load = true;
+      console.log(_this2.load);
+    });
+  },
   methods: {
     makeSearch: function makeSearch() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.searchText != '') {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
@@ -14501,11 +14511,11 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
           }
         }).then(function (response) {
           console.log(response.data);
-          _this2.listRestaurant = response.data; //add baseUrl to avery element
+          _this3.listRestaurant = response.data; //add baseUrl to avery element
 
-          _this2.listRestaurant = _this2.listRestaurant.map(function (element) {
+          _this3.listRestaurant = _this3.listRestaurant.map(function (element) {
             return _objectSpread(_objectSpread({}, element), {}, {
-              route: _this2.url + element.slug
+              route: _this3.url + element.slug
             });
           });
         })["catch"](function (error) {
@@ -14525,7 +14535,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Aless\Desktop\DeliveBoo\resources\js\filter.js */"./resources/js/filter.js");
+module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/filter.js */"./resources/js/filter.js");
 
 
 /***/ })

@@ -1,7 +1,7 @@
 @extends('layouts.filter')
 
 @section('content')
-<div id="search">
+<div>
     <div class="container ">
         <h1>ADVANCED RESEARCH</h1>
         <h3>You are inside "{{ $name }}" category</h3>

@@ -12,6 +12,8 @@ const search = new Vue({
         genre : '',
         url: 'guest/restaurantShow/',
         baseUrl: '',
+        load: false,
+
 
     },
     created(){
@@ -50,6 +52,12 @@ const search = new Vue({
             .catch(error => {
             console.log(error);
             });
+    },
+    mounted() {
+        window.addEventListener('load', () => {
+            this.load = true;
+            console.log(this.load);
+        })
     },
     methods:{
         makeSearch(){

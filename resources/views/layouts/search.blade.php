@@ -20,13 +20,17 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="search">
 
         @include('partials.header')
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        @include('partials.loader')
+
+        <div class="page" v-else>
+            <main class="py-4">
+                @yield('content')
+            </main>
+        </div>
 
         @include('partials.footer')
 
