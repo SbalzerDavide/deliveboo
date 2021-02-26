@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    {{-- <script src="{{ asset('js/filter.js') }} " type="application/javascript" defer></script> --}}
+     <script src="{{ asset('js/filter.js') }} " type="application/javascript" defer></script> 
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -34,7 +34,7 @@
 
         @include('partials.footer')
 
-        <script src="{{ asset('js/filter.js') }} " type="application/javascript" defer></script>
+       
 
     </div>
 </body>

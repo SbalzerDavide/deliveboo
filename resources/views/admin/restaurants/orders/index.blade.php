@@ -21,6 +21,10 @@
             
             @endforeach
         </table>
+
+        <a href="{{route('admin.chart')}}">
+            Vedi tabella
+        </a>
             
     </main>
 

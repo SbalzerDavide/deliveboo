@@ -25,7 +25,7 @@ Route::prefix('admin')
     ->group(function(){
         Route::get('/','HomeController@index')->name('home');
         Route::get('/orders','OrderController@index')->name('orders');
-
+        Route::get('/chart','ChartController@index')->name('chart');
         Route::resource('restaurants', 'RestaurantController');
     });
 
