@@ -32,6 +32,9 @@
                         </li>
                     </a>
                 </ul>
+                <div class="btn btn-primary" @click="moreRestaurants">
+                    show more results
+                </div>
             </div>
 
             <h5 v-else>there are no results</h5>

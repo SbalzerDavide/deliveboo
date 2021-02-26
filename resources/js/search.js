@@ -13,6 +13,8 @@ const search = new Vue({
         url: 'guest/restaurantShow/',
         baseUrl: '',
         load: false,
+        numberRestaurant: 10,
+        intermedio: [],
 
 
     },
@@ -41,6 +43,15 @@ const search = new Vue({
             .then(response => {
                 console.log(response.data)
                 this.listRestaurant = response.data;
+                //intermedio
+                this.intermedio = response.data;
+                console.log('intermedio');
+                console.log(this.intermedio);
+                this.restaurant = this.intermedio.splice(this.numberRestaurant, 10);
+                console.log('list');
+                console.log(this.restaurant);
+
+
                 //add baseUrl to avery element
                 this.listRestaurant = this.listRestaurant.map(element =>{
                     return {
@@ -48,16 +59,17 @@ const search = new Vue({
                         route: this.url + element.slug
                         }
                     })
+            this.load = true;
             })
             .catch(error => {
             console.log(error);
             });
     },
     mounted() {
-        window.addEventListener('load', () => {
-            this.load = true;
-            console.log(this.load);
-        })
+        // window.addEventListener('load', () => {
+        //     this.load = true;
+        //     console.log(this.load);
+        // })
     },
     methods:{
         makeSearch(){
@@ -116,6 +128,40 @@ const search = new Vue({
                 console.log(error);
                 }
             );
+        },
+        moreRestaurants(){
+            console.log(this.numberRestaurant);
+            this.numberRestaurant ++;
+            console.log(this.numberRestaurant);
+            
+            axios.get(this.baseUrl + '/api/Restaurant')
+            .then(response => {
+                console.log(response.data)
+                this.listRestaurant = response.data;
+                //intermedio
+                this.intermedio = response.data;
+                console.log('intermedio');
+                console.log(this.intermedio);
+                this.restaurant = this.intermedio.splice(this.numberRestaurant, 10);
+                console.log('list');
+                console.log(this.restaurant);
+
+
+                //add baseUrl to avery element
+                this.listRestaurant = this.listRestaurant.map(element =>{
+                    return {
+                        ...element,
+                        route: this.url + element.slug
+                        }
+                    })
+            this.load = true;
+            })
+            .catch(error => {
+            console.log(error);
+            });
+
+
         }
+
     }
 })

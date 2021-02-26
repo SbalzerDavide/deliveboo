@@ -31663,7 +31663,9 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     genre: '',
     url: 'guest/restaurantShow/',
     baseUrl: '',
-    load: false
+    load: false,
+    numberRestaurant: 10,
+    intermedio: []
   },
   created: function created() {
     var _this = this;
@@ -31685,28 +31687,33 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant').then(function (response) {
       console.log(response.data);
-      _this.listRestaurant = response.data; //add baseUrl to avery element
+      _this.listRestaurant = response.data; //intermedio
+
+      _this.intermedio = response.data;
+      console.log('intermedio');
+      console.log(_this.intermedio);
+      _this.restaurant = _this.intermedio.splice(_this.numberRestaurant, 10);
+      console.log('list');
+      console.log(_this.restaurant); //add baseUrl to avery element
 
       _this.listRestaurant = _this.listRestaurant.map(function (element) {
         return _objectSpread(_objectSpread({}, element), {}, {
           route: _this.url + element.slug
         });
       });
+      _this.load = true;
     })["catch"](function (error) {
       console.log(error);
     });
   },
-  mounted: function mounted() {
-    var _this2 = this;
-
-    window.addEventListener('load', function () {
-      _this2.load = true;
-      console.log(_this2.load);
-    });
+  mounted: function mounted() {// window.addEventListener('load', () => {
+    //     this.load = true;
+    //     console.log(this.load);
+    // })
   },
   methods: {
     makeSearch: function makeSearch() {
-      var _this3 = this;
+      var _this2 = this;
 
       if (this.searchText != '') {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
@@ -31716,11 +31723,11 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         }).then(function (response) {
           // deafaukt situation
           console.log(response.data);
-          _this3.listRestaurant = response.data; //add baseUrl to avery element
+          _this2.listRestaurant = response.data; //add baseUrl to avery element
 
-          _this3.listRestaurant = _this3.listRestaurant.map(function (element) {
+          _this2.listRestaurant = _this2.listRestaurant.map(function (element) {
             return _objectSpread(_objectSpread({}, element), {}, {
-              route: _this3.url + element.slug
+              route: _this2.url + element.slug
             });
           });
         })["catch"](function (error) {
@@ -31740,7 +31747,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       }
     },
     applyFilter: function applyFilter() {
-      var _this4 = this;
+      var _this3 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
         params: {
@@ -31749,13 +31756,40 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       }).then(function (response) {
         // deafaukt situation
         console.log(response.data);
-        _this4.listRestaurant = response.data; //add baseUrl to avery element
+        _this3.listRestaurant = response.data; //add baseUrl to avery element
+
+        _this3.listRestaurant = _this3.listRestaurant.map(function (element) {
+          return _objectSpread(_objectSpread({}, element), {}, {
+            route: _this3.url + element.slug
+          });
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    moreRestaurants: function moreRestaurants() {
+      var _this4 = this;
+
+      console.log(this.numberRestaurant);
+      this.numberRestaurant++;
+      console.log(this.numberRestaurant);
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant').then(function (response) {
+        console.log(response.data);
+        _this4.listRestaurant = response.data; //intermedio
+
+        _this4.intermedio = response.data;
+        console.log('intermedio');
+        console.log(_this4.intermedio);
+        _this4.restaurant = _this4.intermedio.splice(_this4.numberRestaurant, 10);
+        console.log('list');
+        console.log(_this4.restaurant); //add baseUrl to avery element
 
         _this4.listRestaurant = _this4.listRestaurant.map(function (element) {
           return _objectSpread(_objectSpread({}, element), {}, {
             route: _this4.url + element.slug
           });
         });
+        _this4.load = true;
       })["catch"](function (error) {
         console.log(error);
       });
