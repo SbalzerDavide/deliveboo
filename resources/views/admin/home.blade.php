@@ -4,7 +4,7 @@
     <div class="container">
         <h5>Nome Ristorante: {{$user->name}}</h5>
         <div class="rest-name">
-            <p>Immagine ristorante :</p>
+            <p>Immagine ristorante 1:</p>
             <img width="100px" src="{{ asset('storage/' . $user->path_image) }}" alt="{{$user->name}}"> 
         </div>
         
