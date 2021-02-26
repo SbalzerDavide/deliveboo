@@ -40,6 +40,8 @@ const search = new Vue({
                     route:this.baseUrl + '/guest/restaurantShow/' + element.slug
                     }
                 })
+            this.load = true;
+
             })
             .catch(error => {
             console.log(error);
@@ -47,10 +49,10 @@ const search = new Vue({
         );
     },
     mounted() {
-        window.addEventListener('load', () => {
-            this.load = true;
-            console.log(this.load);
-        })
+        // window.addEventListener('load', () => {
+        //     this.load = true;
+        //     console.log(this.load);
+        // })
     },
     methods:{
         makeSearch(){
@@ -71,6 +73,8 @@ const search = new Vue({
                                 route: this.url + element.slug
                                 }
                             })
+                    this.load = true;
+
                     })
                     .catch(error => {
                     console.log(error);

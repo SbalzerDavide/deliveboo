@@ -14487,21 +14487,19 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
           route: _this.baseUrl + '/guest/restaurantShow/' + element.slug
         });
       });
+      _this.load = true;
     })["catch"](function (error) {
       console.log(error);
     });
   },
-  mounted: function mounted() {
-    var _this2 = this;
-
-    window.addEventListener('load', function () {
-      _this2.load = true;
-      console.log(_this2.load);
-    });
+  mounted: function mounted() {// window.addEventListener('load', () => {
+    //     this.load = true;
+    //     console.log(this.load);
+    // })
   },
   methods: {
     makeSearch: function makeSearch() {
-      var _this3 = this;
+      var _this2 = this;
 
       if (this.searchText != '') {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
@@ -14511,13 +14509,14 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
           }
         }).then(function (response) {
           console.log(response.data);
-          _this3.listRestaurant = response.data; //add baseUrl to avery element
+          _this2.listRestaurant = response.data; //add baseUrl to avery element
 
-          _this3.listRestaurant = _this3.listRestaurant.map(function (element) {
+          _this2.listRestaurant = _this2.listRestaurant.map(function (element) {
             return _objectSpread(_objectSpread({}, element), {}, {
-              route: _this3.url + element.slug
+              route: _this2.url + element.slug
             });
           });
+          _this2.load = true;
         })["catch"](function (error) {
           console.log(error);
         });
