@@ -31644,6 +31644,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -31658,6 +31670,8 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   data: {
     searchText: '',
     listRestaurant: [],
+    showedRestaurant: [],
+    allRestaurant: [],
     listGenre: [],
     filterGenre: [],
     genre: '',
@@ -31665,7 +31679,8 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     baseUrl: '',
     load: false,
     numberRestaurant: 10,
-    intermedio: []
+    intermedio: [],
+    removedRestaurant: 0
   },
   created: function created() {
     var _this = this;
@@ -31688,19 +31703,23 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant').then(function (response) {
       console.log(response.data);
       _this.listRestaurant = response.data; //intermedio
-
-      _this.intermedio = response.data;
-      console.log('intermedio');
-      console.log(_this.intermedio);
-      _this.restaurant = _this.intermedio.splice(_this.numberRestaurant, 10);
-      console.log('list');
-      console.log(_this.restaurant); //add baseUrl to avery element
+      // this.intermedio = response.data;
+      //add baseUrl to avery element
 
       _this.listRestaurant = _this.listRestaurant.map(function (element) {
         return _objectSpread(_objectSpread({}, element), {}, {
           route: _this.url + element.slug
         });
       });
+      _this.allRestaurant = _toConsumableArray(_this.listRestaurant);
+      _this.removedRestaurant = _this.listRestaurant.length - _this.numberRestaurant;
+      console.log(_this.removedRestaurant);
+
+      _this.listRestaurant.splice(_this.numberRestaurant, _this.removedRestaurant);
+
+      console.log('filtered');
+      console.log(_this.listRestaurant);
+      _this.showedRestaurant = _this.listRestaurant;
       _this.load = true;
     })["catch"](function (error) {
       console.log(error);
@@ -31722,14 +31741,32 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
           }
         }).then(function (response) {
           // deafaukt situation
-          console.log(response.data);
-          _this2.listRestaurant = response.data; //add baseUrl to avery element
+          _this2.listRestaurant = response.data; //intermedio
+          // this.intermedio = response.data;
+          //add baseUrl to avery element
 
           _this2.listRestaurant = _this2.listRestaurant.map(function (element) {
             return _objectSpread(_objectSpread({}, element), {}, {
               route: _this2.url + element.slug
             });
           });
+          _this2.allRestaurant = _toConsumableArray(_this2.listRestaurant);
+          _this2.removedRestaurant = _this2.listRestaurant.length - _this2.numberRestaurant;
+          console.log(_this2.removedRestaurant);
+
+          _this2.listRestaurant.splice(_this2.numberRestaurant, _this2.removedRestaurant);
+
+          console.log('filtered');
+          console.log(_this2.listRestaurant);
+          _this2.showedRestaurant = _this2.listRestaurant; // console.log(response.data)
+          // this.listRestaurant = response.data;
+          // //add baseUrl to avery element
+          // this.listRestaurant = this.listRestaurant.map(element =>{
+          //     return {
+          //         ...element,
+          //         route: this.url + element.slug
+          //     }
+          // })
         })["catch"](function (error) {
           console.log(error);
         });
@@ -31768,31 +31805,75 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       });
     },
     moreRestaurants: function moreRestaurants() {
-      var _this4 = this;
-
       console.log(this.numberRestaurant);
-      this.numberRestaurant++;
-      console.log(this.numberRestaurant);
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant').then(function (response) {
-        console.log(response.data);
-        _this4.listRestaurant = response.data; //intermedio
+      this.numberRestaurant = this.numberRestaurant + 10;
+      console.log('number');
+      console.log(this.numberRestaurant); // this.removedRestaurant = this.showedRestaurant.length - this.numberRestaurant;
+      // console.log('removed');
 
-        _this4.intermedio = response.data;
-        console.log('intermedio');
-        console.log(_this4.intermedio);
-        _this4.restaurant = _this4.intermedio.splice(_this4.numberRestaurant, 10);
-        console.log('list');
-        console.log(_this4.restaurant); //add baseUrl to avery element
-
-        _this4.listRestaurant = _this4.listRestaurant.map(function (element) {
-          return _objectSpread(_objectSpread({}, element), {}, {
-            route: _this4.url + element.slug
-          });
-        });
-        _this4.load = true;
-      })["catch"](function (error) {
-        console.log(error);
-      });
+      console.log(this.removedRestaurant);
+      console.log(this.allRestaurant);
+      this.listRestaurant = _toConsumableArray(this.allRestaurant);
+      console.log(this.listRestaurant);
+      this.listRestaurant.splice(this.numberRestaurant, 100);
+      console.log('filtered');
+      console.log(this.listRestaurant);
+      this.showedRestaurant = this.listRestaurant; // axios.get(this.baseUrl + '/api/Restaurant')
+      // .then(response => {
+      //     console.log(response.data)
+      //     this.listRestaurant = response.data;
+      //     //intermedio
+      //     // this.intermedio = response.data;
+      //     //add baseUrl to avery element
+      //     this.listRestaurant = this.listRestaurant.map(element =>{
+      //         return {
+      //             ...element,
+      //             route: this.url + element.slug
+      //         }
+      //     })
+      //     this.removedRestaurant = this.listRestaurant.length - this.numberRestaurant;
+      //     console.log(this.removedRestaurant);
+      //     this.listRestaurant.splice(this.numberRestaurant, this.removedRestaurant);
+      //     console.log('filtered');
+      //     console.log(this.listRestaurant);
+      //     // console.log('intermedio');
+      //     // console.log(this.intermedio);
+      //     // this.removedRestaurant = this.intermedio.length - this.numberRestaurant;
+      //     // console.log('removed');
+      //     // console.log(this.removedRestaurant);
+      //     // this.restaurant = this.intermedio.splice(this.numberRestaurant, this.removedRestaurant);
+      //     // console.log('list');
+      //     // console.log(this.restaurant);
+      // this.load = true;
+      // })
+      // .catch(error => {
+      // console.log(error);
+      // });
+      // this.listRestaurant = this.intermedio;
+      // this.restaurant = this.intermedio.splice(this.numberRestaurant, this.removedRestaurant);
+      // axios.get(this.baseUrl + '/api/Restaurant')
+      // .then(response => {
+      //     console.log(response.data)
+      //     this.listRestaurant = response.data;
+      //     //intermedio
+      //     this.intermedio = response.data;
+      //     console.log('intermedio');
+      //     console.log(this.intermedio);
+      //     this.restaurant = this.intermedio.splice(this.numberRestaurant, 10);
+      //     console.log('list');
+      //     console.log(this.restaurant);
+      //     //add baseUrl to avery element
+      //     this.listRestaurant = this.listRestaurant.map(element =>{
+      //         return {
+      //             ...element,
+      //             route: this.url + element.slug
+      //             }
+      //         })
+      // this.load = true;
+      // })
+      // .catch(error => {
+      // console.log(error);
+      // });
     }
   }
 });
@@ -31806,7 +31887,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\resources\js\search.js */"./resources/js/search.js");
+module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/search.js */"./resources/js/search.js");
 
 
 /***/ })

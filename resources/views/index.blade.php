@@ -23,7 +23,7 @@
             </div>
             <div v-if="listRestaurant.length>0" class="restaurant-container">
                 <ul >
-                    <a id="no-decoration" v-for="element in listRestaurant" :href="element.route">
+                    <a id="no-decoration" v-for="element in showedRestaurant" :href="element.route">
                         <li >
                             <img :src="'http://127.0.0.1:8000/storage/' + element.path_image" width="100%" alt="">
                             <div class="rest-text">
@@ -32,7 +32,9 @@
                         </li>
                     </a>
                 </ul>
+                {{-- <a href="#bottom" id="bottom" class="btn btn-primary" @click="moreRestaurants">show more restaurants</a> --}}
                 <div class="btn btn-primary" @click="moreRestaurants">
+                    {{-- <a href="#bottom">show more results</a> --}}
                     show more results
                 </div>
             </div>
