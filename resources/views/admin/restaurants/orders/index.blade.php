@@ -2,17 +2,26 @@
 
 @section('content')
     <main class="container">
-        <h1>ordini</h1>
-        <ul>
+        <h1>I tuoi ordini</h1>
+        <table class="table table-hover table-condensed">
+
             @foreach ($orders as $order)
-            <li>
-                <h5>order id: {{ $order->id }}</h5>
-                price: {{ $order->price }}
-            </li>
-                
-            @endforeach
+            <tbody>
+                <a href="#">
+                    <tr>
+                        <td>
+                            <h5>order id: {{ $order->id }}</h5>
+                        </td>
+                        <td>
+                            price: {{ $order->price }}
+                        </td>
+                    </tr>
+                </a>
+            </tbody>
             
-        </ul>
+            @endforeach
+        </table>
+            
     </main>
 
 @endsection
