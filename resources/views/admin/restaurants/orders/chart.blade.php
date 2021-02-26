@@ -1,5 +1,8 @@
 @extends('layouts.chart')
 
 @section('content')
-   <h1>tabella 2</h1>
+   <div class="container">
+   <canvas id="myChart" width="400" height="400"></canvas>
+
+   </div>
 @endsection
