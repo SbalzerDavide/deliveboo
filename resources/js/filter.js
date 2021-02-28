@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import axios from 'axios';
 
+
 const search = new Vue({
     el: '#search',
     data:{
@@ -15,7 +16,6 @@ const search = new Vue({
         var url = window.location.href;
         var urlArray = url.split("/");
         this.genre = urlArray[urlArray.length - 1];
-
         //take correct url for redirect page
         urlArray.splice(urlArray.length -2,2);
         var string = urlArray.toString();

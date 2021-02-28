@@ -12,6 +12,9 @@ class Dish extends Model
 
     public function orders(){
         return $this->belongsToMany('App\Order');
+        
+        //prova per collegamento da blade
+        // return $this->belongsToMany('App\Order', 'order_dish', 'dish_id', 'order_id');
     }
 
     protected $fillable = [

@@ -18,9 +18,17 @@
                     </tr>
                 </a>
             </tbody>
+            {{-- <h1>{{ $order->dish->name }}</h1> --}}
+            {{-- @foreach ($order->dishes as $dish)
+                {{$dish->id}}
+            @endforeach --}}
             
             @endforeach
+            
+            
         </table>
+        {{-- <h5>{{ $user->name }}</h5> --}}
+
 
         <a href="{{route('admin.chart')}}">
             Vedi tabella

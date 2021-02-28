@@ -1,52 +1,153 @@
 import Vue from 'vue';
 import axios from 'axios';
-<<<<<<< HEAD
-// import chart from 'chart';
-import Chart from 'chart.js';
-=======
 import Chart from 'chart.js';
 import $ from 'jquery';
 
 
-
+// console.log('inizio');
 $(document).ready(function(){
-    var ctx = document.getElementById('myChart');
-    var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
+    axios.get('http://127.0.0.1:8000/api/Order',{
+            params:{
+                id: attualId,
+                year: 2021,
+            }
+        })
+        .then(function (response) {
+            console.log(response.data);
+            // console.log(window);
+            var results = response.data;
+            var ready = [
+                {
+                    month: 'gennaio',
+                    sales: 0
+                },
+                {
+                    month: 'febbraio',
+                    sales: 0
+                },
+                {
+                    month: 'marzo',
+                    sales: 0
+                },
+                {
+                    month: 'aprile',
+                    sales: 0
+                },
+                {
+                    month: 'maggio',
+                    sales: 0
+                },
+                {
+                    month: 'giugno',
+                    sales: 0
+                },
+                {
+                    month: 'luglio',
+                    sales: 0
+                },
+                {
+                    month: 'agosto',
+                    sales: 0
+                },
+                {
+                    month: 'settembre',
+                    sales: 0
+                },
+                {
+                    month: 'ottoble',
+                    sales: 0
+                },
+                {
+                    month: 'novembre',
+                    sales: 0
+                },
+                {
+                    month: 'dicembre',
+                    sales: 0
+                },
 
- });
->>>>>>> ad2f299efff37c3dd45c10c674d62746afa24626
+            ];
+            var monthSales = [];
+            console.log(attualId);
+            
+            // console.log('id:' + id);
+            // console.log(ready);
+            results.forEach(element => {
+                for(let i = 1; i < 13; i++){
+                    // console.log(i);
+                    if(i == element.month){
+                        // console.log(i);
+                        ready[i].sales += parseInt(element.price);
+                    }
+                }
+            });
+            ready.splice(0,1);
+            ready.forEach(element=> {
+                monthSales.push(element.sales);
+            });
+            // console.log(results);
+            // console.log(ready);
+            // console.log(monthSales);
+            window.myNewArray = monthSales;
+            // console.log('variabile globale');
+            console.log(window.myNewArray);
+            // console.log(window);
+
+            //istanza chiart
+            var ctx = document.getElementById('myChart');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottoble', 'novembre', 'dicembre'],
+                    datasets: [{
+                        label: 'sales four month',
+                        data: window.myNewArray,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    console.log('dopo axios');
+});
