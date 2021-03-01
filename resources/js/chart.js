@@ -3,8 +3,7 @@ import axios from 'axios';
 import Chart from 'chart.js';
 import $ from 'jquery';
 
-
-// console.log('inizio');
+//jquery
 $(document).ready(function(){
     axios.get('http://127.0.0.1:8000/api/Order',{
             params:{
@@ -14,7 +13,6 @@ $(document).ready(function(){
         })
         .then(function (response) {
             console.log(response.data);
-            // console.log(window);
             var results = response.data;
             var ready = [
                 {
@@ -68,15 +66,9 @@ $(document).ready(function(){
 
             ];
             var monthSales = [];
-            console.log(attualId);
-            
-            // console.log('id:' + id);
-            // console.log(ready);
             results.forEach(element => {
                 for(let i = 1; i < 13; i++){
-                    // console.log(i);
                     if(i == element.month){
-                        // console.log(i);
                         ready[i].sales += parseInt(element.price);
                     }
                 }
@@ -85,15 +77,10 @@ $(document).ready(function(){
             ready.forEach(element=> {
                 monthSales.push(element.sales);
             });
-            // console.log(results);
-            // console.log(ready);
-            // console.log(monthSales);
             window.myNewArray = monthSales;
-            // console.log('variabile globale');
             console.log(window.myNewArray);
-            // console.log(window);
 
-            //istanza chiart
+            //istanza chart
             var ctx = document.getElementById('myChart');
             var myChart = new Chart(ctx, {
                 type: 'bar',
@@ -149,5 +136,4 @@ $(document).ready(function(){
         .catch(function (error) {
             console.log(error);
         });
-    console.log('dopo axios');
 });
