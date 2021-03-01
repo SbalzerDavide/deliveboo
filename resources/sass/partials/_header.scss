@@ -1,29 +1,41 @@
 .header-home{
-    height: 100vh;
+    height: 600px;
     background-image: url('../image/top_bg.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 0 75%;
+    // background-position: 0 75%;
     
     position: relative;
 }
 
+.header-restaurant{
+    background-image: url('../image/header.png');
+    // background-size: ;
+}
 
 .hero-home{
     padding: 50px;
     position: relative;
     h1{  
         color: black;
-        font-size: 40px;
+        font-size: 60px;
         font-weight: 900;
-
     }
 }
 
 .hero-text{
     position: absolute;
-    right: 10%;
-    width: 30%;
+    right: 15%;
+    top: 100%;
+    width: 40%;
+    h1,
+    h2{
+        margin: 10px 0;
+    }
+
+    // .inline{
+    //     display: inline-block;
+    // }
 }
 
 .navbar{

@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.home')
 
 @section('content')
 
-    <div class="container">
+    <div class="container home">
+
+        <h2 class="text-center ">Select a genre</h2>
        
         <div >
 	        <ul class="grid-container">

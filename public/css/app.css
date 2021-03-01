@@ -32,6 +32,11 @@ ul li {
   display: inline-block;
   color: #fff;
   transition: all 0.3s;
+  margin-left: 15px;
+  cursor: pointer;
+}
+.btn-list.large {
+  padding: 10px 30px;
 }
 .btn-list:hover {
   color: white;
@@ -10085,12 +10090,15 @@ h3 {
   }
 }
 .header-home {
-  height: 100vh;
+  height: 600px;
   background-image: url("../image/top_bg.png");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 0 75%;
   position: relative;
+}
+
+.header-restaurant {
+  background-image: url("../image/header.png");
 }
 
 .hero-home {
@@ -10099,14 +10107,19 @@ h3 {
 }
 .hero-home h1 {
   color: black;
-  font-size: 40px;
+  font-size: 60px;
   font-weight: 900;
 }
 
 .hero-text {
   position: absolute;
-  right: 10%;
-  width: 30%;
+  right: 15%;
+  top: 100%;
+  width: 40%;
+}
+.hero-text h1,
+.hero-text h2 {
+  margin: 10px 0;
 }
 
 .navbar {
@@ -10125,7 +10138,7 @@ h3 {
   text-decoration: underline;
 }
 .navbar #black-color {
-  color: #2E3333;
+  color: #15415B;
 }
 
 /* .restaurant-button{
@@ -10135,6 +10148,11 @@ h3 {
     color: white;
 
 } */
+.home h2 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
 .grid-container {
   margin-top: 40px;
   display: grid;
@@ -10187,6 +10205,24 @@ h3 {
   background: rgba(255, 255, 255, 0);
 }
 
+#search .hero-rest {
+  background-image: url("../image/newyork.png");
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  padding: 20px 0;
+  margin-bottom: 50px;
+}
+#search .hero-rest .box {
+  width: 60%;
+  height: 100%;
+  padding-top: 30px;
+}
+#search .hero-rest h3 {
+  font-size: 55px;
+  font-weight: 700;
+  margin: 30px 0;
+}
 #search .container h1 {
   text-align: center;
   font-weight: 800;
@@ -10194,20 +10230,36 @@ h3 {
 #search .container h3 span {
   color: red;
 }
-#search .container .search-restaurant {
+#search .container .input-primary {
   width: 250px;
   height: 35px;
-  padding: 0 10px;
-  border-radius: 10px;
+  padding: 20px 10px;
+  border-radius: 3px;
+  border: 2px solid #F9994F;
+  outline: 0;
 }
 #search .container button {
   width: 100px;
   height: 35px;
   border-radius: 10px;
 }
+#search .container .form-check {
+  margin-top: 1rem;
+  width: 200px;
+  display: inline-block;
+}
+#search .container .form-check .btn-list {
+  text-align: center;
+  position: relative;
+  margin-top: 10px;
+  right: 20px;
+}
+#search .container .form-check .btn-list:hover {
+  cursor: pointer;
+}
 #search .container .container-restaurant-genres {
   display: grid;
-  grid-template-columns: 1fr 7fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
 #search .container .container-restaurant-genres .restaurant-container ul {
@@ -10216,33 +10268,25 @@ h3 {
   gap: 1rem;
   margin: 1rem 0;
 }
-#search .container .container-restaurant-genres .restaurant-container ul li {
+#search .container .container-restaurant-genres .restaurant-container ul .rest-box {
   grid-template-rows: minmax(100px, auto);
   display: grid;
   align-content: flex-start;
   border-radius: 5px;
+  background: #F8F6EB;
+  border: 1px solid #FFB954;
+  padding: 10px;
+  color: #000;
+  min-height: 230px;
 }
-#search .container .container-restaurant-genres .restaurant-container ul li img {
+#search .container .container-restaurant-genres .restaurant-container ul .rest-box img {
   border-radius: 5px;
   -o-object-fit: cover;
      object-fit: cover;
   height: 150px;
 }
-#search .container .container-restaurant-genres .restaurant-container ul li .rest-text {
+#search .container .container-restaurant-genres .restaurant-container ul .rest-box .rest-text {
   padding: 15px 10px;
-}
-#search .container .container-restaurant-genres .form-check.container {
-  max-width: 150px;
-  margin-top: 1rem;
-}
-#search .container .container-restaurant-genres .form-check.container .btn-list {
-  text-align: center;
-  position: relative;
-  margin-top: 10px;
-  right: 20px;
-}
-#search .container .container-restaurant-genres .form-check.container .btn-list:hover {
-  cursor: pointer;
 }
 
 .rest-show {
@@ -10272,11 +10316,11 @@ h3 {
 }
 
 footer {
-  background: #2E3333;
+  background: #15415B;
 }
 footer .wraper {
   display: grid;
-  padding: 1rem;
+  padding: 2rem 0;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
   margin: 0 auto;
@@ -10284,7 +10328,6 @@ footer .wraper {
 footer .wraper div {
   /*  width: 250px;
    height: 250px; */
-  background-color: #434848;
   color: white;
   padding: 1rem;
   border-radius: 5px;

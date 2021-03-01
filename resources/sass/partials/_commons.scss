@@ -26,6 +26,8 @@ ul li{
     list-style-type: none;
 }
 
+
+
 /* btn */
 
 .btn-list{
@@ -35,12 +37,17 @@ ul li{
     display: inline-block;
     color: $white;
     transition: all 0.3s;
+    margin-left: 15px;
+    cursor: pointer;
     // margin: 2rem;
+    &.large{
+        padding: 10px 30px;
+    }
+    
     &:hover{
         color: white;
         text-decoration: none;
         background: #FFB954;
-        
     }
 }
 

@@ -1,6 +1,31 @@
 #search{
 
+    .hero-rest{
+        background-image: url('../image/newyork.png');
+        background-size: cover;
+        background-position: center;
+        height: 400px;
+        padding: 20px 0;
+        margin-bottom: 50px;
+
+        .box{
+            width: 60%;
+            height: 100%;
+            padding-top: 30px;
+            // display: flex;
+            // flex-direction: column;
+            // justify-content: space-around;
+        }
+
+        h3{
+            font-size: 55px;
+            font-weight: 700;
+            margin: 30px 0;
+        }
+    }
+
     .container{
+
 
         h1{
             text-align: center;
@@ -13,11 +38,14 @@
             }
         }
 
-        .search-restaurant{
+        .input-primary{
             width: 250px;
             height: 35px;
-            padding: 0 10px;
-            border-radius: 10px;
+            padding: 20px 10px;
+            border-radius: 3px;
+            border: 2px solid $orange;
+            outline: 0;
+           
         }
 
         button{
@@ -25,6 +53,8 @@
             height: 35px;
             border-radius: 10px;
         }
+
+        
         
 
         .container-restaurant-genres{
@@ -32,7 +62,7 @@
             display: grid;
             grid-template-columns: 1fr 7fr;
             gap: 1rem;
-
+          
             .restaurant-container{
     
                 ul{
@@ -43,13 +73,18 @@
 
                    
                     
-                    li{
+                    .rest-box{
                         grid-template-rows: minmax(100px, auto) ;
                         display: grid;
                         // border: 1px solid red;
                         align-content: flex-start;
                         // justify-content: center;
                         border-radius: 5px;
+                        background: #F8F6EB;
+                        border: 1px solid #FFB954;
+                        padding: 10px;
+                        color: #000;
+                        min-height: 230px;
                         
                         img{
                             border-radius: 5px;
@@ -63,23 +98,25 @@
                     }
     
                 }
-            }
-
-            .form-check.container{
-                // border: 1px solid red;
-                max-width: 150px;
-                margin-top: 1rem;
-
-                .btn-list{
-                    text-align: center;
-                    position: relative;
-                    margin-top: 10px;
-                    right: 20px;
-                    &:hover{
-                        cursor: pointer;
-                    }
-                }
-
+                
+                            .form-check{
+                                // border: 1px solid red;
+                                max-width: 150px;
+                                margin-top: 1rem;
+                                // width: 200px;
+                                // display: inline-block;
+                
+                                .btn-list{
+                                    text-align: center;
+                                    position: relative;
+                                    margin-top: 10px;
+                                    right: 20px;
+                                    &:hover{
+                                        cursor: pointer;
+                                    }
+                                }
+                
+                        }
             }
 
         }

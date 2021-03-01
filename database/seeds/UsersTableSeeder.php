@@ -31,6 +31,9 @@ class UsersTableSeeder extends Seeder
             $newUser->email  = $faker->unique()->email;
             $newUser->slug = Str::slug($newUser->name, '-');
             $newUser->password = Hash::make('password');
+            $newUser->path_image = 'image/' . $i . '.jpg';
+
+
 
             
             //    $newUser->genres()->attach(
@@ -45,6 +48,8 @@ class UsersTableSeeder extends Seeder
         $user = User::find(1);
         
         $user->genres()->attach($newGenre);
+
+        
 
     }
 }
