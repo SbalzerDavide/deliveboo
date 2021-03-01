@@ -1,10 +1,22 @@
 <header class="header-home">
-    <div class="layover">
+    <div>
         @include('partials.navbar')
         <div class="hero-home container">
-            <p>
-                <span>deliveboo</span>, pranzo e cena a domicilio.
-            </p>
+           
+            <div class="hero-text">
+               <h1>
+                    DeliveBoo, pranzo e cena a domicilio.
+               </h1>
+               <h2>
+                   Visualizza i nostri Ristoranti
+               </h2>
+               <div class="restaurant-button">
+                  <a class="btn-list" href="{{route('Restaurant')}}">
+                   Ristoranti
+                  </a>
+               </div> 
+            </div>
+           
         </div>
     </div>
 

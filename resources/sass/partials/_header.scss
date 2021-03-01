@@ -1,31 +1,45 @@
 .header-home{
     height: 100vh;
-    background-image: url('../image/deliveboo.png');
+    background-image: url('../image/top_bg.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 0 75%;
-
+    
     position: relative;
 }
 
 
 .hero-home{
     padding: 50px;
-    p{  
-        color: #fff;
+    position: relative;
+    h1{  
+        color: black;
         font-size: 40px;
-        text-transform: uppercase;
-        span{
-            font-weight: 700;
-        }
+        font-weight: 900;
+
     }
+}
+
+.hero-text{
+    position: absolute;
+    right: 10%;
+    width: 30%;
 }
 
 .navbar{
     background: transparent;
+
+    .navbar-brand{
+      
+        
+     color:$orange;
+     font-weight: 700;
+     font-size: 25px;
+    
+    }
     a{
         color: white;
-
+        font-size: 20px;
         &:hover{
             text-decoration: underline;
         }

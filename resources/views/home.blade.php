@@ -3,14 +3,7 @@
 @section('content')
 
     <div class="container">
-        <h2 class="text-center">
-            Visualizza i nostri Ristoranti
-        </h2>
-        <div class="restaurant-button">
-          <a class="btn-list" href="{{route('Restaurant')}}">
-            Ristoranti
-          </a>
-        </div>  
+       
         <div >
 	        <ul class="grid-container">
         	    @foreach ($genres as $genre)
