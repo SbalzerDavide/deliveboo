@@ -12,9 +12,6 @@
             width: 60%;
             height: 100%;
             padding-top: 30px;
-            // display: flex;
-            // flex-direction: column;
-            // justify-content: space-around;
         }
 
         h3{
@@ -69,7 +66,7 @@
                     display: grid;
                     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) );
                     gap: 1rem;
-                    margin: 1rem 0;
+                   
 
                    
                     
@@ -85,11 +82,18 @@
                         padding: 10px;
                         color: #000;
                         min-height: 230px;
+                        overflow: hidden;
+                        
+
+                        &:hover img{
+                            transform: scale(1.15);
+                        }
                         
                         img{
                             border-radius: 5px;
                             object-fit: cover;
                             height: 150px;
+                            transition: all 0.3s linear;
                         }
                         
                         .rest-text{
@@ -99,27 +103,38 @@
     
                 }
                 
-                            .form-check{
-                                // border: 1px solid red;
-                                max-width: 150px;
-                                margin-top: 1rem;
-                                // width: 200px;
-                                // display: inline-block;
-                
-                                .btn-list{
-                                    text-align: center;
-                                    position: relative;
-                                    margin-top: 10px;
-                                    right: 20px;
-                                    &:hover{
-                                        cursor: pointer;
-                                    }
-                                }
-                
-                        }
+                            
             }
 
-        }
+                .form-check{
+                    height: 350px;
+                    border: 1px solid #FFB954;
+                    background-color: #F8F6EB
+                    ;    
+                    border-radius: 5px;               
+
+                    .btn-list{
+                        text-align: center;
+                        position: relative;
+                        margin-top: 10px;
+                        right: 20px;
+                        &:hover{
+                            cursor: pointer;
+                        }
+                    }
+
+                    .check:first-child{
+                        padding-top: 1rem;
+                    }
+
+                    .check{
+                        padding: 0 1rem ;
+                        
+                    }
+
+            }
+
+            }
 
     }
 

@@ -31,7 +31,7 @@
                 <ul >
                     <a id="no-decoration" v-for="element in showedRestaurant" :href="element.route">
                         <li class="rest-box">
-                            <img :src="'http://127.0.0.1:8000/storage/' + element.path_image" width="100%" alt="">
+                            <img class="zoom-in" :src="'http://127.0.0.1:8000/storage/' + element.path_image" width="100%" alt="">
                             <div class="rest-text">
                                 <h5>@{{element.name}}</h5> 
                             </div>
@@ -39,7 +39,7 @@
                     </a>
                 </ul>
                 {{-- <a href="#bottom" id="bottom" class="btn btn-primary" @click="moreRestaurants">show more restaurants</a> --}}
-                <div class="btn btn-primary" @click="moreRestaurants">
+                <div class="btn-list mt-5 mb-5" @click="moreRestaurants">
                     {{-- <a href="#bottom">show more results</a> --}}
                     show more results
                 </div>

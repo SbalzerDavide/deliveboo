@@ -10243,30 +10243,15 @@ h3 {
   height: 35px;
   border-radius: 10px;
 }
-#search .container .form-check {
-  margin-top: 1rem;
-  width: 200px;
-  display: inline-block;
-}
-#search .container .form-check .btn-list {
-  text-align: center;
-  position: relative;
-  margin-top: 10px;
-  right: 20px;
-}
-#search .container .form-check .btn-list:hover {
-  cursor: pointer;
-}
 #search .container .container-restaurant-genres {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 7fr;
   gap: 1rem;
 }
 #search .container .container-restaurant-genres .restaurant-container ul {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
-  margin: 1rem 0;
 }
 #search .container .container-restaurant-genres .restaurant-container ul .rest-box {
   grid-template-rows: minmax(100px, auto);
@@ -10278,15 +10263,41 @@ h3 {
   padding: 10px;
   color: #000;
   min-height: 230px;
+  overflow: hidden;
+}
+#search .container .container-restaurant-genres .restaurant-container ul .rest-box:hover img {
+  transform: scale(1.15);
 }
 #search .container .container-restaurant-genres .restaurant-container ul .rest-box img {
   border-radius: 5px;
   -o-object-fit: cover;
      object-fit: cover;
   height: 150px;
+  transition: all 0.3s linear;
 }
 #search .container .container-restaurant-genres .restaurant-container ul .rest-box .rest-text {
   padding: 15px 10px;
+}
+#search .container .container-restaurant-genres .form-check {
+  height: 350px;
+  border: 1px solid #FFB954;
+  background-color: #F8F6EB;
+  border-radius: 5px;
+}
+#search .container .container-restaurant-genres .form-check .btn-list {
+  text-align: center;
+  position: relative;
+  margin-top: 10px;
+  right: 20px;
+}
+#search .container .container-restaurant-genres .form-check .btn-list:hover {
+  cursor: pointer;
+}
+#search .container .container-restaurant-genres .form-check .check:first-child {
+  padding-top: 1rem;
+}
+#search .container .container-restaurant-genres .form-check .check {
+  padding: 0 1rem;
 }
 
 .rest-show {
