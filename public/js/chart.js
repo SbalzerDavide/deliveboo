@@ -63121,7 +63121,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // console.log('inizio');
+ //jquery
 
 jquery__WEBPACK_IMPORTED_MODULE_3___default()(document).ready(function () {
   axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://127.0.0.1:8000/api/Order', {
@@ -63130,8 +63130,7 @@ jquery__WEBPACK_IMPORTED_MODULE_3___default()(document).ready(function () {
       year: 2021
     }
   }).then(function (response) {
-    console.log(response.data); // console.log(window);
-
+    console.log(response.data);
     var results = response.data;
     var ready = [{
       month: 'gennaio',
@@ -63171,14 +63170,9 @@ jquery__WEBPACK_IMPORTED_MODULE_3___default()(document).ready(function () {
       sales: 0
     }];
     var monthSales = [];
-    console.log(attualId); // console.log('id:' + id);
-    // console.log(ready);
-
     results.forEach(function (element) {
       for (var i = 1; i < 13; i++) {
-        // console.log(i);
         if (i == element.month) {
-          // console.log(i);
           ready[i].sales += parseInt(element.price);
         }
       }
@@ -63186,14 +63180,9 @@ jquery__WEBPACK_IMPORTED_MODULE_3___default()(document).ready(function () {
     ready.splice(0, 1);
     ready.forEach(function (element) {
       monthSales.push(element.sales);
-    }); // console.log(results);
-    // console.log(ready);
-    // console.log(monthSales);
-
-    window.myNewArray = monthSales; // console.log('variabile globale');
-
-    console.log(window.myNewArray); // console.log(window);
-    //istanza chiart
+    });
+    window.myNewArray = monthSales;
+    console.log(window.myNewArray); //istanza chart
 
     var ctx = document.getElementById('myChart');
     var myChart = new chart_js__WEBPACK_IMPORTED_MODULE_2___default.a(ctx, {
@@ -63222,7 +63211,6 @@ jquery__WEBPACK_IMPORTED_MODULE_3___default()(document).ready(function () {
   })["catch"](function (error) {
     console.log(error);
   });
-  console.log('dopo axios');
 });
 
 /***/ }),
@@ -63234,7 +63222,7 @@ jquery__WEBPACK_IMPORTED_MODULE_3___default()(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/chart.js */"./resources/js/chart.js");
+module.exports = __webpack_require__(/*! C:\Users\pgmin\Desktop\Corso\DeliveBoo\resources\js\chart.js */"./resources/js/chart.js");
 
 
 /***/ })
