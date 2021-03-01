@@ -16,7 +16,7 @@
         	    @foreach ($genres as $genre)
                     <a href="{{ route('RestaurantByGenre', $genre->genre_name) }}">
                     <li>
-                        <div>
+                        <div class="layover">
                             <p>
                                 {{ $genre->genre_name }}
                             </p>

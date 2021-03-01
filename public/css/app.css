@@ -10078,7 +10078,7 @@ h3 {
   }
 }
 .header-home {
-  height: 600px;
+  height: 100vh;
   background-image: url("../image/deliveboo.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -10104,10 +10104,11 @@ h3 {
 .navbar a {
   color: white;
 }
-
-main {
-  background: #eb8d08;
-  background: linear-gradient(90deg, #eb8d08 0%, #fdc21d 44%, rgba(238, 208, 52, 0.5634454465) 85%, rgba(235, 232, 178, 0.9387955866) 100%);
+.navbar a:hover {
+  text-decoration: underline;
+}
+.navbar #black-color {
+  color: #2E3333;
 }
 
 .restaurant-button {
@@ -10128,8 +10129,9 @@ main {
   margin: auto;
   text-align: center;
   position: relative;
+  transition: all 0.4s linear;
 }
-.grid-container a li div {
+.grid-container a li .layover {
   position: absolute;
   display: grid;
   left: 50%;
@@ -10139,14 +10141,17 @@ main {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
+  overflow-x: hidden;
+  transition: all 0.2s linear;
 }
-.grid-container a li div p {
+.grid-container a li .layover p {
   display: grid;
   align-items: center;
   color: white;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 18px;
+  transition: all 0.4s linear;
 }
 .grid-container a li img {
   width: 300px;
@@ -10157,6 +10162,12 @@ main {
   transform: scale(1.05);
   transition: 0.4s;
   box-shadow: 0px 50px 90px -30px #aaa;
+}
+.grid-container a:hover p {
+  transform: translateX(200px);
+}
+.grid-container a:hover .layover {
+  background: rgba(255, 255, 255, 0);
 }
 
 #search .container h1 {
