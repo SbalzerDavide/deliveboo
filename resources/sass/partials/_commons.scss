@@ -64,3 +64,22 @@ ul li{
         100% {transform: rotate(360deg);}
     }
 }
+
+// form register
+.form .card{
+    border: 1px solid $orange;
+
+    .form-group.check{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        height: 100px;
+        .form-check{
+            width: 20%;
+            text-align: center;
+        }
+    }
+    .form-group.image{
+        // margin-left: 200px;
+    }
+}

@@ -76,6 +76,19 @@ ul li {
   }
 }
 
+.form .card {
+  border: 1px solid #F9994F;
+}
+.form .card .form-group.check {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 100px;
+}
+.form .card .form-group.check .form-check {
+  width: 20%;
+  text-align: center;
+}
 .hidden {
   display: none;
 }
