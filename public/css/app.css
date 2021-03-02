@@ -10143,10 +10143,9 @@ h3 {
 .navbar {
   background: transparent;
 }
-.navbar .navbar-brand {
-  color: #F9994F;
-  font-weight: 700;
-  font-size: 25px;
+.navbar .navbar-brand .logo-deliveboo {
+  max-width: 200px;
+  background-color: red;
 }
 .navbar a {
   color: white;
