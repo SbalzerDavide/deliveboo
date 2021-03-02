@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md">
     <div class="container">
         <a class="navbar-brand" href="{{ route('homepage') }}">
-            <img class="logo-deliveboo" src="{{asset('image/logo.png')}}" alt="">
+            <img height="70" src="{{asset('image/logo.png')}}" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span style="color:white" class="navbar-toggler-icon"><i><i class="fas fa-bars"></i></i></span>

@@ -10117,6 +10117,8 @@ h3 {
 
 .header-restaurant {
   background-image: url("../image/header.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .hero-home {
