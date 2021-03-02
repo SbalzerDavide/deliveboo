@@ -31702,9 +31702,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant').then(function (response) {
       console.log(response.data);
-      _this.listRestaurant = response.data; //intermedio
-      // this.intermedio = response.data;
-      //add baseUrl to avery element
+      _this.listRestaurant = response.data; //add baseUrl to avery element
 
       _this.listRestaurant = _this.listRestaurant.map(function (element) {
         return _objectSpread(_objectSpread({}, element), {}, {
@@ -31713,22 +31711,14 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       });
       _this.allRestaurant = _toConsumableArray(_this.listRestaurant);
       _this.removedRestaurant = _this.listRestaurant.length - _this.numberRestaurant;
-      console.log(_this.removedRestaurant);
 
       _this.listRestaurant.splice(_this.numberRestaurant, _this.removedRestaurant);
 
-      console.log('filtered');
-      console.log(_this.listRestaurant);
       _this.showedRestaurant = _this.listRestaurant;
       _this.load = true;
     })["catch"](function (error) {
       console.log(error);
     });
-  },
-  mounted: function mounted() {// window.addEventListener('load', () => {
-    //     this.load = true;
-    //     console.log(this.load);
-    // })
   },
   methods: {
     makeSearch: function makeSearch() {
@@ -31743,10 +31733,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
             name: this.searchText
           }
         }).then(function (response) {
-          // deafaukt situation
-          _this2.listRestaurant = response.data; //intermedio
-          // this.intermedio = response.data;
-          //add baseUrl to avery element
+          _this2.listRestaurant = response.data; //add baseUrl to avery element
 
           _this2.listRestaurant = _this2.listRestaurant.map(function (element) {
             return _objectSpread(_objectSpread({}, element), {}, {
@@ -31755,27 +31742,15 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
           });
           _this2.allRestaurant = _toConsumableArray(_this2.listRestaurant);
           _this2.removedRestaurant = _this2.listRestaurant.length - _this2.numberRestaurant;
-          console.log(_this2.removedRestaurant);
 
           _this2.listRestaurant.splice(_this2.numberRestaurant, _this2.removedRestaurant);
 
-          console.log('filtered');
-          console.log(_this2.listRestaurant);
-          _this2.showedRestaurant = _this2.listRestaurant;
+          _this2.showedRestaurant = _this2.listRestaurant; //hide button
 
           if (_this2.numberRestaurant >= _this2.allRestaurant.length) {
             _this2.buttonShow = false;
             console.log('condizione if');
-          } // console.log(response.data)
-          // this.listRestaurant = response.data;
-          // //add baseUrl to avery element
-          // this.listRestaurant = this.listRestaurant.map(element =>{
-          //     return {
-          //         ...element,
-          //         route: this.url + element.slug
-          //     }
-          // })
-
+          }
         })["catch"](function (error) {
           console.log(error);
         });
@@ -31783,7 +31758,6 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     },
     takeGenre: function takeGenre(index) {
       var actualGenre = this.listGenre[index].genre_name;
-      console.log(actualGenre);
 
       if (!this.filterGenre.includes(actualGenre)) {
         this.filterGenre.push(actualGenre);
@@ -31802,7 +31776,6 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
           genre: this.filterGenre
         }
       }).then(function (response) {
-        // deafaukt situation
         console.log(response.data);
         _this3.listRestaurant = response.data; //add baseUrl to avery element
 
@@ -31813,15 +31786,10 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         });
         _this3.allRestaurant = _toConsumableArray(_this3.listRestaurant);
         _this3.removedRestaurant = _this3.listRestaurant.length - _this3.numberRestaurant;
-        console.log(_this3.removedRestaurant);
 
         _this3.listRestaurant.splice(_this3.numberRestaurant, _this3.removedRestaurant);
 
-        console.log('filtered');
-        console.log(_this3.listRestaurant);
-        _this3.showedRestaurant = _this3.listRestaurant;
-        console.log(_this3.numberRestaurant);
-        console.log(_this3.allRestaurant.length);
+        _this3.showedRestaurant = _this3.listRestaurant; //hide button
 
         if (_this3.numberRestaurant >= _this3.allRestaurant.length) {
           _this3.buttonShow = false;
@@ -31832,31 +31800,15 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       });
     },
     moreRestaurants: function moreRestaurants() {
-      console.log(this.numberRestaurant);
       this.numberRestaurant = this.numberRestaurant + 10;
-      console.log('number');
-      console.log(this.numberRestaurant); // this.removedRestaurant = this.showedRestaurant.length - this.numberRestaurant;
-      // console.log('removed');
-
-      console.log(this.removedRestaurant);
-      console.log(this.allRestaurant);
       this.listRestaurant = _toConsumableArray(this.allRestaurant);
-      console.log(this.listRestaurant);
       this.listRestaurant.splice(this.numberRestaurant, 100);
-      console.log('filtered');
-      console.log(this.listRestaurant);
-      this.showedRestaurant = this.listRestaurant;
-      console.log('...........');
-      console.log(this.numberRestaurant);
-      console.log(this.allRestaurant.length);
-      console.log(this.buttonShow);
+      this.showedRestaurant = this.listRestaurant; //hide button
 
       if (this.numberRestaurant >= this.allRestaurant.length) {
         this.buttonShow = false;
         console.log('condizione if');
       }
-
-      console.log(this.buttonShow);
     }
   }
 });
@@ -31870,7 +31822,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\pgmin\Desktop\Corso\DeliveBoo\resources\js\search.js */"./resources/js/search.js");
+module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/search.js */"./resources/js/search.js");
 
 
 /***/ })
