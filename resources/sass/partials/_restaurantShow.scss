@@ -1,11 +1,53 @@
 .rest-show{
-    max-width: 70% ;
+    max-width: 80% ;
     margin: auto;
-    
+
+ 
+   
     ul li{
+        display: flex;
+        // justify-content: space-between;
         max-width: 100%;
         padding: 10px;
-        border: 1px solid red;
+        background: #F8F6EB;
+        border: 1px solid rgba(255, 136, 136, 0.31);
+        border-radius: 5px;
+        overflow: hidden;
+
+        &:hover{
+            border: 1px solid #EE931B;
+        }
+        
+        &:hover img{
+            transform: scale(1.15);
+        }
+
+        img{
+            margin-right: 20px;
+            width: 150px;
+            height: 150px;
+            border-radius: 5px;
+            object-fit: cover;
+            transition: all 0.4s;
+                        
+        }
+
+        .dish-description{
+            width: 540px;
+        }
+
+        .add-cart{
+
+            align-self: center;
+            a{
+                font-size: 36px;
+                color: rgba(255, 136, 136, 0.31);
+                margin-left: 80px;
+                &:hover{
+                    color: #EE931B;
+                }
+            }
+        }
     }
 
     .row{
@@ -17,7 +59,7 @@
 
         .btn-cart{
             a{
-
+                color: $footer;
                 background: transparent;
                 border: transparent;
                 font-weight: 700;
@@ -25,6 +67,7 @@
 
                 .badge-pill{
                     border-radius: 50%;
+                    background: $orange;
                 }
             }
 

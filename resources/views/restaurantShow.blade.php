@@ -29,17 +29,25 @@
                     </a>
                 </div>
             </div>
-                <ul>
-                    @foreach($user->dishes as $dish)
+            <ul>
+                @foreach($user->dishes as $dish)
+                <li class="mb-3">
+                    <div class="img">
+                        <img src="{{asset('storage/' . $dish->path_image )}}" alt="">
+                    </div>
+                    <div class="dish-description">
+                        <h5>{{$dish->name}}</h5>
+                        <p>{{$dish->ingredients}}</p>
+                        <p>{{$dish->price}} &euro;</p>
+                    </div>
+                    <div class="add-cart">
                         <a  id="no-decoration" class="" href="{{ route('guest.cart.add', $dish->id) }}">
-                            <li class="mb-3">
-                                <h5>{{$dish->name}}</h5>
-                                <p>{{$dish->ingredients}}</p>
-                                <p>{{$dish->price}} &euro;</p>
-                            </li>
+                            <i class="fas fa-plus"></i>
                         </a>
-                    @endforeach
-                </ul>
+                    </div>
+                </li>
+                @endforeach
+            </ul>
         </div>
     </div>
 

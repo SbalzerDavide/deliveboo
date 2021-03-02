@@ -10301,13 +10301,46 @@ h3 {
 }
 
 .rest-show {
-  max-width: 70%;
+  max-width: 80%;
   margin: auto;
 }
 .rest-show ul li {
+  display: flex;
   max-width: 100%;
   padding: 10px;
-  border: 1px solid red;
+  background: #F8F6EB;
+  border: 1px solid rgba(255, 136, 136, 0.31);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.rest-show ul li:hover {
+  border: 1px solid #EE931B;
+}
+.rest-show ul li:hover img {
+  transform: scale(1.15);
+}
+.rest-show ul li img {
+  margin-right: 20px;
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: all 0.4s;
+}
+.rest-show ul li .dish-description {
+  width: 540px;
+}
+.rest-show ul li .add-cart {
+  align-self: center;
+}
+.rest-show ul li .add-cart a {
+  font-size: 36px;
+  color: rgba(255, 136, 136, 0.31);
+  margin-left: 80px;
+}
+.rest-show ul li .add-cart a:hover {
+  color: #EE931B;
 }
 .rest-show .row {
   display: flex;
@@ -10317,6 +10350,7 @@ h3 {
   margin: 0;
 }
 .rest-show .row .btn-cart a {
+  color: #15415B;
   background: transparent;
   border: transparent;
   font-weight: 700;
@@ -10324,6 +10358,7 @@ h3 {
 }
 .rest-show .row .btn-cart a .badge-pill {
   border-radius: 50%;
+  background: #F9994F;
 }
 
 footer {

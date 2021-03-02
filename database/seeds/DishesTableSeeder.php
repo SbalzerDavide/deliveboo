@@ -20,6 +20,7 @@ class DishesTableSeeder extends Seeder
         foreach($users as $user){
 
             for($i = 0; $i < 10; $i++){
+                $random = $faker->numberBetween(0, 14);
                 $newDish = new Dish();
     
                 $newDish->user_id = $user->id;
@@ -29,6 +30,7 @@ class DishesTableSeeder extends Seeder
                 $newDish->ingredients = $faker->words(10, true);
                 $newDish->price = $faker->randomFloat(2, 2, 50);
                 $newDish->visibility = $faker->boolean();
+                $newDish->path_image = 'image/dish-' . $random . '.jpg';
 
                 $newDish->save();
 
