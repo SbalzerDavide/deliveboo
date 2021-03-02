@@ -53,19 +53,22 @@ class GenresTableSeeder extends Seeder
                 'url' => 'pesce.jpg'
             ],
         ];
+        $count = 0;
 
-        foreach($genres as $genre){
-            $newGenre = new Genre();
-        
-            $newGenre->genre_name = $genre['name'];
-            $newGenre->url = $genre['url'];
-            $newGenre->save();
-        }
         $takeGenres = Genre::all();
-        if (empty($takeGenres)){
+        foreach($takeGenres as $genre){
+            $count = $count +1;
+        };
+        if($count == 0){
+            foreach($genres as $genre){
+                $newGenre = new Genre();
             
-            
+                $newGenre->genre_name = $genre['name'];
+                $newGenre->url = $genre['url'];
+                $newGenre->save();
+            }
         }
+
 
     }
 }
