@@ -17,6 +17,20 @@ class UsersTableSeeder extends Seeder
     {
         $genres = Genre::all();
 
+        $restaurantName = [
+            'America Graffiti',
+            'La locanda del tempo perso',
+            'Osteria vecchio Botticino',
+            'Ristorante Castello Malvezzi',
+            'Corte del mago',
+            'Antica trattoria del ponte',
+            'Eden',
+            'I Du de la contrada',
+            'Creminati',
+            'La vineria',
+            
+        ];
+
         for($i = 0; $i < 10; $i++ )
         {
 
