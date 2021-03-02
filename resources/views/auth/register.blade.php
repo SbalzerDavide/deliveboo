@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container form">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -12,6 +12,8 @@
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
+
+                        {{-- name --}}
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -26,6 +28,7 @@
                             </div>
                         </div>
 
+                        {{-- address --}}
                         <div class="form-group row">
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
@@ -40,35 +43,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            @foreach ($genres as $genre)
-                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="genres[]" id="genre-{{ $genre->id }}" value="{{ $genre->id }}">
-                                <label class="form-check-label" for="genre-{{ $genre->id }}">{{ $genre->genre_name }}</label>
-                            </div>
-                           @endforeach
-                         </div>
-
-                        <div class="form-group row">
-                            <label for="PIva" class="col-md-4 col-form-label text-md-right">{{ __('PIva') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="PIva" type="text" class="form-control @error('PIva') is-invalid @enderror" name="PIva" value="{{ old('PIva') }}" required autocomplete="PIva" autofocus>
-
-                                @error('PIva')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="path_image">Dish image:</label>
-                                <input  class="form-control" type="file" name="path_image" id="path_image"  accept="image/*">
-                            </div>
-                        </div>
-                        
-
+                        {{-- email --}}
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -83,6 +58,48 @@
                             </div>
                         </div>
 
+                        {{-- pIva --}}
+                        <div class="form-group row">
+                            <label for="PIva" class="col-md-4 col-form-label text-md-right">{{ __('PIva') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="PIva" type="text" class="form-control @error('PIva') is-invalid @enderror" name="PIva" value="{{ old('PIva') }}" required autocomplete="PIva" autofocus>
+
+                                @error('PIva')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        {{-- checkbox with genres --}}
+                        <h5>Select the genres of your restaurant </h5>
+                        <div class="form-group check">
+                            @foreach ($genres as $genre)
+                             <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="genres[]" id="genre-{{ $genre->id }}" value="{{ $genre->id }}">
+                                <label class="form-check-label" for="genre-{{ $genre->id }}">{{ $genre->genre_name }}</label>
+                            </div>
+                           @endforeach
+                        </div>
+                         
+                        <hr>
+
+                        {{-- image --}}
+                        <div class="form-group row">
+                             <label class="col-md-4 col-form-label text-md-right" for="path_image">Restaurant image:</label>
+                             <div class="col-md-6">
+
+                                 <input  class="form-control" type="file" name="path_image" id="path_image"  accept="image/*">
+                             </div>
+                        </div>
+
+                        <hr>                        
+
+                        {{-- password --}}
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
