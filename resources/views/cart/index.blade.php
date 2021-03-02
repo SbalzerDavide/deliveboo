@@ -39,7 +39,8 @@
             <table id="cart" class="table table-hover table-condensed">
                 <thead>
                     <tr>
-                        <th style="width:40%">Product</th>
+                        <th style="width:10%">image</th>
+                        <th style="width:30%">Product</th>
                         <th style="width:10%">Price</th>
                         <th style="width:15%">Quantity</th>
                         <th style="width:22%" class="text-center">Subtotal</th>
@@ -54,11 +55,18 @@
                     
                     <?php $total += $dish['price'] * $dish['quantity'] ?>
                     
-                    <tr>
-                        <td data-th="Product">
+                    <tr >
+                        <td data-th="image">
                             <div class="row">
-                                <div class="col-sm-9">
-                                    <h4 class="nomargin">{{ $dish['name'] }}</h4>
+                                <div class="col-sm-9 ">
+                                    <img height="40" src="{{asset('storage/' . $dish['path_image'])}}" alt="">
+                                </div>
+                            </div>
+                        </td>
+                        <td data-th="Product" >
+                            <div class="row">
+                                <div class="col-sm-9 ">
+                                     <h4 class="nomargin">{{ $dish['name'] }}</h4>
                                 </div>
                             </div>
                         </td>
@@ -117,16 +125,17 @@
                     
                     <tr>
                         <td>
-                            <a href="{{ route('guest.RestaurantShow', $user->slug) }}" class="btn btn-warning">
-                                <i class="fa fa-angle-left"></i> 
-                                Continue Shopping
-                            </a>
+                            
                         </td>
                         <td colspan="2" class="hidden-xs"></td>
                         <td class="hidden-xs text-center"><strong>Total ${{ $total }}</strong></td>
                     </tr>
                 </tfoot>
             </table>
+            <a href="{{ route('guest.RestaurantShow', $user->slug) }}" class="btn  btn-warning">
+                <i class="fa fa-angle-left"></i> 
+                  go back to dish
+            </a>
             {{-- <input type="hidden" id="session" name="session" value="{{ $cartSession }}"> --}}
             <input type="submit" class="btn btn-primary" value="Go to payment">
 

@@ -10167,6 +10167,18 @@ h3 {
   font-weight: 700;
 }
 
+.container h5 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .grid-container {
   margin-top: 40px;
   display: grid;

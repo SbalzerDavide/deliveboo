@@ -26,7 +26,8 @@ class CartController extends Controller
                     'quantity' => 1,
                     'price' => $dish->price, 
                     'ingredients' => $dish->ingredients,
-                    'id' => $dish->id               
+                    'id' => $dish->id,
+                    'path_image' => $dish->path_image,        
                 ]
             ];
             session()->put($sessionName, $cart);
@@ -47,7 +48,8 @@ class CartController extends Controller
             'quantity' => 1,
             'price' => $dish->price,
             'ingredients' => $dish->ingredients,
-            'id' => $dish->id               
+            'id' => $dish->id,
+            'path_image' => $dish->path_image,               
         ];
         session()->put($sessionName, $cart);
         // dd($sessionName);

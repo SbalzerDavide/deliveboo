@@ -14,8 +14,8 @@
       </div> 
     </div>
     <div class="container">
-      <div class="container-restaurant-genres">
-         <div v-if="listRestaurant.length>0" class="restaurant-container">
+      <div v-if="listRestaurant.length>0" class="container-restaurant-genres">
+           <div  class="restaurant-container">
                 <ul >
                     <a id="no-decoration" v-for="element in listRestaurant" :href="element.route">
                         <li class="rest-box">
@@ -30,8 +30,8 @@
                     show more results
                 </div>
           </div>
-          <h5 v-else>there are no results</h5>
       </div>
+      <h5 v-else>there are no results</h5>
     </div>
 </div>
 
