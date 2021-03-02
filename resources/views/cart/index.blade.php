@@ -127,6 +127,7 @@
                     </tr>
                 </tfoot>
             </table>
+            {{-- <input type="hidden" id="session" name="session" value="{{ $cartSession }}"> --}}
             <input type="submit" class="btn btn-primary" value="Go to payment">
 
         </form>

@@ -11,6 +11,18 @@ class GenresTableSeeder extends Seeder
      */
     public function run()
     {
+        $takeGenres = Genre::all();
+        if (empty($takeGenres)){
+            
+            foreach($genres as $genre){
+                $newGenre = new Genre();
+            
+                $newGenre->genre_name = $genre['name'];
+                $newGenre->url = $genre['url'];
+                $newGenre->save();
+            }
+            
+        }
         $genres = [
             [
                 'name' => 'pizza',
@@ -54,12 +66,5 @@ class GenresTableSeeder extends Seeder
             ],
         ];
 
-        foreach($genres as $genre){
-            $newGenre = new Genre();
-
-            $newGenre->genre_name = $genre['name'];
-            $newGenre->url = $genre['url'];
-            $newGenre->save();
-        }
     }
 }

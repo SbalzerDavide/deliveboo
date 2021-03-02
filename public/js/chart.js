@@ -63222,7 +63222,7 @@ jquery__WEBPACK_IMPORTED_MODULE_3___default()(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\pgmin\Desktop\Corso\DeliveBoo\resources\js\chart.js */"./resources/js/chart.js");
+module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/chart.js */"./resources/js/chart.js");
 
 
 /***/ })

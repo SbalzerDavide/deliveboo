@@ -38,6 +38,7 @@ class CartController extends Controller
         if(isset($cart[$dish->id])){
             $cart[$dish->id]['quantity']++;
             session()->put($sessionName, $cart);
+
             return redirect()->back()->with('success',  $dish->name);
         }
 
@@ -182,7 +183,14 @@ class CartController extends Controller
             $data = $request->all();
             // dd($data);
             $order = Order::find($id);
-    
+            
+            $dishes = $order->dishes;
+            foreach($dishes as $dish){
+                $user_id= $dish->user->id;
+            }
+            $sessionName = 'session' . $user_id;
+            // dd($sessionName);
+
             $gateway = new Gateway([
                 'environment' => 'sandbox',
                 'merchantId' => 'hdycz8hvtgqw4vwp',
@@ -206,6 +214,10 @@ class CartController extends Controller
                 $transaction = $result->transaction;
                 $order->order_status = 1;
                 $order->save();
+                // session($sessionName)->flush();
+                // Session::flush();
+                session()->forget($sessionName);
+                // dd(session($sessionName));
                 $message = 'La transazione è stata eseguita con sucesso';
                 //   dd($result);
 
