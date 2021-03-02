@@ -16,7 +16,7 @@ class RestaurantController extends Controller
 
             $searchName = $_GET['name'];
             $searchGenre = $_GET['genre'];
-            $countGenre = (count( $searchGenre));
+            // $countGenre = (count( $searchGenre));
 
 
             $users = DB::table('genre_user')

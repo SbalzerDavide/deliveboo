@@ -31734,6 +31734,9 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     makeSearch: function makeSearch() {
       var _this2 = this;
 
+      this.numberRestaurant = 10;
+      this.buttonShow = true;
+
       if (this.searchText != '') {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
           params: {
@@ -31758,7 +31761,12 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
           console.log('filtered');
           console.log(_this2.listRestaurant);
-          _this2.showedRestaurant = _this2.listRestaurant; // console.log(response.data)
+          _this2.showedRestaurant = _this2.listRestaurant;
+
+          if (_this2.numberRestaurant >= _this2.allRestaurant.length) {
+            _this2.buttonShow = false;
+            console.log('condizione if');
+          } // console.log(response.data)
           // this.listRestaurant = response.data;
           // //add baseUrl to avery element
           // this.listRestaurant = this.listRestaurant.map(element =>{
@@ -31767,6 +31775,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
           //         route: this.url + element.slug
           //     }
           // })
+
         })["catch"](function (error) {
           console.log(error);
         });
@@ -31786,6 +31795,8 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     applyFilter: function applyFilter() {
       var _this3 = this;
 
+      this.numberRestaurant = 10;
+      this.buttonShow = true;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
         params: {
           genre: this.filterGenre
@@ -31800,6 +31811,22 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
             route: _this3.url + element.slug
           });
         });
+        _this3.allRestaurant = _toConsumableArray(_this3.listRestaurant);
+        _this3.removedRestaurant = _this3.listRestaurant.length - _this3.numberRestaurant;
+        console.log(_this3.removedRestaurant);
+
+        _this3.listRestaurant.splice(_this3.numberRestaurant, _this3.removedRestaurant);
+
+        console.log('filtered');
+        console.log(_this3.listRestaurant);
+        _this3.showedRestaurant = _this3.listRestaurant;
+        console.log(_this3.numberRestaurant);
+        console.log(_this3.allRestaurant.length);
+
+        if (_this3.numberRestaurant >= _this3.allRestaurant.length) {
+          _this3.buttonShow = false;
+          console.log('condizione if');
+        }
       })["catch"](function (error) {
         console.log(error);
       });

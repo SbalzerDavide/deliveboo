@@ -14474,7 +14474,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     genre: '',
     baseUrl: '',
     load: false,
-    numberRestaurant: 1,
+    numberRestaurant: 10,
     removedRestaurant: 0,
     buttonShow: true
   },
@@ -14527,6 +14527,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     makeSearch: function makeSearch() {
       var _this2 = this;
 
+      this.numberRestaurant = 10;
       this.buttonShow = true;
 
       if (this.searchText != '') {
@@ -14562,7 +14563,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     },
     moreRestaurants: function moreRestaurants() {
       console.log(this.numberRestaurant);
-      this.numberRestaurant = this.numberRestaurant + 1;
+      this.numberRestaurant = this.numberRestaurant + 10;
       console.log('number');
       console.log(this.numberRestaurant); // this.removedRestaurant = this.showedRestaurant.length - this.numberRestaurant;
       // console.log('removed');

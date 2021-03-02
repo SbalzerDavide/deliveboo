@@ -84,6 +84,8 @@ const search = new Vue({
     },
     methods:{
         makeSearch(){
+            this.numberRestaurant = 10;
+            this.buttonShow = true;
             if (this.searchText != ''){
                 axios.get(this.baseUrl + '/api/Restaurant',{
                     params:{
@@ -117,6 +119,12 @@ const search = new Vue({
                         console.log(this.listRestaurant);
         
                         this.showedRestaurant = this.listRestaurant;
+
+                        if(this.numberRestaurant >= this.allRestaurant.length){
+                            this.buttonShow = false;
+                            console.log('condizione if');
+                        }
+            
                         
         
                         // console.log(response.data)
@@ -145,6 +153,9 @@ const search = new Vue({
             }
         },
         applyFilter(){
+            this.numberRestaurant = 10;
+            this.buttonShow = true;
+
             axios.get(this.baseUrl + '/api/Restaurant',{
                 params:{
                     genre: this.filterGenre,
@@ -161,6 +172,25 @@ const search = new Vue({
                         route: this.url + element.slug
                         }
                     })
+                this.allRestaurant = [...this.listRestaurant];
+                this.removedRestaurant = this.listRestaurant.length - this.numberRestaurant;
+                console.log(this.removedRestaurant);
+                this.listRestaurant.splice(this.numberRestaurant, this.removedRestaurant);
+                console.log('filtered');
+                console.log(this.listRestaurant);
+
+                this.showedRestaurant = this.listRestaurant;
+
+                console.log(this.numberRestaurant);
+                console.log(this.allRestaurant.length);
+    
+
+                if(this.numberRestaurant >= this.allRestaurant.length){
+                    this.buttonShow = false;
+                    console.log('condizione if');
+                }
+    
+
                 })
                 .catch(error => {
                 console.log(error);

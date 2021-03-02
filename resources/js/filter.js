@@ -13,7 +13,7 @@ const search = new Vue({
         genre : '',
         baseUrl: '',
         load: false,
-        numberRestaurant: 1,
+        numberRestaurant: 10,
         removedRestaurant: 0,
         buttonShow: true,
 
@@ -72,6 +72,7 @@ const search = new Vue({
     },
     methods:{
         makeSearch(){
+            this.numberRestaurant = 10;
             this.buttonShow = true;
             if (this.searchText != ''){
                 axios.get(this.baseUrl + '/api/Restaurant',{
@@ -110,7 +111,7 @@ const search = new Vue({
         },
         moreRestaurants(){
             console.log(this.numberRestaurant);
-            this.numberRestaurant = this.numberRestaurant + 1;
+            this.numberRestaurant = this.numberRestaurant + 10;
             console.log('number');
             console.log(this.numberRestaurant);
 

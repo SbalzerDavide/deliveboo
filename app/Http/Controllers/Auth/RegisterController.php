@@ -82,10 +82,14 @@ class RegisterController extends Controller
         if(!empty($data['path_image'])){
             $user->path_image = Storage::disk('public')->put('image', $data['path_image']);
         }
-        $listGenres = $data['genres'];  
 
-        foreach($listGenres as $genre){
-            $user->genres()->attach($genre);
+        if(!empty($listGenres)){
+            $listGenres = $data['genres'];  
+    
+            foreach($listGenres as $genre){
+                $user->genres()->attach($genre);
+    
+            }
 
         }
 
