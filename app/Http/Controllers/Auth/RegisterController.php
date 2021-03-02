@@ -83,7 +83,7 @@ class RegisterController extends Controller
             $user->path_image = Storage::disk('public')->put('image', $data['path_image']);
         }
 
-        if(!empty($listGenres)){
+        if(!empty($data['genres'])){
             $listGenres = $data['genres'];  
     
             foreach($listGenres as $genre){
