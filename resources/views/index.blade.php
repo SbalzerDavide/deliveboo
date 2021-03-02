@@ -39,7 +39,7 @@
                     </a>
                 </ul>
                 {{-- <a href="#bottom" id="bottom" class="btn btn-primary" @click="moreRestaurants">show more restaurants</a> --}}
-                <div class="btn-list mt-5 mb-5" @click="moreRestaurants">
+                <div v-if="buttonShow" class="btn-list mt-5 mb-5" @click="moreRestaurants">
                     {{-- <a href="#bottom">show more results</a> --}}
                     show more results
                 </div>

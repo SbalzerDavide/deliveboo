@@ -2,8 +2,10 @@
 
 @section('content')
    <div class="container">
-      <h2>2021</h2>
-      <canvas id="myChart" width="100" height="100"></canvas>
+      <h2>Sales statistics of 2021</h2>
+      <div class="chart">
+         <canvas id="myChart" width="100" height="100"></canvas>
+      </div>
 
    </div>
 

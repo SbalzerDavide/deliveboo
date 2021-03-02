@@ -31679,8 +31679,8 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     baseUrl: '',
     load: false,
     numberRestaurant: 10,
-    intermedio: [],
-    removedRestaurant: 0
+    removedRestaurant: 0,
+    buttonShow: true
   },
   created: function created() {
     var _this = this;
@@ -31818,62 +31818,18 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       this.listRestaurant.splice(this.numberRestaurant, 100);
       console.log('filtered');
       console.log(this.listRestaurant);
-      this.showedRestaurant = this.listRestaurant; // axios.get(this.baseUrl + '/api/Restaurant')
-      // .then(response => {
-      //     console.log(response.data)
-      //     this.listRestaurant = response.data;
-      //     //intermedio
-      //     // this.intermedio = response.data;
-      //     //add baseUrl to avery element
-      //     this.listRestaurant = this.listRestaurant.map(element =>{
-      //         return {
-      //             ...element,
-      //             route: this.url + element.slug
-      //         }
-      //     })
-      //     this.removedRestaurant = this.listRestaurant.length - this.numberRestaurant;
-      //     console.log(this.removedRestaurant);
-      //     this.listRestaurant.splice(this.numberRestaurant, this.removedRestaurant);
-      //     console.log('filtered');
-      //     console.log(this.listRestaurant);
-      //     // console.log('intermedio');
-      //     // console.log(this.intermedio);
-      //     // this.removedRestaurant = this.intermedio.length - this.numberRestaurant;
-      //     // console.log('removed');
-      //     // console.log(this.removedRestaurant);
-      //     // this.restaurant = this.intermedio.splice(this.numberRestaurant, this.removedRestaurant);
-      //     // console.log('list');
-      //     // console.log(this.restaurant);
-      // this.load = true;
-      // })
-      // .catch(error => {
-      // console.log(error);
-      // });
-      // this.listRestaurant = this.intermedio;
-      // this.restaurant = this.intermedio.splice(this.numberRestaurant, this.removedRestaurant);
-      // axios.get(this.baseUrl + '/api/Restaurant')
-      // .then(response => {
-      //     console.log(response.data)
-      //     this.listRestaurant = response.data;
-      //     //intermedio
-      //     this.intermedio = response.data;
-      //     console.log('intermedio');
-      //     console.log(this.intermedio);
-      //     this.restaurant = this.intermedio.splice(this.numberRestaurant, 10);
-      //     console.log('list');
-      //     console.log(this.restaurant);
-      //     //add baseUrl to avery element
-      //     this.listRestaurant = this.listRestaurant.map(element =>{
-      //         return {
-      //             ...element,
-      //             route: this.url + element.slug
-      //             }
-      //         })
-      // this.load = true;
-      // })
-      // .catch(error => {
-      // console.log(error);
-      // });
+      this.showedRestaurant = this.listRestaurant;
+      console.log('...........');
+      console.log(this.numberRestaurant);
+      console.log(this.allRestaurant.length);
+      console.log(this.buttonShow);
+
+      if (this.numberRestaurant >= this.allRestaurant.length) {
+        this.buttonShow = false;
+        console.log('condizione if');
+      }
+
+      console.log(this.buttonShow);
     }
   }
 });
@@ -31887,7 +31843,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\resources\js\search.js */"./resources/js/search.js");
+module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/search.js */"./resources/js/search.js");
 
 
 /***/ })
