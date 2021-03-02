@@ -16,8 +16,8 @@ const search = new Vue({
         baseUrl: '',
         load: false,
         numberRestaurant: 10,
-        intermedio: [],
         removedRestaurant: 0,
+        buttonShow: true,
 
 
     },
@@ -84,6 +84,8 @@ const search = new Vue({
     },
     methods:{
         makeSearch(){
+            this.numberRestaurant = 10;
+            this.buttonShow = true;
             if (this.searchText != ''){
                 axios.get(this.baseUrl + '/api/Restaurant',{
                     params:{
@@ -117,6 +119,12 @@ const search = new Vue({
                         console.log(this.listRestaurant);
         
                         this.showedRestaurant = this.listRestaurant;
+
+                        if(this.numberRestaurant >= this.allRestaurant.length){
+                            this.buttonShow = false;
+                            console.log('condizione if');
+                        }
+            
                         
         
                         // console.log(response.data)
@@ -145,6 +153,9 @@ const search = new Vue({
             }
         },
         applyFilter(){
+            this.numberRestaurant = 10;
+            this.buttonShow = true;
+
             axios.get(this.baseUrl + '/api/Restaurant',{
                 params:{
                     genre: this.filterGenre,
@@ -161,6 +172,25 @@ const search = new Vue({
                         route: this.url + element.slug
                         }
                     })
+                this.allRestaurant = [...this.listRestaurant];
+                this.removedRestaurant = this.listRestaurant.length - this.numberRestaurant;
+                console.log(this.removedRestaurant);
+                this.listRestaurant.splice(this.numberRestaurant, this.removedRestaurant);
+                console.log('filtered');
+                console.log(this.listRestaurant);
+
+                this.showedRestaurant = this.listRestaurant;
+
+                console.log(this.numberRestaurant);
+                console.log(this.allRestaurant.length);
+    
+
+                if(this.numberRestaurant >= this.allRestaurant.length){
+                    this.buttonShow = false;
+                    console.log('condizione if');
+                }
+    
+
                 })
                 .catch(error => {
                 console.log(error);
@@ -187,87 +217,18 @@ const search = new Vue({
             console.log(this.listRestaurant);
 
             this.showedRestaurant = this.listRestaurant;
+            console.log('...........');
+            console.log(this.numberRestaurant);
+            console.log(this.allRestaurant.length);
+            console.log(this.buttonShow);
 
 
+            if(this.numberRestaurant >= this.allRestaurant.length){
+                this.buttonShow = false;
+                console.log('condizione if');
+            }
 
-
-
-            // axios.get(this.baseUrl + '/api/Restaurant')
-            // .then(response => {
-            //     console.log(response.data)
-            //     this.listRestaurant = response.data;
-
-
-            //     //intermedio
-            //     // this.intermedio = response.data;
-
-                
-                
-                
-            //     //add baseUrl to avery element
-            //     this.listRestaurant = this.listRestaurant.map(element =>{
-            //         return {
-            //             ...element,
-            //             route: this.url + element.slug
-            //         }
-            //     })
-            //     this.removedRestaurant = this.listRestaurant.length - this.numberRestaurant;
-            //     console.log(this.removedRestaurant);
-            //     this.listRestaurant.splice(this.numberRestaurant, this.removedRestaurant);
-            //     console.log('filtered');
-            //     console.log(this.listRestaurant);
-
-
-
-
-            //     // console.log('intermedio');
-            //     // console.log(this.intermedio);
-            //     // this.removedRestaurant = this.intermedio.length - this.numberRestaurant;
-            //     // console.log('removed');
-            //     // console.log(this.removedRestaurant);
-            //     // this.restaurant = this.intermedio.splice(this.numberRestaurant, this.removedRestaurant);
-            //     // console.log('list');
-            //     // console.log(this.restaurant);
-                
-            // this.load = true;
-            // })
-            // .catch(error => {
-            // console.log(error);
-            // });
-
-
-            // this.listRestaurant = this.intermedio;
-            // this.restaurant = this.intermedio.splice(this.numberRestaurant, this.removedRestaurant);
-
-
-            
-            // axios.get(this.baseUrl + '/api/Restaurant')
-            // .then(response => {
-            //     console.log(response.data)
-            //     this.listRestaurant = response.data;
-            //     //intermedio
-            //     this.intermedio = response.data;
-            //     console.log('intermedio');
-            //     console.log(this.intermedio);
-            //     this.restaurant = this.intermedio.splice(this.numberRestaurant, 10);
-            //     console.log('list');
-            //     console.log(this.restaurant);
-
-
-            //     //add baseUrl to avery element
-            //     this.listRestaurant = this.listRestaurant.map(element =>{
-            //         return {
-            //             ...element,
-            //             route: this.url + element.slug
-            //             }
-            //         })
-            // this.load = true;
-            // })
-            // .catch(error => {
-            // console.log(error);
-            // });
-
-
+            console.log(this.buttonShow);
         }
 
     }

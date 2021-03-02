@@ -14444,6 +14444,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -14457,9 +14469,14 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   data: {
     searchText: '',
     listRestaurant: [],
+    showedRestaurant: [],
+    allRestaurant: [],
     genre: '',
     baseUrl: '',
-    load: false
+    load: false,
+    numberRestaurant: 10,
+    removedRestaurant: 0,
+    buttonShow: true
   },
   created: function created() {
     var _this = this;
@@ -14487,6 +14504,15 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
           route: _this.baseUrl + '/guest/restaurantShow/' + element.slug
         });
       });
+      _this.allRestaurant = _toConsumableArray(_this.listRestaurant);
+      _this.removedRestaurant = _this.listRestaurant.length - _this.numberRestaurant;
+      console.log(_this.removedRestaurant);
+
+      _this.listRestaurant.splice(_this.numberRestaurant, _this.removedRestaurant);
+
+      console.log('filtered');
+      console.log(_this.listRestaurant);
+      _this.showedRestaurant = _this.listRestaurant;
       _this.load = true;
     })["catch"](function (error) {
       console.log(error);
@@ -14501,6 +14527,9 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     makeSearch: function makeSearch() {
       var _this2 = this;
 
+      this.numberRestaurant = 10;
+      this.buttonShow = true;
+
       if (this.searchText != '') {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
           params: {
@@ -14508,6 +14537,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
             genre: this.genre
           }
         }).then(function (response) {
+          console.log(_this2.genre);
           console.log(response.data);
           _this2.listRestaurant = response.data; //add baseUrl to avery element
 
@@ -14516,11 +14546,47 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
               route: _this2.url + element.slug
             });
           });
+          _this2.allRestaurant = _toConsumableArray(_this2.listRestaurant);
+          _this2.removedRestaurant = _this2.listRestaurant.length - _this2.numberRestaurant;
+          console.log(_this2.removedRestaurant);
+
+          _this2.listRestaurant.splice(_this2.numberRestaurant, _this2.removedRestaurant);
+
+          console.log('filtered');
+          console.log(_this2.listRestaurant);
+          _this2.showedRestaurant = _this2.listRestaurant;
           _this2.load = true;
         })["catch"](function (error) {
           console.log(error);
         });
       }
+    },
+    moreRestaurants: function moreRestaurants() {
+      console.log(this.numberRestaurant);
+      this.numberRestaurant = this.numberRestaurant + 10;
+      console.log('number');
+      console.log(this.numberRestaurant); // this.removedRestaurant = this.showedRestaurant.length - this.numberRestaurant;
+      // console.log('removed');
+
+      console.log(this.removedRestaurant);
+      console.log(this.allRestaurant);
+      this.listRestaurant = _toConsumableArray(this.allRestaurant);
+      console.log(this.listRestaurant);
+      this.listRestaurant.splice(this.numberRestaurant, 100);
+      console.log('filtered');
+      console.log(this.listRestaurant);
+      this.showedRestaurant = this.listRestaurant;
+      console.log('...........');
+      console.log(this.numberRestaurant);
+      console.log(this.allRestaurant.length);
+      console.log(this.buttonShow);
+
+      if (this.numberRestaurant >= this.allRestaurant.length) {
+        this.buttonShow = false;
+        console.log('condizione if');
+      }
+
+      console.log(this.buttonShow);
     }
   }
 });
@@ -14534,7 +14600,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\resources\js\filter.js */"./resources/js/filter.js");
+module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/filter.js */"./resources/js/filter.js");
 
 
 /***/ })

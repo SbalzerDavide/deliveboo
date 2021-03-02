@@ -76,16 +76,20 @@ class RegisterController extends Controller
             'slug' => Str::slug($data['name'], '-'),
             'PIva' => $data['PIva'],
             'password' => Hash::make($data['password']),
-            'path_image' =>  Storage::disk('public')->put('image', $data['path_image']),
+            // 'path_image' =>  Storage::disk('public')->put('image', $data['path_image']),
         ]);
 
         if(!empty($data['path_image'])){
             $user->path_image = Storage::disk('public')->put('image', $data['path_image']);
         }
-        $listGenres = $data['genres'];  
 
-        foreach($listGenres as $genre){
-            $user->genres()->attach($genre);
+        if(!empty($listGenres)){
+            $listGenres = $data['genres'];  
+    
+            foreach($listGenres as $genre){
+                $user->genres()->attach($genre);
+    
+            }
 
         }
 

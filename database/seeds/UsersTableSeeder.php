@@ -43,11 +43,31 @@ class UsersTableSeeder extends Seeder
             $newUser->save();
             // $newUser->genres()->attach($newGenre);
 
-        }
-        $newGenre = Genre::find(1);
-        $user = User::find(1);
+
+        };
+
+        // $users = User::all();
+        // foreach($users as $user){
+        //     // $genreId = $faker->numberBetween(0, 10);
+        //     $newGenre = Genre::find(1);
+        //     $user->genres()->attach($newGenre);
+        // }
+        // $newGenre = Genre::find(1);
+        // $user = User::find(1);
         
-        $user->genres()->attach($newGenre);
+        // $user->genres()->attach($newGenre);
+
+
+
+
+        // for ($i = 0; $i < 4; $i++ ){
+        //     $genreId = $faker->numberBetween(0, 10);
+        //     $newGenre = Genre::find($genreId);
+        //     $user = User::find(1);
+            
+        //     $user->genres()->attach($newGenre);
+
+        // }
 
         
 
