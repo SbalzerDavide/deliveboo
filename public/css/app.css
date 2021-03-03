@@ -34,6 +34,7 @@ ul li {
   transition: all 0.3s;
   margin-left: 15px;
   cursor: pointer;
+  border: 0;
 }
 .btn-list.large {
   padding: 10px 30px;
@@ -10145,10 +10146,6 @@ h3 {
 .navbar {
   background: transparent;
 }
-.navbar .navbar-brand .logo-deliveboo {
-  max-width: 200px;
-  background-color: red;
-}
 .navbar a {
   color: white;
   font-size: 20px;
@@ -10175,7 +10172,6 @@ h3 {
 .container h5 {
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 40px;
 }
 
 .flex-container {
@@ -10435,6 +10431,13 @@ footer .wraper div img {
   justify-content: center;
   align-items: center;
   border: 1px solid red;
+}
+
+.top-side h1 {
+  margin: 10px 0 20px 0;
+}
+.top-side .btn-list {
+  margin: 10px 0 20px 0;
 }
 
 /*!

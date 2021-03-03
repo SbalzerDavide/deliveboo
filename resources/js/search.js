@@ -1,3 +1,4 @@
+require('./bootstrap');
 import Vue from 'vue';
 import axios from 'axios';
 import { runInContext } from 'lodash';

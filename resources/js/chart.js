@@ -1,4 +1,4 @@
-import Vue from 'vue';
+require('./bootstrap');
 import axios from 'axios';
 import Chart from 'chart.js';
 import $ from 'jquery';

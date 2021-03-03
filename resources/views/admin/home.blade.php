@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="container">
-        <h5>Nome Ristorante: {{$user->name}}</h5>
+        <h5>Restaurant name: {{$user->name}}</h5>
         <div class="rest-name">
-            <p>Immagine ristorante 1:</p>
+            <p>Your image:</p>
             <img width="100px" src="{{ asset('storage/' . $user->path_image) }}" alt="{{$user->name}}"> 
         </div>
         
@@ -13,12 +13,12 @@
             <ul>
                 <a href="{{ route('admin.restaurants.index') }}">
                     <li>
-                        visalizza tutti i piatti
+                        Show your dishes
                     </li>
                 </a>
                 <a href="{{ route('admin.orders') }}">
                     <li>
-                        visualizza i tuoi ordini
+                        Show your orders
                     </li>
                 </a>
             </ul>

@@ -2,30 +2,39 @@
 
 @section('content')
     <main class="container">
-        <h1>i tuoi piatti 2</h1>
-
-        @if (session('dish-deleted'))
-            <div class="alert alert-danger">
-                Dish "{{session('dish-deleted')}}" has been deleted
-            </div>
-        @endif
-
-        <a class="btn btn-success" href="{{route('admin.restaurants.create')}}">Create a new Dish</a>
+        <div class="top-side">
+            <h1>Your dishes</h1>
+    
+            @if (session('dish-deleted'))
+                <div class="alert alert-danger">
+                    Dish "{{session('dish-deleted')}}" has been deleted
+                </div>
+            @endif
+    
+            <a class="btn-list" href="{{route('admin.restaurants.create')}}">Create a new Dish</a>
+        </div>
         @foreach ($dishes as $dish)       
             <div class="menu">
                 <table class="table table-hover table-condensed">
                     <tbody>
                         <tr>
+                            <td data-th="image" style="width:10%">
+                                <div class="row">
+                                    <div class="col-sm-9 ">
+                                        <img width="80" src="{{asset('storage/' . $dish['path_image'])}}" alt="">
+                                    </div>
+                                </div>
+                            </td>
                             <td style="width:40%">
                                 <h5>{{ $dish->name }}</h5>
                             </td>
                             <td>
                                 <a class="btn btn-success" href="{{route('admin.restaurants.show', $dish->slug)}}">Vedi piatto</a>
                             </td>
-                            <td>
+                            <td style="width:16,5%">
                                 <a class="btn btn-primary" href="{{route('admin.restaurants.edit', $dish->slug)}}">Edit</a>
                             </td>
-                            <td>
+                            <td style="width:16,5%">
                                 <form action="{{route('admin.restaurants.destroy', $dish->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
