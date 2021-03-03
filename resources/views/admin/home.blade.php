@@ -5,7 +5,12 @@
         <h5>Restaurant name: {{$user->name}}</h5>
         <div class="rest-name">
             <p>Your image:</p>
-            <img width="100px" src="{{ asset('storage/' . $user->path_image) }}" alt="{{$user->name}}"> 
+            @if ($user->path_image)
+                <img width="100px" src="{{ asset('storage/' . $user->path_image) }}" alt="{{$user->name}}">
+                
+            @else    
+                <img width="100px" src="{{ asset('image/default_restaurant.png') }}" alt="{{$user->name}}"> 
+            @endif
         </div>
         
         
