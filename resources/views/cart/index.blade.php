@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2>your cart</h2>
+        <h2>Your cart <i class="fas fa-shopping-cart"></i></h2>
         <?php 
             session()->put('actualRestaurant', $user->id); 
         ?>
@@ -11,9 +11,9 @@
                 <b>{{ session('deleted') }}</b> has been deleted from your cart
                 
             </div>
-            <a href="{{ route('guest.RestaurantShow', $user->slug) }}" class="btn btn-warning">
-                <i class="fa fa-angle-left"></i> 
-                Back to the cart
+            <a href="{{ route('guest.RestaurantShow', $user->slug) }}" class="compra-inverso back-ho<span> ">
+                <i class=" <fa fa-angle-left"></i> 
+                <span> Back to the restaurant </span>
             </a>
 
         @endif
@@ -22,11 +22,11 @@
 
         @if (empty(session($cartSession)))
 
-            <h3>your cart is empty</h3>
+            <h3 class="mt-5 mb-5">your cart is <span class="red-span">empty</span> </h3>
 
-            <a href="{{ route('guest.RestaurantShow', $user->slug) }}" class="btn btn-warning">
+            <a href="{{ route('guest.RestaurantShow', $user->slug) }}" class=" compra-inverso back-home">
                 <i class="fa fa-angle-left"></i> 
-                Back to the cart
+                <span> Back to the restaurant </span>
             </a>
 
             

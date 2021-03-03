@@ -17,12 +17,13 @@
         <div class="menu-dashboard">
             <ul>
                 <a href="{{ route('admin.restaurants.index') }}">
-                    <li>
+                    <li >
                         Show your dishes
+                        
                     </li>
                 </a>
                 <a href="{{ route('admin.orders') }}">
-                    <li>
+                    <li >
                         Show your orders
                     </li>
                 </a>
