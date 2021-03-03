@@ -95,6 +95,10 @@ ul li {
   width: 500px;
 }
 
+.container table tbody tr td {
+  vertical-align: middle;
+}
+
 .hidden {
   display: none;
 }
