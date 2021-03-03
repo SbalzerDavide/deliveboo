@@ -28,11 +28,11 @@
                 @else
                     <li class="nav-item dropdown">
                         
-                        <a class="nav-link" href="{{route('admin.home')}}">Dashboard</a>
+                        <a class="nav-link underline-login" href="{{route('admin.home')}}">Dashboard</a>
                         
                     </li>
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link underline-login dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
 
