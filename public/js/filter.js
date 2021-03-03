@@ -49665,6 +49665,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
 var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#search',
   data: {
@@ -49772,7 +49775,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\pgmin\Desktop\Corso\DeliveBoo\resources\js\filter.js */"./resources/js/filter.js");
+module.exports = __webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\resources\js\filter.js */"./resources/js/filter.js");
 
 
 /***/ })

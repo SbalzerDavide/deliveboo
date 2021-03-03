@@ -1,6 +1,7 @@
 require('./bootstrap');
 import Vue from 'vue';
 import axios from 'axios';
+require('./bootstrap');
 
 
 const search = new Vue({
