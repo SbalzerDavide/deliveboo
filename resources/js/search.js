@@ -1,6 +1,7 @@
 require('./bootstrap');
 import Vue from 'vue';
 import axios from 'axios';
+require('./bootstrap');
 import { runInContext } from 'lodash';
 
 const search = new Vue({
