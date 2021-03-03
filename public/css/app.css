@@ -9,7 +9,18 @@
 
 #app,
 #search {
-  font-family: "Montserrat", sans-serif;
+  font-family: ‘Montserrat’, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#app > main {
+  flex-grow: 1;
+}
+
+#search > .page {
+  flex-grow: 1;
 }
 
 /* layout */
@@ -10284,6 +10295,9 @@ h3 {
 .navbar {
   background: transparent;
 }
+.navbar span i {
+  color: #237177;
+}
 .navbar a {
   color: white;
   font-size: 20px;
@@ -10292,6 +10306,78 @@ h3 {
   color: #15415B;
 }
 
+@media screen and (max-width: 1250px) {
+  .hero-home h1 {
+    font-size: 40px;
+  }
+
+  .hero-text {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 40%;
+  }
+  .hero-text h1,
+.hero-text h2 {
+    margin: 10px 0;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .navbar a {
+    color: #237177;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .hero-home h1 {
+    font-size: 30px;
+  }
+  .hero-home h2 {
+    font-size: 20px;
+  }
+
+  .hero-text {
+    position: absolute;
+    right: 0;
+    top: 150%;
+    width: 35%;
+  }
+  .hero-text h1,
+.hero-text h2 {
+    margin: 10px 0;
+  }
+}
+@media screen and (max-width: 850px) {
+  .header-home {
+    height: 500px;
+    background-image: url("../image/top_bg_mobile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .hero-home h1 {
+    font-size: 30px;
+  }
+
+  .hero-text {
+    position: absolute;
+    right: 40%;
+    top: 100%;
+    width: 50%;
+    left: 10%;
+  }
+  .hero-text h1,
+.hero-text h2 {
+    margin: 10px 0;
+  }
+}
+@media screen and (max-width: 450px) {
+  .hero-home h1 {
+    font-size: 25px;
+  }
+  .hero-home h2 {
+    font-size: 18px;
+  }
+}
 /* .restaurant-button{
     display: flex;
     justify-content: center;
