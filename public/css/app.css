@@ -152,6 +152,7 @@ ul li {
 .compra-inverso:hover {
   color: white;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .underline-login {
