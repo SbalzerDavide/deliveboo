@@ -80,7 +80,8 @@ class RegisterController extends Controller
         ]);
 
         if(!empty($data['path_image'])){
-            $user->path_image = Storage::disk('public')->put('image', $data['path_image']);
+            $userUpdate['path_image'] = Storage::disk('public')->put('image', $data['path_image']);
+            $user->update($userUpdate);
         }
 
         if(!empty($data['genres'])){
