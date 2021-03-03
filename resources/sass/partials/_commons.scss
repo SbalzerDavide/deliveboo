@@ -21,6 +21,14 @@
     flex-grow: 1;
 }
 
+#app > main{
+    flex-grow: 1;
+}
+
+#search > .page{
+    flex-grow: 1;
+}
+
 /* layout */
 
 .layover{
@@ -33,6 +41,10 @@
 a:hover{
     text-decoration: none;
 }
+
+// a.nav-link{
+//     font-family: 'Courier New', Courier, monospace;
+// }
 
 nav-link:hover{
     text-decoration: none;
