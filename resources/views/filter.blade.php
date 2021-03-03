@@ -14,12 +14,13 @@
         </div> 
     </div>
     <div class="container">
-        <div v-if="listRestaurant.length > 0" class="container-restaurant-genres">
+        <div v-if="listRestaurant.length > 0" class="container-restaurant-filter">
             <div  class="restaurant-container">
                 <ul>
                     <a id="no-decoration" v-for="element in listRestaurant" :href="element.route">
                         <li class="rest-box">
-                            <img class="zoom-in" :src="'http://127.0.0.1:8000/storage/' + element.path_image" width="100%" alt="">
+                            <img  v-if="element.path_image" class="zoom-in" :src="'http://127.0.0.1:8000/storage/' + element.path_image" width="100%" alt="">
+                            <img v-else src="../image/default_restaurant.png" alt="">
                             <div class="rest-text">
                                 <h5>@{{element.name}}</h5> 
                             </div>
