@@ -7,10 +7,18 @@
 }
 
 
-
 #app,
 #search{
-    font-family: 'Montserrat', sans-serif;
+    font-family: ‘Montserrat’, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+#app > main{
+    flex-grow: 1;
+}
+#search > .page{
+    flex-grow: 1;
 }
 
 /* layout */
@@ -243,3 +251,5 @@ ul li{
 .container table tbody tr td{
     vertical-align: middle;
 }
+
+

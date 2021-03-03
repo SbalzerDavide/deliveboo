@@ -31,7 +31,7 @@
         </div>
         <h5 v-else>there are no results</h5>
         <div v-if="buttonShow && listRestaurant.length > 0"  class="btn-list mt-5 mb-5" @click="moreRestaurants">
-                show more results
+                show more result
         </div>
     </div>
 </div>
