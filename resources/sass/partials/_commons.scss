@@ -6,8 +6,6 @@
     box-sizing: border-box;
 }
 
-
-
 #app,
 #search{
     font-family: 'Montserrat', sans-serif;
@@ -24,7 +22,6 @@
     flex-grow: 1;
 }
 
-
 /* layout */
 
 .layover{
@@ -37,6 +34,10 @@
 a:hover{
     text-decoration: none;
 }
+
+// a.nav-link{
+//     font-family: 'Courier New', Courier, monospace;
+// }
 
 nav-link:hover{
     text-decoration: none;

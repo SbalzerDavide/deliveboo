@@ -3,7 +3,13 @@
     <head>
         <meta charset="utf-8">
         <script src="https://js.braintreegateway.com/web/dropin/1.26.0/js/dropin.min.js"></script>
+
+        {{-- fonts --}}
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">    
+
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 
       </head>
       <body>
