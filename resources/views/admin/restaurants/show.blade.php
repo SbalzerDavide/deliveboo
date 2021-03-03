@@ -15,7 +15,7 @@
                Price: {{$dish->price}} &euro;
           </p>
           @if (empty($dish->path_image))
-               <img width="350" src="{{asset('image/default-img.png')}}" alt="">
+               <img width="350" src="{{asset('image/default_dish.jpg')}}" alt="">
           @else
                <img width="350" src="{{asset('storage/' . $dish->path_image )}}" alt="">
           @endif

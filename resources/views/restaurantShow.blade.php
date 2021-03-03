@@ -31,21 +31,27 @@
             </div>
             <ul>
                 @foreach($user->dishes as $dish)
-                <li class="mb-3">
-                    <div class="img">
-                        <img src="{{asset('storage/' . $dish->path_image )}}" alt="">
-                    </div>
-                    <div class="dish-description">
-                        <h5>{{$dish->name}}</h5>
-                        <p>{{$dish->ingredients}}</p>
-                        <p>{{$dish->price}} &euro;</p>
-                    </div>
-                    <div class="add-cart">
-                        <a  id="no-decoration" class="" href="{{ route('guest.cart.add', $dish->id) }}">
-                            <i class="fas fa-plus"></i>
-                        </a>
-                    </div>
-                </li>
+                    @if ($dish->visibility == 1)
+                        <li class="mb-3">
+                            <div class="img">
+                                @if ($dish->path_image)
+                                    <img src="{{asset('storage/' . $dish->path_image )}}" alt="">
+                                @else 
+                                    <img src="{{asset('image/default_dish.jpg')}}" alt="default_image">
+                                @endif
+                            </div>
+                            <div class="dish-description">
+                                <h5>{{$dish->name}}</h5>
+                                <p>{{$dish->ingredients}}</p>
+                                <p>{{$dish->price}} &euro;</p>
+                            </div>
+                            <div class="add-cart">
+                                <a  id="no-decoration" class="" href="{{ route('guest.cart.add', $dish->id) }}">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </li>
+                    @endif
                 @endforeach
             </ul>
         </div>

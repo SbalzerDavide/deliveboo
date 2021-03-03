@@ -31,7 +31,8 @@
                 <ul >
                     <a id="no-decoration" v-for="element in showedRestaurant" :href="element.route">
                         <li class="rest-box">
-                            <img class="zoom-in" :src="'http://127.0.0.1:8000/storage/' + element.path_image" width="100%" alt="">
+                            <img v-if="element.path_image" class="zoom-in" :src="'http://127.0.0.1:8000/storage/' + element.path_image" width="100%" :alt="element.name">
+                            <img v-else src="{{ asset('image/default_restaurant.png') }}" alt="default_image">
                             <div class="rest-text">
                                 <h5>@{{element.name}}</h5> 
                             </div>

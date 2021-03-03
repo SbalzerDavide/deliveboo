@@ -28,7 +28,6 @@ class UsersTableSeeder extends Seeder
             'I Du de la contrada',
             'Creminati',
             'La vineria',
-            
         ];
 
         for($i = 0; $i < 10; $i++ )
@@ -39,7 +38,7 @@ class UsersTableSeeder extends Seeder
             
             $newUser = new User();
 
-            $newUser->name = $faker->words(2, true);
+            $newUser->name = $restaurantName[$i];
             $newUser->address = $faker->words(5, true);
             $newUser->PIva = $faker->word(10);
             $newUser->email  = $faker->unique()->email;
