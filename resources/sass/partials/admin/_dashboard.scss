@@ -14,7 +14,6 @@
     ul {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        // justify-content: space-between;
         gap: 5rem;
         
         li{
@@ -24,7 +23,14 @@
         grid-template-rows: minmax(300px, auto);
         justify-content: center;
         align-items: center;
-        border: 1px solid red;
+        border: 1px solid $orange;
+        border-radius: 5px;
+        position: relative;
+
+      
+
         }
+
+        
     }
 }

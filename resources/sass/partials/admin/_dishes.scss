@@ -1,9 +1,29 @@
-.top-side{
-    h1{
-        margin: 10px 0 20px 0;
+main{
+
+    .top-side{
+        h1{
+            margin: 10px 0 20px 0;
+        }
+    
+        .btn-list{
+            margin: 10px 0 20px 0;
+        }
     }
 
-    .btn-list{
-        margin: 10px 0 20px 0;
+    .back-home{
+        width: 160px;
+        text-align: center;
+        position: relative;
     }
+
+    .button-dish-container{
+        display: flex;
+        margin: 2rem;
+        
+        .button-dish{
+           margin: 0 1rem;
+            width: 100px;
+        }
+    }
+
 }

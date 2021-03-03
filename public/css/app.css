@@ -1,5 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 /* $font-family-sans-serif: 'Nunito', sans-serif; */
+.red-span {
+  color: red;
+  text-decoration: underline;
+}
+
 /* default layout */
 * {
   margin: 0;
@@ -9,7 +14,18 @@
 
 #app,
 #search {
-  font-family: "Montserrat", sans-serif;
+  font-family: ‘Montserrat’, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#app > main {
+  flex-grow: 1;
+}
+
+#search > .page {
+  flex-grow: 1;
 }
 
 /* layout */
@@ -10600,14 +10616,29 @@ footer .wraper div img {
   grid-template-rows: minmax(300px, auto);
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
+  border: 1px solid #F9994F;
+  border-radius: 5px;
+  position: relative;
 }
 
-.top-side h1 {
+main .top-side h1 {
   margin: 10px 0 20px 0;
 }
-.top-side .btn-list {
+main .top-side .btn-list {
   margin: 10px 0 20px 0;
+}
+main .back-home {
+  width: 160px;
+  text-align: center;
+  position: relative;
+}
+main .button-dish-container {
+  display: flex;
+  margin: 2rem;
+}
+main .button-dish-container .button-dish {
+  margin: 0 1rem;
+  width: 100px;
 }
 
 /*!
