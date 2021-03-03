@@ -137,7 +137,7 @@
                     </tr>
                 </tfoot>
             </table>
-            <a href="{{ route('guest.RestaurantShow', $user->slug) }}" class="btn  btn-warning">
+            <a href="{{ route('guest.RestaurantShow', $user->slug) }}" class="compra-inverso search-advanced-inverso">
                 <i class="fa fa-angle-left"></i> 
                   go back to dish
             </a>

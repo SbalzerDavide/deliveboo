@@ -8,7 +8,7 @@
                 <h3>Discovery the Best Food in the city.</h3>
             
                 <input class="input-primary" v-model="searchText" placeholder="search restaurant by name" @keyup.enter="makeSearch">
-                <div class="btn-list large" @click="makeSearch">
+                <div class=" compra search-advanced" @click="makeSearch">
                     <i class="fas fa-arrow-right"></i>
                 </div>
             </div>

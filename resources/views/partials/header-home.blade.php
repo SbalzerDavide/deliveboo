@@ -12,8 +12,8 @@
                    <h2 class="d-inline">
                        Go to 
                    </h2>
-                   <div class=" d-inline">
-                      <a class="btn-list" href="{{route('Restaurant')}}">
+                   <div >
+                      <a class="d-block btn-list " href="{{route('Restaurant')}}">
                        Restaurant
                       </a>
                    </div> 
