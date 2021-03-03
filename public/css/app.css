@@ -10405,6 +10405,41 @@ h3 {
   height: 35px;
   border-radius: 10px;
 }
+#search .container .container-restaurant-filter {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+#search .container .container-restaurant-filter .restaurant-container ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+#search .container .container-restaurant-filter .restaurant-container ul .rest-box {
+  grid-template-rows: minmax(100px, auto);
+  display: grid;
+  align-content: flex-start;
+  border-radius: 5px;
+  background: #F8F6EB;
+  border: 1px solid #FFB954;
+  padding: 10px;
+  color: #000;
+  height: 290px;
+  overflow: hidden;
+}
+#search .container .container-restaurant-filter .restaurant-container ul .rest-box:hover img {
+  transform: scale(1.15);
+}
+#search .container .container-restaurant-filter .restaurant-container ul .rest-box img {
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 150px;
+  transition: all 0.3s linear;
+}
+#search .container .container-restaurant-filter .restaurant-container ul .rest-box .rest-text {
+  padding: 15px 10px;
+}
 #search .container .container-restaurant-genres {
   display: grid;
   grid-template-columns: 1fr 7fr;
