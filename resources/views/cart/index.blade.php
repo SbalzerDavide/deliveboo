@@ -139,7 +139,9 @@
             </table>
             <a href="{{ route('guest.RestaurantShow', $user->slug) }}" class="compra-inverso search-advanced-inverso">
                 <i class="fa fa-angle-left"></i> 
-                  go back to dish
+                <span>
+                    go back to dish
+                </span>
             </a>
             {{-- <input type="hidden" id="session" name="session" value="{{ $cartSession }}"> --}}
             <input type="submit" class="btn btn-primary" value="Go to payment">
