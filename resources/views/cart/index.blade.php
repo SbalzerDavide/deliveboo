@@ -31,7 +31,6 @@
 
             
         @else
-        <div >
             <form action="{{ route('guest.store') }}" method="post">
                 @csrf
                 @method('POST')
@@ -41,10 +40,10 @@
                         <tr>
                             <th style="width:10%">image</th>
                             <th style="width:30%">Product</th>
-                            <th style="width:10%">Price</th>
+                            <th style="width:13%">Price</th>
                             <th style="width:22%">Quantity</th>
                             <th style="width:15%" class="text-center">Subtotal</th>
-                            <th style="width:13%"></th>
+                            <th style="width:10%"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,9 +59,9 @@
                                 <div class="row">
                                     <div class="col-sm-9 ">
                                         @if ($dish['path_image'])
-                                            <img height="80" src="{{asset('storage/' . $dish['path_image'])}}" alt="">
+                                            <img src="{{asset('storage/' . $dish['path_image'])}}" alt="">
                                         @else
-                                            <img height="80" src="{{asset('image/default_dish.jpg')}}" alt="default_image">
+                                            <img src="{{asset('image/default_dish.jpg')}}" alt="default_image">
                                         @endif
                                         
                                     </div>
@@ -75,10 +74,10 @@
                                     </div>
                                 </div>
                             </td>
-                            <td data-th="Price">{{ $dish['price'] }} €</td>
+                            <td data-th="Price"><span>{{ $dish['price'] }} €</span> </td>
                             <td data-th="Quantity">
                                 {{-- <input type="number" style="width: 50px" value="{{ $dish['quantity'] }}" class="form-control quantity" /> --}}
-                                <span class="mr-3">{{ $dish['quantity'] }}</span>
+                                <span>{{ $dish['quantity'] }}</span>
                                 <a href="{{ route('guest.more', $id) }}" class="btn btn-primary">
                                     <i class="fas fa-plus"></i>
                                 </a>
@@ -86,33 +85,14 @@
                                     <i class="fas fa-minus"></i>
                                 </a>
                             </td>
-                            <td data-th="Subtotal" class="text-center">{{ $dish['price'] * $dish['quantity'] }} €</td>
+                            <td data-th="Subtotal" class="text-center"><span>{{ $dish['price'] * $dish['quantity'] }} €</span></td>
                             <td class="actions" data-th="">
-                                <!-- this button is to update card -->
-                                {{-- <div class="btn btn-primary" @click="changeQuantity({{ $dish['quantity'] }})">change</div> --}}
-                                {{-- <button class="btn btn-info btn-sm update-cart" >
-                                    <i class="fas fa-sync-alt"></i>
-                                    update
-                                </button> --}}
-    
-                                {{-- <a href="{{ route('update-cart') }}">update</a> --}}
-                                <!-- this button is for update card -->
-                                {{-- <button class="btn btn-danger btn-sm remove" data-id="{{ $id }}" >
-                                    <i class="fa fa-trash"></i>
-                                    remove
-                                </button> --}}
-                                {{-- @dump($data) --}}
-                                {{-- <div class="action">
-                                    <form action="{{ route('guest.remove') }}" method="get">
-                                        @csrf
-                                        <input type="hidden" name="user_id" value="{{$user->id}}">
-                                        <input type="hidden" name="dish_id" value="{{$id}}">
-                                        <input type="submit" value="delete">
-                                    </form>
-                                </div> --}}
+                              
                                 <a href="{{ route('guest.remove', $id) }}" class="btn btn-danger">
                                     <i class="fa fa-trash"></i>
-                                    remove
+                                    <span>
+                                        remove
+                                    </span>  
                                 </a>
                                 {{-- <a href="{{ route('remove') }}">remove</a> --}}
                             </td>
@@ -147,7 +127,7 @@
                 <input type="submit" class="btn btn-primary" value="Go to payment">
     
             </form>
-        </div>
+       
             
         @endif
 

@@ -10692,6 +10692,41 @@ h3 {
   }
 }
 
+table img {
+  height: 80px;
+}
+@media screen and (max-width: 990px) {
+  table img {
+    height: 50px;
+  }
+  table th,
+table h4,
+table span,
+table a,
+table i,
+table strong {
+    font-size: 12px;
+  }
+  table .btn-primary {
+    padding: 0 4px;
+  }
+  table .btn-danger {
+    padding: 0 6px;
+  }
+  table .btn-danger span {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  img {
+    height: 30px;
+  }
+
+  table {
+    display: none;
+  }
+}
 footer {
   background: #15415B;
 }
