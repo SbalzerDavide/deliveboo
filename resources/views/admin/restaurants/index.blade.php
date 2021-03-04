@@ -11,7 +11,7 @@
                 </div>
             @endif
     
-            <a class="btn-list" href="{{route('admin.restaurants.create')}}">Create a new Dish</a>
+            <a class="btn-list" href="{{route('admin.restaurants.create')}}">Create a new Dish  </a>
         </div>
         @foreach ($dishes as $dish)       
             <div class="menu">
@@ -48,10 +48,12 @@
             </div>
         @endforeach
 
-        <a href="{{ route('admin.home') }}">torna alla dashboard</a>
+        <div class="back-home">
+            <a class="compra-inverso" href="{{ route('admin.home') }}"> <span> <i class="fas fa-arrow-left"></i>  torna alla dashboard</span></a>
+        </div>
         <div class="container">
         
-    </div>
+        </div>
 
     
     

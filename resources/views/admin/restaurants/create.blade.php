@@ -23,21 +23,21 @@
             @method('POST')
 
             <div class="form-group">
-                <label for="name">Dish Name:</label>
+                <label for="name">Dish Name: *</label>
                 <input  class="form-control" type="text" name="name" id="name" value="{{ old('name') }}">
             </div>
             <div class="form-group">
-                <label for="description">Dish Content:</label>
+                <label for="description">Description: *</label>
                 <textarea class="form-control" name="description" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
             </div>
 
             <div class="form-group">
-                <label for="ingredients">Dish ingredients:</label>
+                <label for="ingredients">Dish ingredients: *</label>
                 <input  class="form-control" type="text" name="ingredients" id="ingredients" value="{{ old('ingredients') }}">
             </div>
 
             <div class="form-group">
-                <label for="price">Dish price:</label>
+                <label for="price">Dish price: *</label>
                 <input  class="form-control" type="number" step="0.01"
                 name="price" id="price" value="{{ old('price') }}">
             </div>

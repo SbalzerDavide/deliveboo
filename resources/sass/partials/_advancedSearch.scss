@@ -183,10 +183,30 @@
                         
                     }
 
-            }
+                }
 
             }
 
     }
 
+    // MEDIAQUERY
+
+    @media  screen and(max-width: 1250px) {
+        .box{
+            h3{
+                font-size: 40px;
+            }
+        }
+    }
+
+     @media  screen and(max-width: 769px){
+         .hero-rest{
+             .box{
+                 width: 80%;
+                 h3{
+                     font-size: 35px;
+                 }
+             }
+         }
+     }
 }
