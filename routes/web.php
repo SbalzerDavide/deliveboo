@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index')->name('homepage');
-Route::get('/send-mail', function(){
+/* Route::get('/send-mail', function(){
     $details = [
         'title' => 'mail from deliveBoo',
         'body' => 'you are the best'
@@ -22,7 +22,7 @@ Route::get('/send-mail', function(){
     Mail::to('galanti_francesco@yahoo.it')->send(new \App\Mail\EmailCheck($details));
 
     echo 'Email has been sent';
-});
+}); */
 
 Auth::routes();
 
