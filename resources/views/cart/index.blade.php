@@ -35,7 +35,7 @@
                 @csrf
                 @method('POST')
     
-                <table id="cart" class="table table-hover table-condensed">
+                <table id="cart" class="table table-hover table-condensed table-compressed">
                     <thead>
                         <tr>
                             <th style="width:10%">image</th>

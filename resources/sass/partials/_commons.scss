@@ -264,10 +264,20 @@ ul li{
 
 // MEDIAQUERY
 
+@media screen and (max-width: 530px){
+    .chart{
+        text-align: center;
+        padding: 10px;
+        width: 100%;
+    }
+}
+
 @media screen and (max-width: 423px){
     .compra{
         margin-top: 20px;
         margin-left: 0;
     }
 }
+
+
 

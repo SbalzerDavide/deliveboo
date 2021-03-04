@@ -15,7 +15,7 @@
         </div>
         @foreach ($dishes as $dish)       
             <div class="menu">
-                <table class="table table-hover table-condensed">
+                <table class="table table-hover table-condensed table-compressed">
                     <tbody>
                         <tr>
                             <td data-th="image" style="width:10%">

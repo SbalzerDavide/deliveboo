@@ -257,6 +257,13 @@ ul li {
   vertical-align: middle;
 }
 
+@media screen and (max-width: 530px) {
+  .chart {
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+  }
+}
 @media screen and (max-width: 423px) {
   .compra {
     margin-top: 20px;
@@ -10762,9 +10769,13 @@ h3 {
 .dish-index .cart-box form {
   margin: 10px 0;
 }
+.dish-index .cart-box a,
+.dish-index .cart-box input {
+  width: 110px;
+}
 
 @media screen and (max-width: 660px) {
-  table {
+  .table-compressed {
     display: none;
   }
 
