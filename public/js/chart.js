@@ -75244,7 +75244,11 @@ jquery__WEBPACK_IMPORTED_MODULE_2___default()(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\resources\js\chart.js */"./resources/js/chart.js");
+=======
+module.exports = __webpack_require__(/*! C:\Users\Aless\Desktop\DeliveBoo\resources\js\chart.js */"./resources/js/chart.js");
+>>>>>>> master
 
 
 /***/ })
