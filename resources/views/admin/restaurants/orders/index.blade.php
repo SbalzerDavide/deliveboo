@@ -5,10 +5,9 @@
         <h1>Your orders:</h1>
 
 
-        @if(!$orders)
+        @if(count($orders) > 0)
             <table class="table table-hover table-condensed">
                 @foreach ($orders as $order)
-                <h1>ci sono ordini</h1>
                         <tbody>
                             <a href="#">
                                 <tr>
@@ -23,7 +22,7 @@
                         </tbody>                 
                 @endforeach
             </table>
-            <a href="{{route('admin.chart')}}">
+            <a class="btn btn-primary" href="{{route('admin.chart')}}">
                 Vedi tabella
             </a>
         @else
