@@ -46,6 +46,29 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="dish-index">
+                <div class="cart-box">
+                    @if ($dish['path_image'])
+                        <img src="{{asset('storage/' . $dish['path_image'])}}" alt="">
+                    @else
+                        <img src="{{asset('image/default_dish.jpg')}}" alt="default_image">
+                    @endif
+                    
+                    <h5>{{ $dish->name }}</h5>
+                    <div>
+                        <a class="btn btn-success" href="{{route('admin.restaurants.show', $dish->slug)}}">Vedi piatto</a>
+                    </div>
+                   
+                    <a class="btn btn-primary" href="{{route('admin.restaurants.edit', $dish->slug)}}">Edit</a>
+
+                    <form action="{{route('admin.restaurants.destroy', $dish->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input class="btn btn-danger" type="submit" value="Delete">
+                    </form>
+                </div>
+            </div>
         @endforeach
 
         <div class="back-home">

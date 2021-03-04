@@ -10695,39 +10695,79 @@ h3 {
   }
 }
 
-table img {
+.container table img {
   height: 80px;
 }
 @media screen and (max-width: 990px) {
-  table img {
+  .container table img {
     height: 50px;
   }
-  table th,
-table h4,
-table span,
-table a,
-table i,
-table strong {
+  .container table th,
+.container table h4,
+.container table h5,
+.container table span,
+.container table a,
+.container table i,
+.container table strong {
     font-size: 12px;
   }
-  table .btn-primary {
+  .container table .btn-primary {
     padding: 0 4px;
   }
-  table .btn-danger {
+  .container table .btn-danger {
     padding: 0 6px;
   }
-  table .btn-danger span {
+  .container table .btn-danger span {
     display: none;
   }
 }
 
-@media screen and (max-width: 660px) {
-  img {
-    height: 30px;
-  }
+.cart,
+.dish-index {
+  display: none;
+}
+.cart .cart-box,
+.dish-index .cart-box {
+  margin: 15px 0;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background: #f8f6eb;
+  border-radius: 5px;
+  border: 1px solid #FFB954;
+}
+.cart .cart-box img,
+.dish-index .cart-box img {
+  width: 70%;
+}
+.cart .cart-box .quantity,
+.dish-index .cart-box .quantity {
+  margin: 10px 0;
+}
+.cart .cart-box .quantity .dish,
+.dish-index .cart-box .quantity .dish {
+  margin-right: 10px;
+  font-weight: 400;
+}
+.cart .cart-box span,
+.dish-index .cart-box span {
+  font-weight: 700;
+}
 
+.dish-index .cart-box a,
+.dish-index .cart-box h5,
+.dish-index .cart-box form {
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 660px) {
   table {
     display: none;
+  }
+
+  .cart,
+.dish-index {
+    display: block;
   }
 }
 footer {

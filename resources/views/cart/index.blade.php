@@ -117,6 +117,46 @@
                         </tr>
                     </tfoot>
                 </table>
+
+                {{-- MOBILE LAYOUT --}}
+                <div class="cart container">
+                    @if(session($cartSession))
+                    @foreach(session($cartSession) as $id => $dish)
+                    
+                    <?php $total += $dish['price'] * $dish['quantity'] ?>
+
+                    <div class="cart-box">
+                        @if ($dish['path_image'])
+                            <img src="{{asset('storage/' . $dish['path_image'])}}" alt="">
+                        @else
+                            <img src="{{asset('image/default_dish.jpg')}}" alt="default_image">
+                        @endif
+                        
+                        <h4 class="nomargin">{{ $dish['name'] }}</h4>
+                        
+                        <p><span>Price : </span>{{ $dish['price'] }} €</p>
+                        <div class="quantity">
+                            <span class="dish"><span>Quantity : </span>{{ $dish['quantity'] }}</span>
+                            
+                            <a href="{{ route('guest.more', $id) }}" class="btn btn-primary">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                            <a href="{{ route('guest.less', $id) }}" class="btn btn-primary">
+                                <i class="fas fa-minus"></i>
+                            </a>
+                        </div>
+
+                        <p><span>Subtotal : </span> {{ $dish['price'] * $dish['quantity'] }} €</p>
+
+                        <a href="{{ route('guest.remove', $id) }}" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                            remove
+                        </a>
+                    </div>
+                    @endforeach
+                    @endif
+                </div>
+
                 <a href="{{ route('guest.RestaurantShow', $user->slug) }}" class="compra-inverso search-advanced-inverso">
                     <i class="fa fa-angle-left"></i> 
                     <span>
@@ -125,6 +165,7 @@
                 </a>
                 {{-- <input type="hidden" id="session" name="session" value="{{ $cartSession }}"> --}}
                 <input type="submit" class="btn btn-primary" value="Go to payment">
+
     
             </form>
        

@@ -1,7 +1,9 @@
-table{
+.container table{
     img{
         height: 80px;
     }
+
+
 
 
     @media screen and(max-width: 990px) {
@@ -12,6 +14,7 @@ table{
       
         th,
         h4,
+        h5,
         span,
         a,
         i,
@@ -34,14 +37,58 @@ table{
 
 }
 
+// MOBILE
+.cart,
+.dish-index{
+    display: none;
+    
+    .cart-box{
+        margin: 15px 0;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        background: #f8f6eb;
+        border-radius: 5px;
+        border: 1px solid #FFB954;
+        
+        img{
+            width: 70%;
+        }
+        
+        .quantity{
+            margin: 10px 0;
+            .dish{
+                margin-right: 10px;
+                font-weight: 400;
+            }
+        }
+        
+        span{
+            font-weight: 700;
+        }
+
+    }
+
+}
+
+.dish-index .cart-box{
+    a,
+    h5,
+    form{
+        margin: 10px 0;
+    }
+}
 @media screen and(max-width: 660px){
 
-    img{
-        height: 30px;
-    }
 
     table{
         display: none;
+    }
+
+    .cart,
+    .dish-index{
+        display: block;
+        
     }
     
 }
