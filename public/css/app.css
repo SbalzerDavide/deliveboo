@@ -10314,6 +10314,9 @@ h3 {
 .navbar {
   background: transparent;
 }
+.navbar .dropdown-toggle::after {
+  border-top: 0.3em transparent;
+}
 .navbar span i {
   color: #237177;
 }

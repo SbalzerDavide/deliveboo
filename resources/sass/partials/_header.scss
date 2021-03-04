@@ -43,6 +43,10 @@
 
 .navbar{
     background: transparent;
+    .dropdown-toggle::after {
+        border-top: 0.3em transparent;
+    }
+
 
     // .navbar-brand{
       
