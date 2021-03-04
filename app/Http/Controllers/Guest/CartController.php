@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Braintree\Gateway as Gateway;
 use App\Dish;
 use App\User;
@@ -224,11 +225,15 @@ class CartController extends Controller
                 //   dd($result);
 
                 // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
+                Mail::send('emails.TestMail' , $order->toArray() ,  function($message){
+                   $message->to('galanti_francesco@yahoo.it', 'Code Online')
+                        ->subject('Transaction done');
+                });
             } else {            
-                foreach($result->errors->deepAll() as $error) {
+               /*  foreach($result->errors->deepAll() as $error) {
                     $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
                 }
-                $message = 'La transazione non è andata a buon fine';
+                $message = 'La transazione non è andata a buon fine'; */
             
                 // $_SESSION["errors"] = $errorString;
                 // header("Location: " . $baseUrl . "index.php");
@@ -236,7 +241,7 @@ class CartController extends Controller
     
     
     
-            return redirect()->route('homepage')->with('message', $message);
+            return redirect()->route('homepage')/* ->with('message', $message) */;
     
         }
         public function update(Request $request, $id){
