@@ -53,7 +53,7 @@ class DishesTableSeeder extends Seeder
         foreach($users as $user){
 
             for($i = 0; $i < 10; $i++){
-                $random = $faker->numberBetween(0, 14);
+                $random = $faker->numberBetween(0, 13);
                 $randomForName = $faker->numberBetween(0, 29);
                 $newDish = new Dish();
     
