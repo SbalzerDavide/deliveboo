@@ -35,22 +35,7 @@
                 </a>
             </div>
 
-
         </div>
-        {{-- <div class="menu-dashboard">
-            <ul>
-                <a href="{{ route('admin.restaurants.index') }}">
-                    <li>
-                        Show your dishes
-                    </li>
-                </a>
-                <a href="{{ route('admin.orders') }}">
-                    <li >
-                        Show your orders
-                    </li>
-                </a>
-            </ul>
-        </div> --}}
     </div>
 
 @endsection
