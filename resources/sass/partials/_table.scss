@@ -77,11 +77,16 @@
     form{
         margin: 10px 0;
     }
+
+    a,
+    input{
+        width: 110px;
+    }
 }
 @media screen and(max-width: 660px){
 
 
-    table{
+    .table-compressed{
         display: none;
     }
 
