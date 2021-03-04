@@ -1,0 +1,47 @@
+table{
+    img{
+        height: 80px;
+    }
+
+
+    @media screen and(max-width: 990px) {
+
+        img{
+            height: 50px;
+        }
+      
+        th,
+        h4,
+        span,
+        a,
+        i,
+        strong{
+            font-size: 12px;
+        }
+        
+        .btn-primary{
+            padding: 0 4px;
+        }
+
+        .btn-danger{
+            padding: 0 6px;            
+
+            span{
+                display: none;
+            }
+        }
+    }
+
+}
+
+@media screen and(max-width: 660px){
+
+    img{
+        height: 30px;
+    }
+
+    table{
+        display: none;
+    }
+    
+}
