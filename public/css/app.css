@@ -10693,6 +10693,9 @@ h3 {
   .rest-show ul li .dish-description {
     width: 100%;
   }
+  .rest-show ul li .add-cart a {
+    margin-left: 0;
+  }
 }
 
 .container table img {
