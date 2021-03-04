@@ -29,7 +29,7 @@
                                 <h5>{{ $dish->name }}</h5>
                             </td>
                             <td>
-                                <a class="btn btn-success" href="{{route('admin.restaurants.show', $dish->slug)}}">Vedi piatto</a>
+                                <a class="btn btn-success" href="{{route('admin.restaurants.show', $dish->slug)}}">Show dish</a>
                             </td>
                             <td style="width:16,5%">
                                 <a class="btn btn-primary" href="{{route('admin.restaurants.edit', $dish->slug)}}">Edit</a>

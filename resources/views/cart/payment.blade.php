@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <h2>ordine numero:{{ $order->id }}</h2>
+    <h2>Insert your data</h2>
 
 
     {{-- validation errors --}}
@@ -31,7 +31,7 @@
             <input  class="form-control" type="text" name="address" id="address" value="{{ old('address', $order->address) }}">
         </div>
         <div class="form-group">
-            <label for="email">Insert your email</label>
+            <label for="email">Insert your email *</label>
             <input  class="form-control" type="email" name="email" id="email" value="{{ old('email', $order->email) }}">
         </div>
         <div class="form-group">
@@ -40,22 +40,24 @@
         </div>
 
         <div class="form-group">
-            <label for="text">More info about delivery:</label>
+            <label for="text">More info about delivery</label>
             <textarea class="form-control" name="text" id="text" cols="30" rows="5">{{ old('text', $order->text) }}</textarea>
         </div>
         
         
-        <input type="submit" class="btn btn-primary" value="Conferma i dati">
+        <input type="submit" class="btn btn-primary" value="Confirm for go to payment">
         
     </form>
 
     <h5 class="mt-5">TOTAL: {{ $order->price }} €</h5>
-    <form id="payment-form" action="{{ route('guest.payment', $order->id) }}" method="post">
-        @csrf
-        <div id="dropin-container"></div>
-        <input type="hidden" id="nonce" name="payment_method_nonce"/>
-        <input type="submit" />
-    </form>
+    @if (!empty($order->name))
+        <form id="payment-form" action="{{ route('guest.payment', $order->id) }}" method="post">
+            @csrf
+            <div id="dropin-container"></div>
+            <input type="hidden" id="nonce" name="payment_method_nonce"/>
+            <input class="btn btn-primary" type="submit" value="Pay"/>
+        </form>        
+    @endif
 </div>
 
 @endsection

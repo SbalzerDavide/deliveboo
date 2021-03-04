@@ -7,9 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-      
-     <p>thank you</p>
-     <h1>{{$id}}</h1>
+    <div class="mail-hero">
+        <img src="{{ asset('image/top_bg.png') }}" alt="hero">
+    </div>
+    <p>Thanks for choosing us, your order has been placed</p>
+
+    <h2>order details:</h2>
+
+    <ul>
+        <li>your name: {{ $order->name }}</li>
+        <li>your address: {{ $order->address }}</li>
+        <li>your phone: {{ $order->phone }}</li>
+    </ul>
 </body>
 </html>
 
