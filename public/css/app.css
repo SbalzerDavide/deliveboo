@@ -10482,6 +10482,10 @@ h3 {
   background: rgba(255, 255, 255, 0);
 }
 
+.list-orders {
+  margin-top: 40px;
+}
+
 #search .hero-rest {
   background-image: url("../image/newyork.png");
   background-size: cover;

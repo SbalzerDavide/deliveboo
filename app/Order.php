@@ -14,6 +14,7 @@ class Order extends Model
         '_token',
         'price',
         'name',
+        'phone',
         'email',
         'address',
         'text'

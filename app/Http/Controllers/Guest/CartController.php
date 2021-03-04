@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailCheck;
+// use App\Http\Controllers\Guest\EmailCheck;
 use Braintree\Gateway as Gateway;
 use App\Dish;
 use App\User;
@@ -222,13 +224,24 @@ class CartController extends Controller
                 session()->forget($sessionName);
                 // dd(session($sessionName));
                 $message = 'La transazione è stata eseguita con sucesso';
+                $email = $order->email;
                 //   dd($result);
 
                 // header("Location: " . $baseUrl . "transaction.php?id=" . $transaction->id);
-                Mail::send('emails.TestMail' , $order->toArray() ,  function($message){
-                   $message->to('galanti_francesco@yahoo.it', 'Code Online')
-                        ->subject('Transaction done');
-                });
+                // Mail::send('emails.TestMail' , $order->toArray() ,  function($message){
+                //     $message->to('galanti_francesco@yahoo.it', 'Code Online')
+                //          ->subject('Transaction done');
+                // });
+                Mail::to($email)->send(new EmailCheck);
+                
+                
+                
+                
+                
+                // Mail::send('emails.TestMail' , $order->toArray() ,  function($message){
+                // $message->to('galanti_francesco@yahoo.it', 'Code Online')
+                //         ->subject('Transaction done');
+                // });
             } else {            
                /*  foreach($result->errors->deepAll() as $error) {
                     $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
@@ -278,6 +291,7 @@ class CartController extends Controller
             'name'=> 'required',
             'address'=> 'required',
             'phone'=> 'required',
+            'email'=> 'required',
             ];
         }
     
