@@ -257,6 +257,12 @@ ul li {
   vertical-align: middle;
 }
 
+@media screen and (max-width: 423px) {
+  .compra {
+    margin-top: 20px;
+    margin-left: 0;
+  }
+}
 .hidden {
   display: none;
 }
@@ -10595,6 +10601,19 @@ h3 {
 #search .container .container-restaurant-genres .form-check .check {
   padding: 0 1rem;
 }
+@media screen and (max-width: 1250px) {
+  #search .box h3 {
+    font-size: 40px;
+  }
+}
+@media screen and (max-width: 769px) {
+  #search .hero-rest .box {
+    width: 80%;
+  }
+  #search .hero-rest .box h3 {
+    font-size: 35px;
+  }
+}
 
 .rest-show {
   max-width: 80%;
@@ -10655,6 +10674,22 @@ h3 {
 .rest-show .row .btn-cart a .badge-pill {
   border-radius: 50%;
   background: #F9994F;
+}
+@media screen and (max-width: 768px) {
+  .rest-show h1 {
+    font-size: 30px;
+  }
+  .rest-show ul li {
+    flex-direction: column;
+  }
+  .rest-show ul li img {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
+  }
+  .rest-show ul li .dish-description {
+    width: 100%;
+  }
 }
 
 footer {

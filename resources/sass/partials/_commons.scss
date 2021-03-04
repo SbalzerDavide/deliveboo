@@ -265,4 +265,12 @@ ul li{
     vertical-align: middle;
 }
 
+// MEDIAQUERY
+
+@media screen and (max-width: 423px){
+    .compra{
+        margin-top: 20px;
+        margin-left: 0;
+    }
+}
 
