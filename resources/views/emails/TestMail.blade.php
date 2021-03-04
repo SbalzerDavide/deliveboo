@@ -9,6 +9,7 @@
 <body>
       
      <p>thank you</p>
+     <h1>{{$id}}</h1>
 </body>
 </html>
 
