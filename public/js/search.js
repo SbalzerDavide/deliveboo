@@ -49736,7 +49736,8 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       if (this.searchText.trim() != '') {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
           params: {
-            name: this.searchText
+            name: this.searchText,
+            genre: this.filterGenre
           }
         }).then(function (response) {
           _this2.listRestaurant = response.data; //add baseUrl to avery element
@@ -49762,7 +49763,11 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         });
       } else {
         // axios restaurant
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant').then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
+          params: {
+            genre: this.filterGenre
+          }
+        }).then(function (response) {
           console.log(response.data);
           _this2.listRestaurant = response.data; //add baseUrl to avery element
 
@@ -49776,8 +49781,12 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
           _this2.listRestaurant.splice(_this2.numberRestaurant, _this2.removedRestaurant);
 
-          _this2.showedRestaurant = _this2.listRestaurant;
-          _this2.load = true;
+          _this2.showedRestaurant = _this2.listRestaurant; //hide button
+
+          if (_this2.numberRestaurant >= _this2.allRestaurant.length) {
+            _this2.buttonShow = false;
+            console.log('condizione if');
+          }
         })["catch"](function (error) {
           console.log(error);
         });

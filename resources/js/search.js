@@ -72,6 +72,7 @@ const search = new Vue({
                 axios.get(this.baseUrl + '/api/Restaurant',{
                     params:{
                         name: this.searchText,
+                        genre: this.filterGenre,
                     }
                 })
                     .then(response => {
@@ -100,28 +101,38 @@ const search = new Vue({
                     });
             } else {
                 // axios restaurant
-                axios.get(this.baseUrl + '/api/Restaurant')
-                .then(response => {
-                    console.log(response.data)
-                    this.listRestaurant = response.data;
-                    
-                    //add baseUrl to avery element
-                    this.listRestaurant = this.listRestaurant.map(element =>{
-                        return {
-                            ...element,
-                            route: this.url + element.slug
+                axios.get(this.baseUrl + '/api/Restaurant',{
+                    params:{
+                        genre: this.filterGenre,
+                    }
+                })
+                    .then(response => {
+                        console.log(response.data)
+                        this.listRestaurant = response.data;
+    
+                        //add baseUrl to avery element
+                        this.listRestaurant = this.listRestaurant.map(element =>{
+                            return {
+                                ...element,
+                                route: this.url + element.slug
+                                }
+                            })
+                        this.allRestaurant = [...this.listRestaurant];
+                        this.removedRestaurant = this.listRestaurant.length - this.numberRestaurant;
+                        this.listRestaurant.splice(this.numberRestaurant, this.removedRestaurant);
+                        this.showedRestaurant = this.listRestaurant;
+                        
+                        //hide button
+                        if(this.numberRestaurant >= this.allRestaurant.length){
+                            this.buttonShow = false;
+                            console.log('condizione if');
                         }
                     })
-                    this.allRestaurant = [...this.listRestaurant];
-                    this.removedRestaurant = this.listRestaurant.length - this.numberRestaurant;
-                    this.listRestaurant.splice(this.numberRestaurant, this.removedRestaurant);
-                    this.showedRestaurant = this.listRestaurant;
-                    this.load = true;
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-
+                    .catch(error => {
+                        console.log(error);
+                    }
+                );
+    
             }
         },
         takeGenre(index){

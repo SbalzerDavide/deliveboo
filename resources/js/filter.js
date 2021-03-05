@@ -12,6 +12,7 @@ const search = new Vue({
         showedRestaurant: [],
         allRestaurant: [],
         genre : '',
+        arrayGenre: [],
         baseUrl: '',
         load: false,
         numberRestaurant: 10,
@@ -61,11 +62,14 @@ const search = new Vue({
         makeSearch(){
             this.numberRestaurant = 10;
             this.buttonShow = true;
+            console.log(this.searchText);
+            console.log(this.genre);
+            this.arrayGenre = [this.genre];
             if (this.searchText.trim() != ''){
                 axios.get(this.baseUrl + '/api/Restaurant',{
                     params:{
                         name: this.searchText,
-                        genre: this.genre,
+                        genre: this.arrayGenre,
                     }
                 })
                     .then(response => {
@@ -89,28 +93,33 @@ const search = new Vue({
                     });
             } else {
                 // axios restaurant
-                axios.get(this.baseUrl + '/api/Restaurant')
-                .then(response => {
-                    console.log(response.data)
-                    this.listRestaurant = response.data;
-                    
-                    //add baseUrl to avery element
-                    this.listRestaurant = this.listRestaurant.map(element =>{
-                        return {
-                            ...element,
-                            route: this.url + element.slug
-                        }
-                    })
-                    this.allRestaurant = [...this.listRestaurant];
-                    this.removedRestaurant = this.listRestaurant.length - this.numberRestaurant;
-                    this.listRestaurant.splice(this.numberRestaurant, this.removedRestaurant);
-                    this.showedRestaurant = this.listRestaurant;
-                    this.load = true;
+                axios.get(this.baseUrl + '/api/Restaurant',{
+                    params:{
+                        genre: [this.genre],
+                    }
                 })
-                .catch(error => {
-                    console.log(error);
-                });
-                
+                    .then(response => {
+                        console.log(response.data);
+                        this.listRestaurant = response.data;
+        
+                        //add baseUrl to avery element
+                        this.listRestaurant = this.listRestaurant.map(element =>{
+                            return {
+                                ...element,
+                                route:this.baseUrl + '/guest/restaurantShow/' + element.slug
+                                }
+                            })
+                        this.allRestaurant = [...this.listRestaurant];
+                        this.removedRestaurant = this.listRestaurant.length - this.numberRestaurant;
+                        this.listRestaurant.splice(this.numberRestaurant, this.removedRestaurant);
+                        this.showedRestaurant = this.listRestaurant;
+                        this.load = true;
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    }
+                );
+                        
             }
         },
         moreRestaurants(){

@@ -49676,6 +49676,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     showedRestaurant: [],
     allRestaurant: [],
     genre: '',
+    arrayGenre: [],
     baseUrl: '',
     load: false,
     numberRestaurant: 10,
@@ -49724,12 +49725,15 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
       this.numberRestaurant = 10;
       this.buttonShow = true;
+      console.log(this.searchText);
+      console.log(this.genre);
+      this.arrayGenre = [this.genre];
 
       if (this.searchText.trim() != '') {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
           params: {
             name: this.searchText,
-            genre: this.genre
+            genre: this.arrayGenre
           }
         }).then(function (response) {
           console.log(response.data);
@@ -49752,13 +49756,17 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         });
       } else {
         // axios restaurant
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant').then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
+          params: {
+            genre: [this.genre]
+          }
+        }).then(function (response) {
           console.log(response.data);
           _this2.listRestaurant = response.data; //add baseUrl to avery element
 
           _this2.listRestaurant = _this2.listRestaurant.map(function (element) {
             return _objectSpread(_objectSpread({}, element), {}, {
-              route: _this2.url + element.slug
+              route: _this2.baseUrl + '/guest/restaurantShow/' + element.slug
             });
           });
           _this2.allRestaurant = _toConsumableArray(_this2.listRestaurant);
