@@ -9,7 +9,7 @@
 </style>
    <main class="container">
         <a href="{{route('homepage')}}">
-            <img height="70" src="{{asset('image/logo.png')}}" alt="logo">
+            <img height="70" src="{{asset('image/sfondo-bianco.png')}}" alt="logo">
         </a>
         
         <p> Hi, {{ $order->name }}! Thanks for choosing us, your order has been placed</p>
