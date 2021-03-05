@@ -68,7 +68,7 @@ const search = new Vue({
         makeSearch(){
             this.numberRestaurant = 10;
             this.buttonShow = true;
-            if (this.searchText != ''){
+            if (this.searchText.trim() != ''){
                 axios.get(this.baseUrl + '/api/Restaurant',{
                     params:{
                         name: this.searchText,

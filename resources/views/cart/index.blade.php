@@ -11,10 +11,10 @@
                 <b>{{ session('deleted') }}</b> has been deleted from your cart
                 
             </div>
-            <a href="{{ route('guest.RestaurantShow', $user->slug) }}" class="compra-inverso back-ho<span> ">
+           <!--  <a href="{{ route('guest.RestaurantShow', $user->slug) }}" class="compra-inverso back-ho<span> ">
                 <i class=" <fa fa-angle-left"></i> 
                 <span> Back to the restaurant </span>
-            </a>
+            </a> -->
 
         @endif
         <?php $total = 0 ?>

@@ -10711,6 +10711,8 @@ h3 {
 
 .container table img {
   height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 @media screen and (max-width: 990px) {
   .container table img {

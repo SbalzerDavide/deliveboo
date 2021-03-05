@@ -49733,7 +49733,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       this.numberRestaurant = 10;
       this.buttonShow = true;
 
-      if (this.searchText != '') {
+      if (this.searchText.trim() != '') {
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant', {
           params: {
             name: this.searchText

@@ -1,24 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="mail-hero">
-        <img src="{{ asset('image/top_bg.png') }}" alt="hero">
-    </div>
-    <p>Thanks for choosing us, your order has been placed</p>
+@extends('layouts.email')
 
-    <h2>order details:</h2>
+@section('content')
+<style>
+    .container{
+       margin-left: 30px;
+       font-family: sans-serif;
+    }
+</style>
+   <main class="container">
+        <a href="{{route('homepage')}}">
+            <img height="70" src="{{asset('image/logo.png')}}" alt="logo">
+        </a>
+        
+        <p> Hi, {{ $order->name }}! Thanks for choosing us, your order has been placed</p>
 
-    <ul>
-        <li>your name: {{ $order->name }}</li>
-        <li>your address: {{ $order->address }}</li>
-        <li>your phone: {{ $order->phone }}</li>
-    </ul>
-</body>
-</html>
+        <h2>order details:</h2>
+
+        <p>Your order will be delivered in {{ $order->address }}, as soon as possible.</p>
+   </main>
+@endsection
+   
+    
 
