@@ -49760,6 +49760,27 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
         })["catch"](function (error) {
           console.log(error);
         });
+      } else {
+        // axios restaurant
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(this.baseUrl + '/api/Restaurant').then(function (response) {
+          console.log(response.data);
+          _this2.listRestaurant = response.data; //add baseUrl to avery element
+
+          _this2.listRestaurant = _this2.listRestaurant.map(function (element) {
+            return _objectSpread(_objectSpread({}, element), {}, {
+              route: _this2.url + element.slug
+            });
+          });
+          _this2.allRestaurant = _toConsumableArray(_this2.listRestaurant);
+          _this2.removedRestaurant = _this2.listRestaurant.length - _this2.numberRestaurant;
+
+          _this2.listRestaurant.splice(_this2.numberRestaurant, _this2.removedRestaurant);
+
+          _this2.showedRestaurant = _this2.listRestaurant;
+          _this2.load = true;
+        })["catch"](function (error) {
+          console.log(error);
+        });
       }
     },
     takeGenre: function takeGenre(index) {
@@ -49828,7 +49849,7 @@ var search = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\resources\js\search.js */"./resources/js/search.js");
+module.exports = __webpack_require__(/*! /Users/davidesbalzer/Documents/buffoni/informatica/atom/deliveroo/DeliveBoo/DeliveBoo/resources/js/search.js */"./resources/js/search.js");
 
 
 /***/ })
