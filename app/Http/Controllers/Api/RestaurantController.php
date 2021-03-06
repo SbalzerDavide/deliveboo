@@ -39,7 +39,6 @@ class RestaurantController extends Controller
 
 
 
-
             $users = DB::table('genre_user')
                 ->join('users', 'users.id', '=', 'genre_user.user_id')
                 ->join('genres', 'genres.id', '=', 'genre_user.genre_id')
